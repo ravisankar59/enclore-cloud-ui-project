@@ -1,0 +1,7 @@
+{
+    "error": {
+        "code": 404,
+        "type": "Not Found",
+        "message": "Region not found."
+    }
+}

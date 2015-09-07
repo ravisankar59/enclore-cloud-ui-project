@@ -1,0 +1,13 @@
+-   request:
+        url: ^/api/users/hub_cap/reach$
+        method: GET
+    response:
+        status: 200
+        body: '{"token": "a002f557c2ff498bb12f6a63e28f5cbf", "reachUrl": "https://ui.staging.reach.rackspace.com"}'
+
+-   request:
+        url: ^/api/users/rcstable01/reach$
+        method: GET
+    response:
+        status: 200
+        body: '{"token": "a002f557c2ff498bb12f6a63e28f5cbf", "reachUrl": "https://ui.staging.reach.rackspace.com"}'

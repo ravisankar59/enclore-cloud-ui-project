@@ -1,0 +1,184 @@
+{
+  "snapshots": [
+    {
+      "metadata": {},
+      "display_description": null,
+      "id": "a82760a0-aa03-40a1-ad7e-63decfc95a5e",
+      "created_on": null,
+      "size": 0,
+      "display_name": null,
+      "volume_id": "10225e08-a4bd-49fb-9237-ffffffffffff",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "22f1ad21-9986-4cbb-bdb2-52ef73bf2024",
+      "created_on": "2013-10-28T20:23:06.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST",
+      "volume_id": "cbfb4dc2-6430-467f-8b18-3e3d127dd788",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "3e6b32f5-b626-4a54-a401-41bdc4e60a60",
+      "created_on": "2013-11-01T22:33:50.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST",
+      "volume_id": "cbfb4dc2-6430-467f-8b18-3e3d127dd788",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Another MOM.",
+      "id": "48490ac8-53fa-49e3-b2ce-a42ca2b9cc57",
+      "created_on": "2013-10-09T18:50:40.000000",
+      "size": 100,
+      "display_name": "SNAP-MOM",
+      "volume_id": "88e4605a-80ae-409a-92f0-2a5b8c04a5de",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Another snapshot.",
+      "id": "51b8c0b2-8eed-4157-ac66-47c07ff4bd73",
+      "created_on": "2013-10-28T20:31:43.000000",
+      "size": 100,
+      "display_name": "KACIE_TEST",
+      "volume_id": "88e4605a-80ae-409a-92f0-2a5b8c04a5de",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "96ba80c8-3ae1-41d7-8dc9-f6332711ea1d",
+      "created_on": "2013-10-28T21:48:12.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST",
+      "volume_id": "ca0e95e0-189d-4f29-a104-e97051e3863f",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "a82760a0-aa03-40a1-ad7e-ffffffffffff",
+      "created_on": "2013-11-04T19:54:14.000000",
+      "size": 0,
+      "display_name": "",
+      "volume_id": "",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "a82760a0-aa03-40a1-ad7e-63decfc95a5e",
+      "created_on": "2013-11-04T19:54:14.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST",
+      "volume_id": "10225e08-a4bd-49fb-9237-ce1b7eaaddb2",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Testing column for creating status.",
+      "id": "b92760a0-aa03-40a1-ad7e-63decfc95a5e",
+      "created_on": "2013-11-04T19:54:14.000000",
+      "size": 100,
+      "display_name": "CREATING STATUS",
+      "volume_id": "88e4605a-80ae-409a-92f0-2a5b8c04a5de",
+      "status": "creating"
+    },
+    {
+      "metadata": {},
+      "display_description": "Testing column for deleting status.",
+      "id": "c13860a0-aa03-40a1-ad7e-63decfc95a5e",
+      "created_on": "2013-11-04T19:54:14.000000",
+      "size": 100,
+      "display_name": "DELETING STATUS",
+      "volume_id": "88e4605a-80ae-409a-92f0-2a5b8c04a5de",
+      "status": "deleting"
+    },
+    {
+      "metadata": {},
+      "display_description": "Testing column for error status.",
+      "id": "d53871a0-aa03-40a1-ad7e-63decfc95a5e",
+      "created_on": "2013-11-04T19:54:14.000000",
+      "size": 100,
+      "display_name": "ERROR STATUS",
+      "volume_id": "88e4605a-80ae-409a-92f0-2a5b8c04a5de",
+      "status": "error"
+    },
+    {
+      "metadata": {},
+      "display_description": "Testing column for error_deleting status.",
+      "id": "e13871b1-aa03-40a1-ad7e-63decfc95a5e",
+      "created_on": "2013-11-04T19:54:14.000000",
+      "size": 100,
+      "display_name": "ERROR DELETING STATUS",
+      "volume_id": "88e4605a-80ae-409a-92f0-2a5b8c04a5de",
+      "status": "error_deleting"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "b0f76484-f98f-4965-afe7-d0bdfe478bb6",
+      "created_on": "2013-10-28T21:30:36.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST",
+      "volume_id": "13e6be48-7fde-4d41-9024-a30db23a0f94",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "b2e831b9-0e30-4a41-b539-ee4a9404999d",
+      "created_on": "2013-10-28T20:25:54.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST",
+      "volume_id": "0d025379-a70f-4356-a59d-612813b8084e",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Test snapshot.",
+      "id": "ed7fc208-0489-453c-94fc-86c0333c5b5c",
+      "created_on": "2013-11-14T19:38:22.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST",
+      "volume_id": "c5f39d3f-28a2-4741-855e-37781e84731e",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Snapshot returns 404.",
+      "id": "b0f76484-f98f-4965-afe7-d0bdfe478bb6",
+      "created_on": "2013-10-28T20:23:06.000000",
+      "size": 100,
+      "display_name": "SNAP-TEST-FAIL",
+      "volume_id": "2ec081c3-7ab3-4b13-894e-fe4cb3110819",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "Testing",
+      "id": "1a50a111-b5f5-4ac3-b5c3-f99b63f3c77d",
+      "created_on": "2015-02-19T15:09:24Z",
+      "size": 75,
+      "display_name": "Test Snapshot",
+      "volume_id": "573511aa-0fa6-4af0-8d43-4d7eac874c5b",
+      "status": "available"
+    },
+    {
+      "metadata": {},
+      "display_description": "",
+      "id": "1a50a111-b5f5-4ac3-b5c3-f99b63f3c77x",
+      "created_on": "2015-02-19T15:09:24Z",
+      "size": 75,
+      "display_name": null,
+      "volume_id": "573511aa-0fa6-4af0-8d43-4d7eac874c5b",
+      "status": "available"
+    }
+  ]
+}

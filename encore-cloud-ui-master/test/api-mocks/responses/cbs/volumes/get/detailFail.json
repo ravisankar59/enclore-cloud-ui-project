@@ -1,0 +1,7 @@
+{
+  "error": {
+    "type": "Not Found",
+    "code": 404,
+    "message": "Volume not found."
+  }
+}

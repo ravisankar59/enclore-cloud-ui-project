@@ -1,0 +1,929 @@
+# LbaasNodeService  DELETE  remove specific node
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57362/nodes/88659$
+        method: DELETE
+    response:
+        status: 200
+
+# Lbaas DELETE to disable session persistence of specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/sessionpersistence$
+        method: DELETE
+    response:
+        status: 200
+
+# LbaasNodeService  DELETE  remove specific node
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57362/nodes/88661$
+        method: DELETE
+    response:
+        status: 200
+
+# Lbaas DELETE to disable session persistence of specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/sessionpersistence$
+        method: DELETE
+    response:
+        status: 200
+
+# Lbaas DELETE to disable session persistence of specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9001/sessionpersistence$
+        method: DELETE
+    response:
+        status: 200
+
+# Lbaas PUT to enable session persistence of specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/sessionpersistence$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"persistenceType":"HTTP_COOKIE"}'
+    response:
+        status: 200
+
+# Lbaas PUT to enable session persistence of specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9001/sessionpersistence$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"persistenceType":"SOURCE_IP"}'
+    response:
+        status: 200
+
+# Lbaas PUT to enable session persistence of specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/sessionpersistence$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"persistenceType":"HTTP_COOKIE"}'
+    response:
+        status: 200
+
+# Lbaas POST suspend specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/suspend$
+        method: POST
+        file: test/api-mocks/requests/loadbalancers/post-requests/suspendPayLoad.json
+    response:
+        status: 200
+
+# Lbaas POST suspend specific load balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57366/suspend$
+        method: DELETE
+    response:
+        status: 200
+
+# LBaaS GET Load Balancers
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/STAGING.json
+
+# LBaaS GET Load Balancers
+-   request:
+        url: ^/api/users/hub_cap/lbaas/DFW$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/DFW.json
+
+# LBaaS GET Load Balancers - failure
+-   request:
+        url: ^/api/users/foouser/lbaas/STAGING$
+        method: GET
+    response:
+        status: 404
+
+# LBaaS DELETE
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361
+        method: DELETE
+    response:
+        status: 200
+
+# LBaaS DELETE Load Balancer VIP
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/virtualips/22
+        method: DELETE
+    response:
+        status: 200
+
+# LBaaS GET Load Balancer errorPage
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/errorpage
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_errorpage.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/errorpage
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"content":"<html> </html>"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/errorpage
+        method: DELETE
+    response:
+        status: 200
+
+# LBaas Post to add nodes to Load Balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/nodes
+        method: POST
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/add_node.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/nodes
+        method: POST
+        post: '{"nodes":\[{"address":"10.182.86.18","port":80,"condition":"ENABLED"}\]}'
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/add_node.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/nodes
+        method: POST
+        post: '{"nodes":\[{"address":"10.182.86.18","port":80,"condition":"ENABLED"},{"address":"2001:2011:79f1:1212:07b4:0a0b:0000:0002","port":88,"condition":"ENABLED"}\]}'
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/57363_add_node.json
+
+-   request:
+       url: ^/api/users/hub_cap/lbaas/STAGING/57362/nodes
+       method: POST
+       post: '{"nodes":\[{"address":"10.182.86.18","port":80,"condition":"ENABLED"},{"address":"2001:2011:79f1:1212:07b4:0a0b:0000:0002","port":88,"condition":"ENABLED"}\]}'
+    response:
+       status: 200
+       file: test/api-mocks/responses/loadbalancers/post/57363_add_node.json
+
+# LBaaS GET Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/ssltermination$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_ssltermination.json
+
+# LBaaS DELETE Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/ssltermination$
+        method: DELETE
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/ssltermination$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"secure_port":80,"enabled":true,"secure_traffic_only":false,"certificate":"test certificate","intermediate_certificate":"test certificate","private_key":"private key"}'
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/ssltermination$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"secure_port":80,"enabled":true,"secure_traffic_only":false}'
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/ssltermination$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"secure_port":80,"enabled":true,"secure_traffic_only":false,"certificate":"test certificate","intermediate_certificate":"","private_key":"private key"}'
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/ssltermination$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"secure_port":80,"enabled":true,"secure_traffic_only":false,"certificate":"test certificate","intermediate_certificate":"test certificate","private_key":"private key"}'
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/ssltermination$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"secure_port":80,"enabled":true,"secure_traffic_only":false,"certificate":"test certificate","intermediate_certificate":"","private_key":"private key"}'
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/ssltermination$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"secure_port":80,"enabled":true,"secure_traffic_only":false}'
+    response:
+        status: 200
+
+# LBaaS GET Load Balancer contentCaching
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/contentcaching
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/contentcaching_enabled.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57363/contentcaching
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/contentcaching_enabled.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57364/contentcaching
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/contentcaching_disabled.json
+
+# LBaaS GET Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/healthmonitor
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_healthmonitor.json
+
+# LBaaS GET Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57362/healthmonitor
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/healthmonitor_disabled.json
+
+# LBaaS GET Load Balancer healthMonitor
+
+# LBaaS DELETE Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/healthMonitor
+        method: DELETE
+    response:
+        status: 200
+
+# LBaaS DELETE Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57363/healthmonitor
+        method: DELETE
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/healthmonitor_disabled.json
+
+# LBaaS DELETE Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57364/healthmonitor
+        method: DELETE
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/healthmonitor_enabled.json
+
+# LBaaS GET Load Balancer accessList
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/accesslist
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_accesslist.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57366/accesslist
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57366_accesslist.json
+
+# LBaaS POST Load Balancer accessList
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/accesslist
+        method: POST
+    response:
+        status: 200
+
+# LBaaS GET Load Balancer sessionPersistence
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/sessionpersistence
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_sessionpersistence.json
+
+# LBaaS GET Load Balancer sessionPersistence
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9001/sessionpersistence
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/9001_sessionpersistence.json
+
+# LBaaS GET Load Balancer sessionPersistence
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/sessionpersistence
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/9009_sessionpersistence.json
+
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57366$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57366_suspended.json
+
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57362$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57362.json
+
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57365$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57365.json
+
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57369$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57369.json
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57001.json
+
+# LBaaS GET Load Balancer errorPage
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001/errorpage
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57001_errorpage.json
+
+# LBaaS GET Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001/healthmonitor
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57001_healthmonitor.json
+
+# LBaaS GET Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57364/healthmonitor
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/healthmonitor_disabled.json
+
+# LBaaS GET Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57363/healthmonitor
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/healthmonitor_enabled.json
+
+# LBaaS GET Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001/ssltermination
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57001_ssltermination.json
+
+# LBaaS GET Load Balancer accessList
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001/accesslist
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57001_accesslist.json
+
+# LBaaS GET Load Balancer sessionPersistence
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001/sessionpersistence
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57001_sessionpersistence.json
+
+## Lbaas instance where extra loads fail
+# LBaaS DELETE
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345
+        method: DELETE
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer errorPage
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/errorpage
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/ssltermination
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer contentCaching
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/contentcaching
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/healthmonitor
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer connectionThrottle
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/connectionthrottle
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer accessList
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/accesslist
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer sessionPersistence
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/sessionpersistence
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/12345.json
+
+# LBaaS GET Load Balancer connectionThrottle
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/9009.json
+
+# LBaaS GET Load Balancer Protocols
+-   request:
+        url: ^/api/users/hub_cap/lbaas/(STAGING|DFW)/protocols
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/protocols.json
+
+# LBaaS GET Load Balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9001$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/9001.json
+
+### Test weirdness of unconfigured SSL Termination
+# The core systems act strangely when SSL Termination has never
+# been configured on a load balancer, so we have cloud atlas set
+# a special "configured":false in that case. This tests that we
+# handle that properly
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl/errorpage
+        method: GET
+    response:
+        status: 404
+
+
+# LBaaS GET Load Balancer sslTermination
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl/ssltermination
+        method: GET
+    response:
+        status: 200
+        body: '{"sslTermination": {"configured": false}}'
+
+# LBaaS GET Load Balancer contentCaching
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl/contentcaching
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl/healthmonitor
+        method: GET
+    response:
+        status: 404
+
+
+# LBaaS GET Load Balancer accessList
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl/accesslist
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer sessionPersistence
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl/sessionpersistence
+        method: GET
+    response:
+        status: 404
+
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/827362_unconfigured_ssl.json
+
+
+# LBaaS POST Load Balancer Create without nodes
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING
+        method: POST
+        file: test/api-mocks/requests/loadbalancers/post-requests/createLoadBalancerWithoutNodes.json
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/create_57361.json
+
+# LBaaS POST Load Balancer Create With Shared Vip
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING
+        method: POST
+        file: test/api-mocks/requests/loadbalancers/post-requests/createLoadBalancerWithSharedVip.json
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/create_57361.json
+
+# Lbaas PUT to update the specific node
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/nodes/88659
+        method: PUT
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57369/nodes/88659
+        method: PUT
+    response:
+        status: 200
+
+# LBaaS POST Load Balancer Create with nodes
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING
+        method: POST
+        file: test/api-mocks/requests/loadbalancers/post-requests/createLoadBalancerWithNodes.json
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/create_57361.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING
+        method: POST
+        file: test/api-mocks/requests/loadbalancers/post-requests/createLoadBalancerWithoutNodes.json
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/create_57361.json
+
+# LBaaS PUT Load Balancer addVirtualip
+-   request:
+        url: ^/api/users/hub_cap/lbaas/DFW/57361/admin_virtualips$
+        method: POST
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/\d+/admin_virtualips$
+        method: POST
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/post/57361_addvirtualapi_response.json
+
+#LBaas PUT Load Balancer Update Name
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"name":"TestChangeLBName"}'
+    response:
+        status: 200
+
+#LBaas PUT Load Balancer Update Name
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"name":"TestChangeLBBadName"}'
+    response:
+        status: 404
+
+# LBaaS POST Load Balancer Create - failure
+-   request:
+        url: ^/api/users/foouser/lbaas/STAGING
+        method: POST
+        file: test/api-mocks/requests/loadbalancers/post-requests/createLoadBalancerFailure.json
+    response:
+        status: 404
+
+# LBaaS PUT Connection Logging
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/connectionlogging$
+        method: PUT
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/DFW/2343/connectionlogging$
+        method: PUT
+    response:
+        status: 200
+
+# LBaaS Connection Logging Status
+-   request:
+        url: ^/api/users/hub_cap/lbaas/DFW/2343/connectionlogging$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/enabled_logging.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/connectionlogging$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/enabled_logging.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/connectionlogging$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/disabled_logging.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57363/connectionlogging$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/enabled_logging.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57364/connectionlogging$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/disabled_logging.json
+
+# LBaaS GET Load Balancer connectionThrottle
+-   request:
+        url: ^/api/users/hub_cap/lbaas/DFW/2343/connectionthrottle$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/disabled_connectionthrottling.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/9009/connectionthrottle$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/disabled_connectionthrottling.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/connectionthrottle$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_connectionthrottling.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001/connectionthrottle$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57001_connectionthrottling.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57362/connectionthrottle$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/disabled_connectionthrottling.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57363/connectionthrottle$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_connectionthrottling.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57364/connectionthrottle$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/disabled_connectionthrottling.json
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/827362_unconfigured_ssl/connectionthrottle$
+        method: GET
+    response:
+        status: 404
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/12345/connectionthrottle$
+        method: GET
+    response:
+        status: 404
+
+# LBaaS PUT Load balancer details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361$
+        method: PUT
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer connectionLogging
+-   request:
+        url: ^/api/users/hub_cap/lbaas/DFW/2343/connectionthrottle$
+        method: PUT
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/\d+/connectionthrottle$
+        method: PUT
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/\d+/connectionthrottle$
+        method: DELETE
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer connectionThrottle
+-   request:
+        url: ^/api/users/hub_cap/lbaas/DFW/2343/connectionlogging$
+        method: PUT
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/\d+/connectionlogging$
+        method: PUT
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer ContentCachinge
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/\d+/contentcaching$
+        method: PUT
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer healthMonitor
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/\d+/healthmonitor$
+        method: PUT
+    response:
+        status: 200
+
+# Sync Load Balancer
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/sync$
+        method: PUT
+    response:
+        status: 200
+
+# LBaaS POST Load Balancer Add Temporary Rate Limit
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57001/ratelimit$
+        method: POST
+        contentType: 'application/json'
+    response:
+        status: 200
+
+# LBaaS PUT Load Balancer Update Temporary Rate Limit
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57000/ratelimit
+        method: PUT
+        contentType: 'application/json'
+    response:
+        status: 200
+
+# Historical Usage
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/usage$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57361_historicalusage.json
+
+# LBaaS GET Load Balancer Details
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57000$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/57000.json
+
+# LBaaS GET selected node list of Load Balancers
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/57361/nodes/extended_view$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/nodeList.json
+
+# Lbaas HOST's list
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/clusters/57361/hosts$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/loadbalancers/get/hostList.json
+
+# Lbaas reassign host
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/reassign_hosts$
+        method: PUT
+        post: '{"loadBalancers":\[{"id":57361,"host":{"id":2}}\]}'
+    response:
+        status: 200
+
+# Lbaas reassing host
+-   request:
+        url: ^/api/users/hub_cap/lbaas/STAGING/reassign_hosts$
+        method: PUT
+        post: '{"loadBalancers":\[{"id":57361,"host":{"id":3}}\]}'
+    response:
+        status: 200

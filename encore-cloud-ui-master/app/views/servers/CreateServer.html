@@ -1,0 +1,246 @@
+<rx-page title="'Create a New Cloud Server'">
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <a href="https://one.rackspace.com/x/7JN0Aw" target="_blank" class="msg-info">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Flavors Wiki (internal)
+                </a>
+            </li>
+            <li class="actions-item">
+                <a href="http://www.rackspace.com/calculator" target="_blank" class="msg-info">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Calculator
+                </a>
+            </li>
+            <li class="actions-item">
+                <a href="http://www.rackspace.com/cloud/servers" target="_blank" class="msg-info">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Cloud Servers Overview
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <form class="rx-form clear" name="createServer" novalidate>
+        <div>
+            <fieldset>
+                <rx-form-item label="Server Name">
+                    <input type="text" id="serverName" ng-model="server.name" required>
+                </rx-form-item>
+
+                <rx-form-item label="Region">
+                    <span class="field-select">
+                        <select
+                            name="region"
+                            id="region"
+                            ng-model="serverInfo.region"
+                            ng-options="r.label group by r.type for r in regions"
+                            ng-change="loadRegion()">
+                        </select>
+                    </span>
+                    <span class="msg-info" ng-if="isRackConnect3()">
+                        Selecting this region will automatically create a RackConnect v3 server.
+                    </span>
+                    <span class="msg-info" ng-if="isRackConnect2()">
+                        Selecting this region will automatically create a RackConnect v2 server.
+                    </span>
+                </rx-form-item>
+
+            </fieldset>
+        </div>
+
+        <rx-form-fieldset legend="VM Flavor">
+            <tabset id="flavorTabs" class="flavors">
+                <tab ng-repeat="flavorClass in flavorClasses"
+                     id="{{flavorClass.id}}"
+                     class="{{flavorClass.id}}"
+                     active="flavorClass.active"
+                     select="flavorCheck(flavorClass)"
+                     ng-click="chooseFlavor(flavorClass.title)">
+
+                    <tab-heading>
+                    {{flavorClass.title}} <span class="subdued" ng-if="flavors[flavorClass.id].length > 0">({{flavors[flavorClass.id].length}})</span>
+                    </tab-heading>
+                    <div class="flex-container">
+                        <rx-option-table
+                            id="flavorOptions_{{flavorClass.id}}"
+                            data="flavors[flavorClass.id]"
+                            columns="columns[serverInfo.region.type].flavor"
+                            model="server.flavor"
+                            field-id="serverFlavor{{flavorClass.id}}"
+                            type="radio"
+                            required="true"
+                            class="flex-item"
+                            ng-class="{'next-gen': serverInfo.region.type === 'NextGen'}"
+                            >
+                        </rx-option-table>
+                        <fieldset
+                                id="bootableVolumeFields_{{flavorClass.id}}"
+                                class="flex-item"
+                                ng-if="serverInfo.region.type === 'NextGen'">
+                            <span class="subdued sm"
+                                ng-if="bootFromVolumeOnly">
+                                Bootable Volumes are the only available Boot Source for this Flavor
+                            </span>
+                            <rx-form-item label="Boot Source" ng-if="serverInfo.region.type === 'NextGen'">
+                                <span class="field-select">
+                                    <select
+                                        name="boot"
+                                        id="boot"
+                                        ng-model="serverInfo.bootSource"
+                                        ng-disabled="bootFromVolumeOnly || bootLocalOnly">
+                                        <option value="local">Local</option>
+                                        <optgroup label="Bootable Volumes">
+                                            <option value="new">Create new Bootable Volume</option>
+                                        </optgroup>
+                                    </select>
+                                </span>
+                            </rx-form-item>
+                            <div class="flex-container" ng-if="serverInfo.bootSource === 'new'">
+                                <fieldset class="flex-item" style="flex: 1.3 0">
+                                    <rx-form-item label="Boot Index">
+                                        {{ volume.bootIndex }}
+                                    </rx-form-item>
+                                    <rx-form-item label="Volume Size" description="Must be between 100 and 1024" suffix="Gb">
+                                        <input type="number" id="volumeSize" min="100" max="1024" ng-model="volume.volumeSize" required>
+                                    </rx-form-item>
+                                    <rx-form-item label="Source Type">
+                                        {{ volume.sourceType | rxCapitalize}}
+                                    </rx-form-item>
+                                </fieldset>
+                                <fieldset class="flex-item" style="flex: 1 0">
+                                    <rx-form-item label="Destination Type">
+                                        {{ volume.destinationType | rxCapitalize }}
+                                    </rx-form-item>
+                                    <rx-form-item label="Delete on Termination?">
+                                        <input type="radio" id="deleteOnTerminationFalse" ng-value="false" ng-model="volume.deleteOnTermination" name="deleteTerminate" /> No
+                                        <input type="radio" id="deleteOnTerminationTrue" ng-value="true" ng-model="volume.deleteOnTermination" name="deleteTerminate" /> Yes
+                                    </rx-form-item>
+                                </fieldset>
+                            </div>
+                        </fieldset>
+                    </div>
+                </tab>
+            </tabset>
+        </rx-form-fieldset>
+
+        <rx-form-fieldset legend="Image Type">
+            <tabset id="imageTabs">
+                <tab ng-repeat="tab in imageTabs[serverInfo.region.type]"
+                     id="{{tab.title}}"
+                     class="{{tab.title}}"
+                     active="tab.active">
+                    <tab-heading>
+                        {{tab.title | rxCapitalize}} Images <span class="subdued" ng-if="images[tab.title].length > 0">({{images[tab.title].length}})</span>
+                    </tab-heading>
+
+                    <rx-option-table
+                        id="imageType_{{tab.title}}"
+                        data="images[tab.title]"
+                        columns="columns[serverInfo.region.type].image[tab.title]"
+                        model="server.image"
+                        field-id="server{{tab.title}}Image"
+                        type="radio"
+                        required="true"
+                        empty-message="No Saved Images"
+                        >
+                    </rx-option-table>
+                </tab>
+            </tabset>
+        </rx-form-fieldset>
+
+        <rx-form-fieldset legend="Networks" ng-if="isNextGen()">
+            <div class="form-item msg-info" ng-if="isRackConnect2()">
+                This server is a RackConnect v2 server. ServiceNet and PublicNet are mandatory and no custom networks are allowed.
+            </div>
+            <div class="form-item msg-info" ng-if="isRackConnect3()">
+                This server is a RackConnect v3 server. Only networks allowed for RackConnect v3 will be available.
+            </div>
+            <div class="form-item msg-warn" ng-if="showRackConnect3Warning">
+                Exactly one isolated Rack Connect network must be selected.
+            </div>
+            <table class="table-striped networks-list">
+                <thead>
+                    <tr>
+                        <th colspan="5" class="filter-header">
+                             <rx-search-box rx-placeholder="'Filter by any...'" ng-model="filter.keyword"></rx-search-box>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                    sort-method="sortCol(property)"
+                                    sort-property="id"
+                                    predicate="sort.predicate"
+                                    reverse="sort.reverse">
+                                Network ID
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                    sort-method="sortCol(property)"
+                                    sort-property="label"
+                                    predicate="sort.predicate"
+                                    reverse="sort.reverse">
+                                Name
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                    sort-method="sortCol(property)"
+                                    sort-property="cidr"
+                                    predicate="sort.predicate"
+                                    reverse="sort.reverse">
+                                CIDR
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                    sort-method="sortCol(property)"
+                                    sort-property="region"
+                                    predicate="sort.predicate"
+                                    reverse="sort.reverse">
+                               Region
+                            </rx-sortable-column>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="network in networks | filter:filter.keyword | orderBy: sort.predicate:sort.reverse | Paginate:pager">
+                        <td><input ng-disabled="isMandatoryNetwork(network)" type="checkbox" ng-model="network.checked" ng-change="checkNetworkRequirements(network)"></td>
+                        <td>
+                            {{network.id}}
+                            <div ng-if="!network.checked && network.hasRestrictions">
+                                <span class="msg-warn">{{network.warningMessage}}</span>
+                            </div>
+                        </td>
+                        <td>{{network.title}}
+                            <span ng-if="isMandatoryNetwork(network)">(mandatory for Managed accounts)</span>
+                        </td>
+                        <td>{{network.cidr}}</td>
+                        <td>
+                            <div>{{network.region}}</div>
+                        </td>
+                    </tr>
+                    <tr ng-if="!networks.length && loaded">
+                        <td colspan="5">
+                            No Networks have been created in {{serverInfo.region.label}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot ng-show="true">
+                    <tr class="paginate-area">
+                        <td colspan="5">
+                            <rx-paginate page-tracking="pager"></rx-paginate>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </rx-form-fieldset>
+
+        <div class="form-actions">
+            <button class="button submit" ng-click="submit()" type="submit" ng-disabled="createServer.$invalid || shouldDisableCreateButton()">Create New Server</button>
+            <button id="btnCancel" class="button cancel" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </form>
+</rx-page>

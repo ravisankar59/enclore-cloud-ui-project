@@ -1,0 +1,50 @@
+<rx-modal-form
+    title="Add Cloud Servers"
+    submit-text="Add Servers" cancel-text="Cancel">
+
+    <rx-form-fieldset class="add-cloud-servers" legend="Cloud Servers">
+        <span class="field-input">
+            <div class="form-item">
+            <table class="table-striped cloud-servers">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Server</th>
+                        <th>IP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in cloudIpAddresses">
+                        <th class="option-table-input">
+                            <input
+                                id="acs-{{$index}}"
+                                type="checkbox"
+                                ng-model="row.checked"
+                                ng-click="updateCheckboxes(row)"
+                                ng-required="values.length==0"
+                            >
+                        </th>
+                        <td>
+                            <label class="field-content" for="acs-{{$index}}">
+                                <div>
+                                    {{row.name}}
+                                </div>
+                                <span class="field-description">
+                                    {{row.id}}<br/>
+                                    {{row.type}}, {{row.region}} Region
+                                </span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="field-content" for="acs-{{$index}}">
+                                {{row.address}}
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </span>
+    </rx-form-fieldset>
+
+</rx-modal-form>

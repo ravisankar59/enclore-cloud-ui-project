@@ -1,0 +1,42 @@
+{
+    "instance": {
+        "updated_on": null,
+        "links": [
+            {
+                "rel": "self",
+                "href": "https://api.staging.ord1.clouddb.rackspace.net/v1.0/323676/instances/f46c9c04-32f7-4e81-ab73-a1446b0576ad"
+            },
+            {
+                "rel": "bookmark",
+                "href": "https://api.staging.ord1.clouddb.rackspace.net/instances/f46c9c04-32f7-4e81-ab73-a1446b0576ad"
+            }
+        ],
+        "volume": {
+            "size": 0
+        },
+        "created_on": null,
+        "name": "null_DB",
+        "id": "null_db",
+        "flavor": {
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://api.staging.ord1.clouddb.rackspace.net/v1.0/323676/flavors/1"
+                },
+                {
+                    "rel": "bookmark",
+                    "href": "https://api.staging.ord1.clouddb.rackspace.net/flavors/1"
+                }
+            ],
+            "ram": 0,
+            "disk_size": 0,
+            "name": null,
+            "id": "1",
+            "vcpus": null
+        },
+        "hostname": null,
+        "region": null,
+        "status": null,
+        "rootEnabled": null
+    }
+}

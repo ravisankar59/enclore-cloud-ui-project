@@ -1,0 +1,118 @@
+<rx-page title="'Database Instances'" subtitle="instances.length + ' Instances found for ' + user" status="{{PRODUCT_VERSIONS['Instances']}}" account-info-banner="true" account-number="{{accountNumber}}">
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <a href="/cloud/{{accountNumber}}/{{user}}/databases/instances/create" class="msg-action create-instance">
+                <i class="fa fa-fw fa-plus fa-lg"></i>
+                Create New Instance
+                </a>
+            </li>
+            <li class="actions-item">
+                <rx-reach-link
+                    class="btn-link msg-info"
+                    reach-target="/database">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Databases
+                </rx-reach-link>
+            </li>
+        </ul>
+    </div>
+
+    <div class="table-filters">
+        <table rx-floating-header class="table-striped instance-list">
+            <thead>
+                <tr>
+                    <th colspan="8">
+                        <rx-search-box rx-placeholder="'Filter by any...'"  ng-model="filter.keyword"></rx-search-box> 
+                    </th>
+                </tr>
+                <tr>
+                    <th class="column-title" rx-status-header>
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="status"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Name
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="id"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Instance ID
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="volume.size"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Volume Size
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="flavor.name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            RAM
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="region"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Region
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="instance in instances | InstanceAttributes:filter | orderBy: sort.predicate:sort.reverse | Paginate:pager">
+                    <td rx-status-column status="{{ instance.status }}" api="{{ statusMappingsAPI }}" tooltip-content="{{ instance.status }}">
+                    </td>
+                    <td>
+                        <a class="view" href="/cloud/{{accountNumber}}/{{user}}/databases/instances/{{instance.region}}/{{instance.id}}">{{instance.name ? instance.name: "N/A"}}</a>
+                    </td>
+                    <td>{{instance.id ? instance.id : "N/A"}}</td>
+                    <td>{{instance.volume.size || instance.volume.size == "0" ? (instance.volume.size | rxDiskSize) : "N/A"}}</td>
+                    <td>{{instance.flavor.name ? instance.flavor.name : "N/A"}}</td>
+                    <td>{{instance.region ? instance.region : "N/A"}}</td>
+                    <td class="actions">
+                        <rx-action-menu>
+                            <rx-dbaas-instance-actions actions="actionsList.instanceActions" status="page.status" user="user" instance="instance"></rx-dbaas-instance-actions>
+                        </rx-action-menu>
+                    </td>
+                </tr>
+                <tr ng-if="!instances.length && loaded">
+                    <td colspan="6">
+                        No Database Instances have been created.
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-show="instances.length">
+                <tr class="paginate-area">
+                    <td colspan="12">
+                        <rx-paginate page-tracking="pager"></rx-paginate>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</rx-page>

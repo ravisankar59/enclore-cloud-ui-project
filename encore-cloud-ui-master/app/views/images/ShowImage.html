@@ -1,0 +1,68 @@
+<rx-page account-info-banner="true" account-number="{{accountNumber}}" title="'Image Details: ' + image.name">
+    <div class="page-actions" ng-if="image.status.toLowerCase() === 'active' || image.status.toLowerCase() === 'error'">
+        <rx-image-actions account-number="accountNumber" user="user" image="image"></rx-image-actions>
+    </div>
+    <rx-metadata class='image-details metaData-top' ng-show='image.name'>
+        <section>
+            <rx-meta label="Image ID">{{image.id ? image.id : "N/A"}}</rx-meta>
+            <rx-meta label="Region">{{image.region ? image.region : "N/A"}}</rx-meta>
+            <rx-meta label="Status">{{image.status ? (image.status | rxCapitalize) : "N/A"}}</rx-meta>
+            <rx-meta label="Visibility">
+                {{image.visibility ? (image.visibility | rxCapitalize) : "N/A"}}
+            </rx-meta>
+        </section>
+        <section>
+            <rx-meta label="Size">{{image.sizeInMB ? (image.sizeInMB + " " + 'MB'): "N/A"}}</rx-meta>
+            <rx-meta label="Created">
+                {{image.created ? (image.created | date:'MMM d, yyyy @ HH:mm (UTCZ)') : "N/A"}}
+            </rx-meta>
+            <rx-meta label="Last Updated">
+                {{image.updated ? (image.updated | date:'MMM d, yyyy @ HH:mm (UTCZ)') : "N/A"}}
+            </rx-meta>
+            <rx-meta label="Base Image" ng-if='baseImage'>
+                <a href="{{baseImage.url}}" class="base-image">{{baseImage.value}}</a>
+            </rx-meta>
+        </section>
+    </rx-metadata>
+    <div class="instance-tables flex-container">
+        <div class="flex-item flex-addresses">
+            <h2 class="pull-left title">Image Metadata</h2>
+            <table rx-floating-header class="table-striped image-metadata">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <rx-search-box  rx-placeholder="'Filter by any...'" ng-model="filter.keyword"></rx-search-box>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="key"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Key
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            Value
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="metadata in transformedMetadata | filter:filter.keyword | rxSortEmptyTop: sort.predicate:sort.reverse | Paginate:pager">
+                        <td>{{metadata.key}}</td>
+                        <td>{{metadata.value}}</td>
+                    </tr>
+                </tbody>
+                <tfoot ng-show="transformedMetadata.length">
+                    <tr class="paginate-area">
+                        <td colspan="2" style="text-align:center;">
+                            <rx-paginate page-tracking="pager"></rx-paginate>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</rx-page>

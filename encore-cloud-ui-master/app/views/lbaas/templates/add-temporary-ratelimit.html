@@ -1,0 +1,37 @@
+<rx-modal-form
+     title="{{!fields.editState ? 'Add Temporary Rate Limit' : 'Edit Temporary Rate Limit'}}"
+     subtitle="{{ loadBalancer.id }}"
+     submit-text="Submit" cancel-text="Cancel">
+    <rx-form-item label="Max Connections" description="Min (1) - Max (100,000)">
+        <input
+            type="number"
+            id="maxRequestsPerSecond"
+            ng-model="fields.maxRequestsPerSecond"
+            min="1"
+            max="100000"
+            class="field-input" required>
+    </rx-form-item>
+    <rx-form-item label="Expiration Time" description="(YYYY-MM-DD HH:MM:SS format)">
+        <input
+            type="text"
+            id="expirationTime"
+            ng-model="fields.expirationTime"
+            ng-pattern="/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/"
+            class="field-input" required>
+    </rx-form-item>
+    <rx-form-item ng-if="!fields.editState" label="Ticket Number">
+        <input
+            type="number"
+            id="ticketId"
+            ng-model="fields.ticketId"
+            class="field-input" required>
+    </rx-form-item>
+    <rx-form-item ng-if="!fields.editState" label="Reason">
+        <textarea 
+        	rows="5" 
+        	cols="29" 
+        	id="comment"
+        	ng-model="fields.comment" required>
+        </textarea>
+    </rx-form-item>
+</rx-modal-form>

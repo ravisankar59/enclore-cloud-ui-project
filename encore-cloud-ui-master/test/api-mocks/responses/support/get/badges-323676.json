@@ -1,0 +1,29 @@
+{"items":
+    [{
+        "description": "Devops",
+        "url": "https://8423524f2686ac4f958c-3926186336a34cf9a63ab95d7fefb059.ssl.cf1.rackcdn.com/devops-logo-003.png",
+        "tag": null,
+        "_links": {
+            "self": {
+                "href": "https://staging.dfw.support.encore.rackspace.com/api/badges/302", "id": "302"
+            }
+        },
+        "auto_assign": true,
+        "id": "302",
+        "name": "Devops"
+    },
+    {
+        "description": "The badge indicating its an internal account",
+        "url": "https://8423524f2686ac4f958c-3926186336a34cf9a63ab95d7fefb059.ssl.cf1.rackcdn.com/c3606184-aaf4-423a-b8d6-757c26ffb2ac.png",
+        "tag": "internal_account",
+        "_links": {
+            "self": {
+                "href": "https://staging.dfw.support.encore.rackspace.com/api/badges/500",
+                "id": "500"
+            }
+        },
+        "auto_assign": true,
+        "id": "500",
+        "name": "Internal Account Badge"
+    }]
+}

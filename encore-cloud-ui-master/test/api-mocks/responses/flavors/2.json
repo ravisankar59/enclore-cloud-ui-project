@@ -1,0 +1,29 @@
+{
+    "flavor": {
+        "id": "2",
+        "links": [
+            {
+                "rel": "self",
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/flavors/2"
+            },
+            {
+                "rel": "bookmark",
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2"
+            }
+        ],
+        "name": "512MB Standard Instance",
+        "vcpus": 1,
+        "ram": 512,
+        "disk_size": 20,
+        "data_disk": 0,
+        "bandwidth": 80,
+        "swap": 512,
+        "flavor_disabled": false,
+        "extra_specs": {
+            "class": "standard1",
+            "disk_io_index": "2",
+            "number_of_data_disks": "0",
+            "policy_class": "standard_flavor"
+        }
+    }
+}

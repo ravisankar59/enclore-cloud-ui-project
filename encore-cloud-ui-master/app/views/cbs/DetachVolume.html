@@ -1,0 +1,8 @@
+<rx-modal-form
+    title="Detach Volume from Server"
+    submit-text="Detach Volume"
+    cancel-text="Cancel">
+    <rx-notification type="warning">
+        Do you really want to detach "<a target="_blank" href="/cloud/{{accountNumber}}/{{user}}/servers/{{region}}/{{serverId}}">{{serverName || serverId}}</a>" from this volume?
+    </rx-notification>
+</rx-modal-form>

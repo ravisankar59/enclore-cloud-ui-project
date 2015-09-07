@@ -1,0 +1,214 @@
+# Get the cloud server details
+-   request:
+        url:  ^/api/users/hub_cap/firstgen/servers/lite$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/servers/get/firstGenServers.json
+
+# Get the account cloud server details
+-   request:
+        url:  ^/api/users/hub_cap/servers/account_servers$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/account/servers/get/accountServers.json
+
+# Create Server
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers$
+        method: POST
+        headers:
+            content-type: application/json
+        post: '{"name":"test","flavor":"1","image":"67"}'
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/firstGen/servers/post/createFirstGen.json
+
+# Delete Backup Schedule
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/backup_schedule$
+        method: DELETE
+    response:
+        status: 200
+
+# Update Name and Admin Pass
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"name":"TestUpdateServerName"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"name":"Nickleback"}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/firstGen/servers/put/nameChangeError.json
+
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"admin_pass":"somepass"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"admin_pass":"failpass"}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/firstGen/servers/put/adminPassError.json
+
+# Get FirstGen Servers From Loadbalancers
+#-   request:
+#        url: ^/api/users/hub_cap/firstgen/servers$
+#        method: GET
+#        headers:
+#            referer: ^.*/loadbalancers/create$
+#    response:
+#        status: 200
+#        file: test/api-mocks/responses/servers/firstGen/servers/get/servers_short.json
+
+# Get FirstGen Servers (ORD)
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/servers/get/servers_short.json
+
+# Get FirstGen Servers (ORD) - Half Failure, will fail on nextgen
+-   request:
+        url: ^/api/users/bad_cap/firstgen/servers$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/servers/get/servers.json
+
+# Get FirstGen Servers - Fail
+-   request:
+        url: ^/api/users/bad_wolf/firstgen/servers$
+        method: GET
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/firstGen/servers/get/serversFail.json
+
+# Server Details
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/servers/get/110148309.json
+
+# Server Details - firstGen Deleting
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/100000000$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/servers/get/firstGenServerDeleting.json
+
+# Server Backup Schedule
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/backup_schedule$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/firstGen/servers/get/backupSchedule.json
+
+# Server Backup Schedule
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/100000000/backup_schedule$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/firstGen/servers/get/backupSchedule.json
+
+# Update Backup Schedule
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/backup_schedule$
+        method: POST
+        post: '{"daily":"H_0400_0600","weekly":"THURSDAY","enabled":true}'
+    response:
+        status: 200
+
+# Update Backup Schedule Error
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/backup_schedule$
+        method: POST
+        post: '{"daily":"DISABLED","weekly":"TUESDAY","enabled":true}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/firstGen/servers/post/updateBackupError.json
+
+# Server Console URL
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/console$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/firstGen/servers/get/consoleUrl.json
+
+# Delete Server
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309$
+        method: DELETE
+    response:
+        status: 200
+
+# Server Details Failure
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/.*$
+        method: GET
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/serverDetailError.json
+
+## Servers Listings Page
+## Get FirstGen Servers (LON)
+-   request:
+        url: ^/api/users/uk_william/firstgen/servers$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        latency: 100
+        file: test/api-mocks/responses/servers/firstGen/servers/get/LON.json
+
+# Server Details
+-   request:
+        url: ^/api/users/uk_william/firstgen/servers/5ae2222c-b39d-4eeb-b4f8-eb9b97a89d1f$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/servers/get/5ae2222c_uk.json
+
+# Get empty Volume Attachments from an UK Server Detail Page
+-   request:
+        url: ^/api/users/uk_william/servers/LON/5000/volume_attachments$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/servers/get/5ae2222c_volumeAttachments.json

@@ -1,0 +1,325 @@
+{
+   "servers":[
+      {
+         "updated":"",
+         "task_state":"",
+         "image":{
+            "updated":"",
+            "links":[
+
+            ],
+            "metadata":{
+
+            },
+            "min_ram":null,
+            "progress":0,
+            "min_disk":null,
+            "created":"",
+            "status":"",
+            "id":110,
+            "name":null,
+            "disk_config":""
+         },
+         "admin_pass":"",
+         "links":[
+
+         ],
+         "id":110148309,
+         "flavor":{
+            "ram":null,
+            "disk_size":null,
+            "links":[
+
+            ],
+            "id":2,
+            "vcpus":null,
+            "name":"512 server"
+         },
+         "tenant_id":"",
+         "vm_state":"",
+         "user_id":"",
+         "disk_config":"",
+         "metadata": {
+            "FG2NG_self_migration_available_from": "2014-12-25 00:00:00",
+            "FG2NG_self_migration_available_till": "2015-01-20 00:00:00"
+         },
+         "progress":100,
+         "region":"firstgen",
+         "created":"",
+         "status":"ACTIVE",
+         "addresses":[
+            {
+               "id":null,
+               "ip_type":"private",
+               "ip_address":"10.179.215.33",
+               "version":""
+            },
+            {
+               "id":null,
+               "ip_type":"public",
+               "ip_address":"184.106.255.21",
+               "version":""
+            }
+         ],
+         "power_state":null,
+         "name":"kacieissoawesome",
+         "host_id":"e78880b6fa7eead9c771d40f344285df"
+      },
+      {
+         "updated":"",
+         "task_state":"",
+         "image":{
+            "updated":"",
+            "links":[
+
+            ],
+            "metadata": {
+
+            },
+            "min_ram":null,
+            "progress":0,
+            "min_disk":null,
+            "created":"",
+            "status":"",
+            "id":110,
+            "name":null,
+            "disk_config":""
+         },
+         "admin_pass":"",
+         "links":[
+
+         ],
+         "id":110148310,
+         "flavor":{
+            "ram":null,
+            "disk_size":null,
+            "links":[
+
+            ],
+            "id":2,
+            "vcpus":null,
+            "name":"512 server"
+         },
+         "tenant_id":"",
+         "vm_state":"",
+         "user_id":"",
+         "disk_config":"",
+         "metadata":{
+
+         },
+         "progress":100,
+         "region":"firstgen",
+         "created":"",
+         "status":"ACTIVE",
+         "addresses":[
+            {
+               "id":null,
+               "ip_type":"private",
+               "ip_address":"10.179.215.34",
+               "version":""
+            },
+            {
+               "id":null,
+               "ip_type":"public",
+               "ip_address":"184.106.255.22",
+               "version":""
+            }
+         ],
+         "power_state":null,
+         "name":"slice110148310",
+         "host_id":"e78880b6fa7eead9c771d40f344285df"
+      },
+      {
+         "updated":"",
+         "task_state":"",
+         "image":{
+            "updated":"",
+            "links":[
+
+            ],
+            "metadata":{
+
+            },
+            "min_ram":null,
+            "progress":0,
+            "min_disk":null,
+            "created":"",
+            "status":"",
+            "id":110,
+            "name":null,
+            "disk_config":""
+         },
+         "admin_pass":"",
+         "links":[
+
+         ],
+         "id":110148311,
+         "flavor":{
+            "ram":null,
+            "disk_size":null,
+            "links":[
+
+            ],
+            "id":2,
+            "vcpus":null,
+            "name":"512 server"
+         },
+         "tenant_id":"",
+         "vm_state":"",
+         "user_id":"",
+         "disk_config":"",
+         "metadata":{
+
+         },
+         "progress":100,
+         "region":"firstgen",
+         "created":"",
+         "status":"ACTIVE",
+         "addresses":[
+            {
+               "id":null,
+               "ip_type":"private",
+               "ip_address":"10.179.215.36",
+               "version":""
+            },
+            {
+               "id":null,
+               "ip_type":"public",
+               "ip_address":"184.106.255.23",
+               "version":""
+            }
+         ],
+         "power_state":null,
+         "name":"slice110148311",
+         "host_id":"e78880b6fa7eead9c771d40f344285df"
+      },
+      {
+         "updated":"",
+         "task_state":"",
+         "image":{
+            "updated":"",
+            "links":[
+
+            ],
+            "metadata":{
+
+            },
+            "min_ram":null,
+            "progress":0,
+            "min_disk":null,
+            "created":"",
+            "status":"",
+            "id":110,
+            "name":null,
+            "disk_config":""
+         },
+         "admin_pass":"",
+         "links":[
+
+         ],
+         "id":110148312,
+         "flavor":{
+            "ram":null,
+            "disk_size":null,
+            "links":[
+
+            ],
+            "id":2,
+            "vcpus":null,
+            "name":"512 server"
+         },
+         "tenant_id":"",
+         "vm_state":"",
+         "user_id":"",
+         "disk_config":"",
+         "metadata":{
+
+         },
+         "progress":100,
+         "region":"firstgen",
+         "created":"",
+         "status":"ACTIVE",
+         "addresses":[
+            {
+               "id":null,
+               "ip_type":"private",
+               "ip_address":"10.179.215.37",
+               "version":""
+            },
+            {
+               "id":null,
+               "ip_type":"public",
+               "ip_address":"184.106.255.24",
+               "version":""
+            }
+         ],
+         "power_state":null,
+         "name":"slice110148312",
+         "host_id":"e78880b6fa7eead9c771d40f344285df"
+      },
+      {
+         "updated":"",
+         "task_state":"",
+         "image":{
+            "updated":"",
+            "links":[
+
+            ],
+            "metadata":{
+
+            },
+            "min_ram":null,
+            "progress":0,
+            "min_disk":null,
+            "created":"",
+            "status":"",
+            "id":110,
+            "name":null,
+            "disk_config":""
+         },
+         "admin_pass":"",
+         "links":[
+
+         ],
+         "id":110148313,
+         "flavor":{
+            "ram":null,
+            "disk_size":null,
+            "links":[
+
+            ],
+            "id":2,
+            "vcpus":null,
+            "name":"512 server"
+         },
+         "tenant_id":"",
+         "vm_state":"",
+         "user_id":"",
+         "disk_config":"",
+         "metadata":{
+
+         },
+         "progress":100,
+         "region":"firstgen",
+         "created":"",
+         "status":"ACTIVE",
+         "addresses":[
+            {
+               "id":null,
+               "ip_type":"private",
+               "ip_address":"10.179.215.42",
+               "version":""
+            },
+            {
+               "id":null,
+               "ip_type":"public",
+               "ip_address":"184.106.255.25",
+               "version":""
+            }
+         ],
+         "power_state":null,
+         "name":"slice110148313",
+         "host_id":"e78880b6fa7eead9c771d40f344285df"
+      }
+   ]
+}

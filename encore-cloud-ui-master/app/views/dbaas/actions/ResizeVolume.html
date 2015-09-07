@@ -1,0 +1,10 @@
+<rx-modal-form title="Resize Volume" subtitle="{{instance.name}}" submit-text="Resize Volume" cancel-text="Cancel">
+    <p>Current Size: {{instance.volume.size}}GB </p>
+    <p>Available Space: {{(instance.volume.size-instance.volume.used) | number:2 }}GB of {{instance.volume.size}}GB Available ({{(100-(100*instance.volume.used/instance.volume.size))| number:0}}% Free)</p>
+    <rx-form-item
+        label="New Size"
+        description="1GB - 50GB"
+        suffix="GB">
+        <input type="number" id="volumeSize" ng-model="fields.size" min="1" max="50" required>
+    </rx-form-item>
+</rx-modal-form>

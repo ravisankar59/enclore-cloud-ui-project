@@ -1,0 +1,31 @@
+<rx-page title="'Create a New Network'">
+    <div class="instance-details">
+        <form class="rx-form page" name="createNetwork">
+            <rx-form-item label="Name">
+                <input type="text" id="name" ng-model="network.label" required>
+            </rx-form-item>
+
+            <rx-form-item label="Region">
+                <span class="field-select">
+                    <select
+                     id="region"
+                     ng-model="request.region"
+                     ng-options="r.value as r.label for r in regions"
+                     required>
+                    </select>
+                </span>
+            </rx-form-item>
+
+            <rx-form-item
+                label="CIDR"
+                description="<p>EX: 172.16.0.0/24 or 2001:DB8::/64</p></p>Classless Inter-Domain Routing (CIDR) is a range of IP addresses within a private network.</p>">
+                <input type="text" id="cidr" ng-model="network.cidr" required>
+            </rx-form-item>
+
+            <div class="form-actions">
+              <button id="btnCreateNetwork" class="button submit" ng-click="submit(network)" type="submit" ng-disabled="createNetwork.$invalid || !loaded">Create New Network</button>
+              <button id="btnCancelNetwork" class="button cancel" ng-click="cancel()" type="button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</rx-page>

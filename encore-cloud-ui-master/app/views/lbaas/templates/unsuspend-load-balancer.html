@@ -1,0 +1,27 @@
+<rx-modal-form 
+	title="Unsuspend Load Balancer"
+	subtitle="{{ loadBalancer.id }}"
+    submit-text="Unsuspend Load Balancer">
+    <rx-notifications stack="modal"></rx-notifications>
+    <div ng-switch="state">
+        <div ng-switch-when="editing">
+            <p>The Load Balancer is currently suspended. You must unsuspend the Load Balancer to proceed further. Unsuspend Load Balancer?</p>
+        </div>
+        <div ng-switch-when="hasPermission">
+            <h3 class="title">Unsuspend Load Balancer?</h3>
+        </div>
+        <div ng-switch-when="doNotHavePermission">
+	        <rx-notification type="error">
+	        	You do not have permissions to take this action! Please contact your manager.
+	    	</rx-notification>
+        </div>
+    </div>
+</rx-modal-form>
+
+<rx-modal-footer state="doNotHavePermission">
+    <button class="button submit" ng-click="cancel()">OK</button>
+</rx-modal-footer>
+<rx-modal-footer state="hasPermission">
+    <button class="button" ng-click="unSuspendLoadBalancer()">Yes</button>
+    <button class="button cancel" ng-click="cancel()">No</button>
+</rx-modal-footer>

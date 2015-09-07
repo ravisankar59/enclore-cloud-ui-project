@@ -1,0 +1,36 @@
+.paper .rx-feedback {
+    display: inline;
+}
+
+.paper {
+    position: relative;
+    padding: 20px 60px;
+    margin-bottom: 20px;
+    background: #FFFFE0;
+    border: 1px solid #FFFFE0;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(128, 128, 128, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(128, 128, 128, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(128, 128, 128, 0.1) inset;
+
+    font-size:1.28em;
+    width: 400px;
+
+    -webkit-transform: rotate(-3deg);
+    transform: rotate(-3deg); 
+}
+.paper:before, .paper:after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+}   
+.paper p {
+    color: #666666;
+    line-height: 1.6em;
+}
+
+.paper .signature {
+    display: block;
+    text-align: right;
+    font-size: 1.68em;
+    font-family: 'Shadows Into Light', cursive; 
+}

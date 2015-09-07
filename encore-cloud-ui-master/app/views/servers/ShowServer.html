@@ -1,0 +1,50 @@
+<rx-page account-info-banner="true" account-number="{{accountNumber}}" team-id="" title="'Server: '+ server.name" >
+    <div class="page-actions" ng-switch="server.gen">
+        <span ng-switch-when="Next">
+            <rx-next-gen-actions user="user" account-number="accountNumber" server="server" actions="actionList"></rx-next-gen-actions>
+        </span>
+        <span ng-switch-when="First">
+            <rx-first-gen-actions user="user" account-number="accountNumber" server="server" actions="actionList"></rx-first-gen-actions>
+        </span>
+    </div>
+    <rx-metadata class='server-details metaData-top' ng-show='server.name'>
+        <section>
+            <rx-meta label="Server ID">
+                {{server.id}} 
+                <a ng-if="server.ohthree" href="{{server.ohthree}}" target="_blank">(ohthree)</a>
+                <a ng-if="backstage" href="{{backstage}}" class="backstage" target="_blank">(Backstage)</a>
+            </rx-meta>
+            <rx-meta label="Nickname" ng-if="server.gen == 'Next'">{{server.metadata.nickname}}</rx-meta>
+            <rx-meta label="Region">{{server.region ? server.region : "N/A"}}</rx-meta>
+            <rx-meta label="Status">{{server.status ? server.status : "N/A"}}</rx-meta>
+            <rx-meta label="State">{{server.task_state ? server.task_state : "N/A" | uppercase }}</rx-meta>
+            <rx-meta label="Type">{{server.type ? server.type : "N/A"}}</rx-meta>
+            <rx-meta label="Image">{{server.image? server.image.name : "N/A"}}</rx-meta>
+            <rx-meta label="Flavor">{{server.flavor ? server.flavor.name : "N/A"}}</rx-meta>
+            <rx-meta class='force-word-break' label="Host">{{server.host_id ? server.host_id : "N/A"}}</rx-meta>
+        </section>
+        <section>
+            <rx-meta label="Disk I/O Index">
+                {{server.flavor.extra_specs.disk_io_index ? server.flavor.extra_specs.disk_io_index : "N/A"}}
+            </rx-meta>
+            <rx-meta label="Data Disk">
+                {{server.flavor.data_disk ? server.flavor.data_disk : "N/A" | rxDiskSize }}
+            </rx-meta>
+            <rx-meta label="Bandwidth">{{server.flavor.bandwidth}} Mbps</rx-meta>
+            <rx-meta label="Gen">{{server.gen}}</rx-meta>
+            <rx-meta label="Age">{{server.created ? server.created : "N/A" | rxAge}}</rx-meta>
+            <rx-meta label="Created">
+                {{server.created ? server.created : "N/A" | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}
+            </rx-meta>
+            <rx-meta label="Last Updated">
+                {{server.updated ? server.updated : "N/A" | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}
+            </rx-meta>
+        </section>
+    </rx-metadata>
+    <div ng-show="server.name" class="server-actions">
+        <!-- Related Data -->
+        <span ng-repeat="rdTemplate in relatedDataTemplates">
+            <ng-include src="rdTemplate" server="server"></ng-include>
+        </span>
+    </div>
+</rx-page>

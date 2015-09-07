@@ -1,0 +1,17 @@
+{
+  "server": {
+    "admin_pass": "qQdHScSo8Vdr",
+    "disk_config": "AUTO",
+    "id": "b0891272-4e2c-4f96-bde1-dcbe3b5f2e9b",
+    "links": [
+      {
+        "rel": "self",
+        "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/b0891272-4e2c-4f96-bde1-dcbe3b5f2e9b"
+      },
+      {
+        "rel": "bookmark",
+        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/b0891272-4e2c-4f96-bde1-dcbe3b5f2e9b"
+      }
+    ]
+  }
+}

@@ -1,0 +1,178 @@
+<rx-page title="'Networks'" subtitle="networks.length + ' Networks found for ' + user" status="{{PRODUCT_VERSIONS['Networks']}}" account-info-banner="true" account-number="{{accountNumber}}">
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <a href="/cloud/{{accountNumber}}/{{user}}/networks/create" class="msg-action create-instance">
+                <i class="fa fa-fw fa-plus fa-lg"></i>
+                Create New Network
+                </a>
+            </li>
+            <li class="actions-item">
+                <rx-reach-link
+                    class="btn-link msg-info"
+                    service-type="networks"
+                    reach-target="/servers">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Networks
+                </rx-reach-link>
+            </li>
+        </ul>
+    </div>
+
+    <div class="table-filters">
+        <tabset>
+            <tab heading="Private Networks">
+                <table rx-floating-header class="table-striped networks-list private-networks">
+                    <thead>
+                    <tr>
+                        <th class="column-title" rx-status-header>
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="status"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Status
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="id"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Network ID
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="title"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Name
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="cidr"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                CIDR
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="region"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Region
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title actions"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="network in privateNetworks = (networks | PrivateNetworks | orderBy: sort.predicate:sort.reverse)">
+                        <td rx-status-column status="{{ network.status }}" tooltip-content="{{ network.status }}">
+                        </td>
+                        <td>{{network.id}}</td>
+                        <td>{{network.title}}</td>
+                        <td>{{network.cidr}}</td>
+                        <td>{{network.region}}</td>
+                        <td>
+                            <rx-action-menu>
+                                <ul class="actions-area">
+                                    <li class="msg-warn">
+                                        <rx-modal-action
+                                            post-hook="deleteNetwork(network)"
+                                            template-url="views/networks/DeleteNetwork.html"
+                                            classes="msg-warn">
+                                            <i class="delete-network-action fa fa-times fa-lg"></i> Delete Network
+                                        </rx-modal-action>
+                                    </li>
+                                </ul>
+                            </rx-action-menu>
+                        </td>
+                    </tr>
+                    <tr ng-if="!privateNetworks.length && loaded">
+                        <td colspan="6">
+                            No Private Networks have been created.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </tab>
+            <tab heading="Rackspace Networks">
+                <table rx-floating-header class="table-striped networks-list rackspace-networks">
+                    <thead>
+                    <tr>
+                        <th class="column-title" rx-status-header>
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="status"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Status
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="id"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Network ID
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="title"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Name
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="cidr"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                CIDR
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title">
+                            <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="region"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                                Region
+                            </rx-sortable-column>
+                        </th>
+                        <th class="column-title actions"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="network in rackspaceNetworks = (networks | RackspaceNetworks | orderBy: sort.predicate:sort.reverse)">
+                        <td rx-status-column status="{{ network.status }}" tooltip-content="{{ network.status }}">
+                        </td>
+                        <td>{{network.id}}</td>
+                        <td>{{network.title}}</td>
+                        <td>{{network.cidr}}</td>
+                        <td>{{network.region}}</td>
+                        <td></td>
+                    </tr>
+                    <tr ng-if="!rackspaceNetworks.length && loaded">
+                        <td colspan="6">
+                            No Rackspace Networks have been created.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </tab>
+        </tabset>
+    </div>
+</rx-page>

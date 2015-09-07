@@ -1,0 +1,15 @@
+# Get Server Images (ORD)
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2]|non_managed_test_user)/images/ORD$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/images/get/ORD.json
+
+# Get Server Images (DFW)
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2]|non_managed_test_user)/images/DFW$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/images/get/DFW.json

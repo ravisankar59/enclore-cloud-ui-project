@@ -1,0 +1,12 @@
+<rx-modal-form
+     title="{{ isEmpty(loadBalancer.connectionThrottle) ? 'Enable' : 'Change' }} Connection Throttling for Load Balancer {{loadBalancer.name}}"
+     subtitle="{{ loadBalancer.id }}"
+     submit-text="Save Connection Throttling" cancel-text="Cancel">
+    <rx-form-item label="Max Connections" description="Simultaneous connections" class="ng-isolate-scope">
+        <input type="text" id="connectionThrottleMaxConnections" ng-model="fields.maxConnections" required>
+    </rx-form-item>
+    <div ng-show="fields.maxConnections !== undefined" class="lbaas-connection-throttle-summary">
+        <div class="lbaas-connection-throttle-summary-title">Summary</div>
+        <div class="lbaas-connection-throttle-summary-body">Allow a maximum of {{ fields.maxConnections }} simultaneous connections from a single IP.</div>
+    </div>
+</rx-modal-form>

@@ -1,0 +1,173 @@
+<rx-page title="'CDN Service'" subtitle="service.name" status="{{featureStatus}}">
+  <div class="page-actions">
+    <ul class="actions-area">
+      <!-- reserved for page actions -->
+    </ul>
+  </div>
+
+  <div class="instance-details">
+    <rx-metadata class="metadata service-metadata metadata-top">
+      <section>
+        <rx-meta label='Service Status'>
+          {{service.status | rxCapitalize}}
+        </rx-meta>
+        <rx-meta label='ID'>
+          {{service.id}}
+        </rx-meta>
+      </section>
+    </rx-metadata>
+
+    <h2 class="title">Origins</h2>
+    <table class="table-striped service-origins">
+      <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Port</th>
+          <th>SSL?</th>
+          <th>Rules</th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody ng-if="isEmpty(service.origins)">
+        <tr>
+          <td colspan="20">No origins were found.</td>
+        </tr>
+      </tbody>
+      <tbody ng-if="!isEmpty(service.origins)" ng-repeat="origin in service.origins">
+        <tr>
+          <td>{{origin.origin}}</td>
+          <td>{{origin.port}}</td>
+          <td>{{origin.ssl ? 'yes' : 'no'}}</td>
+          <td class="double-chevron-cell toggle-cell" ng-class="{ expanded: origin.expanded }">
+            <span class="subdued" ng-if="!hasRules(origin)">n/a</span>
+            <span class="double-chevron"
+              ng-if="hasRules(origin)"
+              ng-click="origin.expanded = !origin.expanded">
+            </span>
+          </td>
+          <td><!-- reserved for origin action cog --></td>
+        </tr>
+        <tr ng-if="origin.expanded">
+          <td colspan="100" class="expanded-container">
+            <table class="subtable">
+              <thead>
+                <tr>
+                  <th>Rule Name</th>
+                  <th>Applied Path</th>
+                  <th class="actions"></th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="rule in origin.rules">
+                <tr>
+                  <td>{{rule.name}}</td>
+                  <td><code>{{rule.request_url}}</code></td>
+                  <td><!-- reserved for origin rule action cog --></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="title">Caching Rules</h2>
+    <table class="table-striped service-caching">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>TTL</th>
+          <th>Rules</th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody ng-if="isEmpty(service.caching)">
+        <tr>
+          <td colspan="20">No caching rules were found.</td>
+        </tr>
+      </tbody>
+      <tbody ng-if="!isEmpty(service.caching)" ng-repeat="caching in service.caching">
+        <tr>
+          <td>{{caching.name}}</td>
+          <td>{{caching.ttl}} seconds</td>
+          <td class="double-chevron-cell toggle-cell" ng-class="{ expanded: caching.expanded }">
+            <span class="subdued" ng-if="!hasRules(caching)">n/a</span>
+            <span class="double-chevron"
+               ng-if="hasRules(caching)"
+               ng-click="caching.expanded = !caching.expanded">
+            </span>
+          </td>
+          <td><!-- reserved for caching action cog --></td>
+        </tr>
+        <tr ng-if="caching.expanded">
+          <td colspan="100" class="expanded-container">
+            <table class="subtable">
+              <thead>
+                <tr>
+                  <th>Rule Name</th>
+                  <th>Applied Path</th>
+                  <th class="actions"></th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="rule in caching.rules">
+                <tr>
+                  <td>{{rule.name}}</td>
+                  <td>{{rule.request_url}}</td>
+                  <td><!-- reserved for caching rule action cog --></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="title">Restrictions</h2>
+    <table class="table-striped service-restrictions">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Rules</th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody ng-if="isEmpty(service.restrictions)">
+        <tr>
+          <td colspan="20">No restrictions were found.</td>
+        </tr>
+      </tbody>
+      <tbody ng-if="!isEmpty(service.restrictions)" ng-repeat="restriction in service.restrictions">
+        <tr>
+          <td>{{restriction.name}}</td>
+          <td class="double-chevron-cell toggle-cell" ng-class="{ expanded: restriction.expanded }">
+            <span class="subdued" ng-if="!hasRules(restriction)">n/a</span>
+            <span class="double-chevron"
+               ng-if="hasRules(restriction)"
+               ng-click="restriction.expanded = !restriction.expanded">
+            </span>
+          </td>
+          <td><!-- reserved for restriction action cog --></td>
+        </tr>
+        <tr ng-if="restriction.expanded">
+          <td colspan="100" class="expanded-container">
+            <table class="subtable">
+              <thead>
+                <tr>
+                  <th>Rule Name</th>
+                  <th>Referrer</th>
+                  <th class="actions"></th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="rule in restriction.rules">
+                <tr>
+                  <td>{{rule.name}}</td>
+                  <td>{{rule.referrer}}</td>
+                  <td><!-- reserved for restruction rule action cog --></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</rx-page>

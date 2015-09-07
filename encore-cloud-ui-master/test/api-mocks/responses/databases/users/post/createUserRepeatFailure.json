@@ -1,0 +1,7 @@
+{
+    "error": {
+        "type": "Bad Request",
+        "code": 400,
+        "message": "A user with the name \"user1\" already exists."
+    }
+}

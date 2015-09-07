@@ -1,0 +1,50 @@
+<rx-modal-form
+     title="{{fields.submitText}}"
+     subtitle="{{ loadBalancer.id }}"
+     submit-text="{{fields.submitText}}" cancel-text="Cancel">
+
+    <rx-form-item label="Allowed Traffic">
+        <span class="field-select">
+            <select
+                id="allowedTraffic"
+                ng-model="fields.allowedTraffic"
+                ng-options="p.name for p in fields.allowedTrafficList"
+                ng-change="changeAction()"
+                required>
+            </select>
+        </span>
+    </rx-form-item>
+
+
+   <rx-form-item
+        label="Secure Port">
+        <span class="field-input">
+            <input id="securePort" type="number" ng-model="fields.securePort" required>
+        </span>
+    </rx-form-item>
+
+    <div>
+        <rx-form-item label="Certificate">
+            <textarea id="certificate" ng-model="fields.certificate" rows="3" cols="50" required>
+          </textarea>
+        </rx-form-item>
+
+        <rx-form-item label="Private Key">
+            <textarea id="privateKey" ng-model="fields.privateKey" rows="3" cols="50" required>
+          </textarea>
+        </rx-form-item>
+
+        <rx-form-item label="Intermediate Cert">
+            <textarea id="intermediateCertificate" ng-model="fields.intermediateCertificate" rows="3" cols="50">
+          </textarea>
+        </rx-form-item>
+    </div>
+    
+    <rx-notification type="warning">
+        Enabling SSL increases a Load Balancer's base price
+    </rx-notification>
+
+    <rx-notification type="warning" ng-if="fields.hasExternalNode">
+        This Load Balancer has external nodes. Traffic with external nodes will not be secured across PublicNet.
+    </rx-notification>
+</rx-modal-form>

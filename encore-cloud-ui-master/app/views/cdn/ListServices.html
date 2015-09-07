@@ -1,0 +1,90 @@
+<rx-page title="'CDN Services'" subtitle="services.length + ' Services found for ' + user" status="{{featureStatus}}">
+  <div class="page-actions">
+    <ul class="actions-area">
+      <!-- reserved for 'Go To Reach CDN' link -->
+    </ul>
+  </div>
+
+  <div class="table-filters">
+    <table rx-floating-header class="table-striped services-list">
+      <thead>
+        <tr>
+          <th colspan="5">
+            <rx-search-box  rx-placeholder="'Filter by any...'" ng-model="filter.keyword"></rx-search-box>
+          </th>
+        </tr>
+        <tr>
+          <th class="column-title" rx-status-header>
+            <rx-sortable-column
+              sort-method="sortCol(property)"
+              sort-property="status"
+              predicate="sort.predicate"
+              reverse="sort.reverse">
+              Status
+            </rx-sortable-column>
+          </th>
+          <th class="column-title">
+            <rx-sortable-column
+              sort-method="sortCol(property)"
+              sort-property="name"
+              predicate="sort.predicate"
+              reverse="sort.reverse">
+              Name
+            </rx-sortable-column>
+          </th>
+          <th class="column-title">Domains</th>
+          <th class="column-title">Origins</th>
+          <th class="column-title actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-if="!hasServices()">
+          <td colspan="20">No CDN Services were found.</td>
+        </tr>
+        <tr ng-if="hasServices()" ng-repeat="service in services | filter:filter.keyword | orderBy: sort.predicate:sort.reverse | Paginate:pager">
+          <td rx-status-column
+            status="{{ service.status }}"
+            api="cdn"
+            tooltip-content="{{ service.status | uppercase }}">
+          </td>
+          <td>
+            <a ng-href="{{service.getURL()}}">{{service.name}}</a><br />
+            <span class="subdued">{{service.id}}</span>
+          </td>
+          <td>
+            <span ng-repeat="domain in service.domains | limitTo:truncateTooltipAfter">
+              <div>{{domain.domain}}</div>
+            </span>
+            <a class="cdn-list-item-tooltip"
+              ng-if="service.domains.length > truncateTooltipAfter"
+              tooltip-html-unsafe="{{ tooltipFor(service.domains, 'domain') }}"
+              tooltip-placement="bottom">
+              and {{service.domains.length - truncateTooltipAfter}} more
+            </a>
+          </td>
+          <td>
+            <span ng-repeat="origin in service.origins | limitTo:truncateTooltipAfter">
+              <div>{{origin.origin}}</div>
+            </span>
+            <a class="cdn-list-item-tooltip"
+              ng-if="service.origins.length > truncateTooltipAfter"
+              tooltip-html-unsafe="{{ tooltipFor(service.origins, 'origin') }}"
+              tooltip-placement="bottom">
+              and {{service.origins.length - truncateTooltipAfter}} more
+            </a>
+          </td>
+          <td>
+            <!-- Reserved for Action Cog -->
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="paginate-area">
+          <td colspan="20" style="text-align:center;">
+            <rx-paginate page-tracking="pager"></rx-paginate>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</rx-page>

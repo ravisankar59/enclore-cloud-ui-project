@@ -1,0 +1,12 @@
+{
+  "endpoints":[
+    {
+      "region":null,
+      "public_url":"https://preprod.lon.servers.api.rackspacecloud.com/v2/10323676",
+      "type":"compute",
+      "name":"cloudServers",
+      "tenant_id":"10323676",
+      "id":121
+    }
+  ]
+}

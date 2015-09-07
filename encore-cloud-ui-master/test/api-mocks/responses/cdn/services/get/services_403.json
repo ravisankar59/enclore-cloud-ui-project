@@ -1,0 +1,7 @@
+{
+    "error": {
+        "code": 403,
+        "type": "Forbidden",
+        "message": "Something went wrong with CDN, we couldn't find the error, please contact this service."
+    }
+}

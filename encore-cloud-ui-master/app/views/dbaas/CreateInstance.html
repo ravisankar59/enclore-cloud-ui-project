@@ -1,0 +1,80 @@
+<rx-page title="'Create a New Instance'" subtitle="'for user account (' + user + ')'">
+    <div class="server-details">
+        <!-- wait until regions populated to show form -->
+        <form ng-show="regions" class="rx-form page" name="createInstance">
+            <rx-form-item label="Name">
+                <input type="text" id="instanceName" ng-model="instance.displayName" required>
+            </rx-form-item>
+
+            <rx-form-item label="Region">
+                <span class="field-select">
+                    <select
+                        name="instanceRegion"
+                        id="instanceRegion"
+                        ng-model="request.region">
+                        <option
+                            ng-repeat="region in regions"
+                            value="{{region.value}}"
+                            ng-disabled="region.disabled"
+                            ng-selected="{{region.value == region}}"
+                            >{{region.label}}</option>
+                    </select>
+                </span>
+            </rx-form-item>
+
+            <rx-form-item
+                label="Volume Size"
+                description="1gb - 50gb"
+                suffix="gb">
+                <input type="number" id="volumeSize" min="1" max="50" ng-model="instance.size" required>
+            </rx-form-item>
+
+            <rx-form-item label="Flavor">
+                <span class="field-select">
+                    <select
+                        name="instanceFlavor"
+                        id="instanceFlavor"
+                        ng-model="flavor">
+                        <option
+                            ng-repeat="flavor in flavors"
+                            value="{{flavor.value}}"
+                            ng-disabled="flavor.disabled"
+                            ng-selected="{{flavor.value == flavor}}"
+                            >{{flavor.label}}</option>
+                    </select>
+                </span>
+            </rx-form-item>
+
+            <div class="well">
+                <p>
+                    Optionally, create a database and user within the instance (this user will have access to the database): </br>
+                    A database can be created without a user. Once you have entered a username, the password must be provided as well.
+                </p>
+
+                <rx-form-item label="Database Name">
+                    <input type="text" id="instanceDatabaseName" ng-model="instance.databaseName">
+                </rx-form-item>
+
+                <rx-form-item label="User Name">
+                    <input type="text" id="instanceUserName" ng-model="instance.userName">
+                </rx-form-item>                
+
+                <rx-form-password
+                    ng-show="instance.userName"
+                    required="instance.userName"
+                    model="instance.password"
+                ></rx-form-password>
+            </div>
+
+            <div class="form-actions">
+                <button
+                    id="btnCreateInstance"
+                    class="button submit"
+                    ng-click="submit()"
+                    type="submit"
+                    ng-disabled="createInstance.$invalid || !loaded">Create New Instance</button>
+                <button id="btnCancel" class="button cancel" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</rx-page>

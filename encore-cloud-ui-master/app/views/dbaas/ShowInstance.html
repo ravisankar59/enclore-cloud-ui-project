@@ -1,0 +1,154 @@
+<rx-page title="'Instance: ' + instance.name" subtitle="'ID: '+ instance.id" account-info-banner="true" account-number="{{accountNumber}}">
+    <div ng-if="instance.id">
+        <div class="page-actions">
+            <rx-dbaas-instance-actions actions="actions.fullList" status="page.status" account-number="accountNumber" user="user" instance="instance"></rx-dbaas-instance-actions>
+        </div>
+        <rx-metadata class="metadata instance-details metaData-top">
+            <section>
+                <rx-meta label='Hostname' class='force-word-break'>
+                   {{instance.hostname ? instance.hostname : "N/A"}}
+                </rx-meta>
+                <rx-meta label='UUID'>
+                   {{instance.id ? instance.id : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Status'>
+                   {{instance.status ? instance.status : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Disk Space'>
+                    <span ng-if='(instance.volume.used && instance.volume.size)'>
+                        {{diskSpacePercent}}%
+                        ({{instance.volume.used | number:2 }}GB of {{instance.volume.size}}GB)
+                    </span>
+                    <span ng-if='!(instance.volume.used && instance.volume.size)'>
+                        N/A
+                    </span>
+                </rx-meta>
+                <rx-meta label='RAM'>
+                   {{instance.flavor.name ? instance.flavor.name : "N/A"}}
+                </rx-meta>
+            </section>
+            <section>
+                <rx-meta label='Age'>
+                    <span ng-if='instance.created_on'>
+                        {{instance.created_on | rxAge }} Created ({{instance.created_on | date:'MMM d, yyyy @ HH:mm (UTCZ)' }})
+                    </span>
+                    <span ng-if='!(instance.created_on)'>
+                        N/A
+                    </span>
+                </rx-meta>
+                <rx-meta label='Last Updated'>
+                   {{instance.updated_on ? (instance.updated_on | date:'MMM d, yyyy @ HH:mm (UTCZ)') : "N/A" }}
+                </rx-meta>
+                <rx-meta label='Root Enabled'>
+                   {{instance.rootEnabled || instance.rootEnabled === false ? instance.rootEnabled : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Region'>
+                   {{instance.region ? instance.region : "N/A"}}
+                </rx-meta>
+            </section>
+        </rx-metadata>
+        <div class="instance-tables flex-container">
+            <div class="flex-item flex-databases">
+                <h2 class="pull-left page-title">Databases</h2>
+                <rx-dbaas-instance-actions
+                    class="pull-right dbaas-actions"
+                    actions="actions.createDatabase"
+                    status="page.status"
+                    user="user"
+                    instance="instance"
+                    reload-databases="loadDatabases()"
+                    reload-users="loadUsers()"
+                    ></rx-dbaas-instance-actions>
+                <table class="table-striped instance-databases">
+                    <thead>
+                        <tr>
+                            <!-- Filter Row -->
+                            <td colspan="2">
+                                <rx-search-box
+                                    rx-placeholder="'Filter by any...'"
+                                    ng-model="filter.database"></rx-search-box>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="column-title">Name</th>
+                            <th class="column-title actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="database in instance.databases | filter: { name: filter.database }">
+                            <td>{{database.name}}</td>
+                            <td>
+                                <rx-action-menu class="actionsDatabase">
+                                    <rx-dbaas-instance-actions
+                                        actions="actions.createUser"
+                                        user="user"
+                                        instance="instance"
+                                        database="database"
+                                        reload-users="loadUsers()"></rx-dbaas-instance-actions>
+                                    <rx-dbaas-database-actions
+                                        user="user"
+                                        instance="instance"
+                                        database="database"
+                                        reload-users="loadUsers()"
+                                        reload-databases="loadDatabases()"></rx-dbaas-database-actions>
+                                </rx-action-menu>
+                            </td>
+                        </tr>
+                        <tr ng-if="!instance.databases.length && loaded">
+                            <td colspan="2">
+                                No Databases have been created for this Instance.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex-item flex-users">
+                <h2 class="pull-left page-title">Users</h2>
+                <rx-dbaas-instance-actions
+                    class="pull-right dbaas-actions"
+                    actions="actions.createUser"
+                    status="page.status"
+                    user="user"
+                    instance="instance"
+                    reload-users="loadUsers()"
+                    ></rx-dbaas-instance-actions>
+                <table class="table-striped instance-users">
+                    <thead>
+                        <tr>
+                            <!-- Filter Row -->
+                            <td colspan="3">
+                                <rx-search-box
+                                    rx-placeholder="'Filter by any...'"
+                                    ng-model="filter.user"></rx-search-box>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="column-title">Name</th>
+                            <th class="column-title">Databases</th>
+                            <th class="column-title actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="dbuser in instance.users | filter: { name: filter.user }">
+                            <td>{{ dbuser.name }}</td>
+                            <td>{{ dbuser.dbList }}</td>
+                            <td>
+                                <rx-action-menu class="actionsUser">
+                                    <rx-dbaas-user-actions
+                                        user="user"
+                                        instance="instance"
+                                        dbuser="dbuser"></rx-dbaas-user-actions>
+                                </rx-action-menu>
+                            </td>
+                        </tr>
+                        <tr ng-if="!instance.users.length && loaded">
+                            <td colspan="3">
+                                No Users have been created for this Instance.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</rx-page>

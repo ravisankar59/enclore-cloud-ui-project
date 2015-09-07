@@ -1,0 +1,29 @@
+{
+	"nodes": [
+        {
+            "address": "10.182.78.55",
+            "id": 88659,
+            "name": "test_lb1",
+            "nodeType": "PRIMARY",
+            "port": 80,
+            "nodeStatus": "ONLINE",
+            "condition": "ENABLED",
+            "region": "ORD",
+            "weight": 100,
+            "slice_name": "TestServer01",
+            "slice_id": "9ae1032c-b39d-4eeb-b4f8-eb9b97a89d1f"
+        },
+        {
+            "address": "10.182.65.187",
+            "id": 88661,
+            "name": "test_lb2",
+            "nodeType": "PRIMARY",
+            "port": 80,
+            "nodeStatus": "ONLINE",
+            "condition": "ENABLED",
+            "weight": 100,
+            "slice_name": "TestServer02",
+            "slice_id": "110148309"
+        }
+    ]
+}

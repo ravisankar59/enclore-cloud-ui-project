@@ -1,0 +1,69 @@
+{
+  "server": {
+    "addresses": [
+      {
+        "ip_address": "10.223.240.171",
+        "version": 4,
+        "ip_type": "private"
+      },
+      {
+        "ip_address": "192.237.161.29",
+        "version": 4,
+        "ip_type": "public"
+      },
+      {
+        "ip_address": "2001:4801:7822:0101:07b4:0a0b:ff00:20e3",
+        "version": 6,
+        "ip_type": "public"
+      }
+    ],
+    "task_state": null,
+    "region": "ORD",
+    "status": "ACTIVE",
+    "metadata": {
+      "rax_service_level_automation": "Build Error",
+      "build_config": "base,monitoring,driveclient,updates,mailgun"
+    },
+    "power_state": 1,
+    "id": "73004384-f9ac-4dcc-9895-31e1998f2b97",
+    "updated": "2013-10-31T16:00:27Z",
+    "tenant_id": "323676",
+    "vm_state": "active",
+    "disk_config": "AUTO",
+    "host_id": "40708ccf97c9e1aeebb61fcd06c919a8291d6b6686b2bde8dbf6c380",
+    "progress": 100,
+    "links": [
+      {
+        "rel": "self",
+        "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/73004384-f9ac-4dcc-9895-31e1998f2b97"
+      },
+      {
+        "rel": "bookmark",
+        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/73004384-f9ac-4dcc-9895-31e1998f2b97"
+      }
+    ],
+    "created": "2013-10-31T15:56:00Z",
+    "user_id": "295",
+    "name": "Test resize server 2",
+    "flavor": {
+      "links": [
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/performance1-8"
+        }
+      ],
+      "id": "performance1-8",
+      "name": "8 GB Performance"
+    },
+    "image": {
+      "links": [
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/59c037c1-70ec-41e4-aa17-73a9b0cb6b16"
+        }
+      ],
+      "id": "59c037c1-70ec-41e4-aa17-73a9b0cb6b16",
+      "name": "CentOS 5.9"
+    }
+  }
+}

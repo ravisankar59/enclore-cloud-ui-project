@@ -1,0 +1,17 @@
+{
+  "volume": {
+    "snapshot_id": null,
+    "status": "available",
+    "size": null,
+    "attachments": null,
+    "volume_type": null,
+    "availability_zone": "nova",
+    "created_on": null,
+    "source_volid": null,
+    "bootable": "false",
+    "id": "d989194e-940b-447e-ac12-ffffffffffff",
+    "display_description": "this is a N/A Display test volume",
+    "display_name": null,
+    "metadata": {}
+  }
+}

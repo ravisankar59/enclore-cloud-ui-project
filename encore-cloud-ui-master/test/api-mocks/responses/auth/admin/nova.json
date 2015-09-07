@@ -1,0 +1,9 @@
+{
+    "access": {
+        "ORD": {
+            "expires": "2015-01-30T07:16:54Z",
+            "adminRegion": "preprod-ord-rackeradminapi",
+            "token": "12345"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+# Get Server Images
+-   request:
+        url: ^/api/users/hub_cap/firstgen/images$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/images/get/images.json
+
+# Create Next Gen Image
+-   request:
+        url: ^/api/users/hub_cap/firstgen/images/110148309/next_gen_image$
+        method: POST
+        post: '{"name":"TestFirstGenNextGenImageHOLLA"}'
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/images/post/createNextGenImage.json
+
+# Create Next Gen Image - Failure
+-   request:
+        url: ^/api/users/hub_cap/firstgen/images/110148309/next_gen_image$
+        method: POST
+        post: '{"name":"FailImage"}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/firstGen/images/post/createNextGenImageError.json
+
+# Delete FirstGen Server Image
+-   request:
+        url: ^/api/users/hub_cap/firstgen/images/67$
+        method: DELETE
+    response:
+        status: 200
+
+# Delete FirstGen Server Image - Failure
+-   request:
+        url: ^/api/users/hub_cap/firstgen/images/200$
+        method: DELETE
+    response:
+        status: 404
+

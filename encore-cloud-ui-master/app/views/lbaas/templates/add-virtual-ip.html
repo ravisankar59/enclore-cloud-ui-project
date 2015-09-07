@@ -1,0 +1,32 @@
+<rx-modal-form
+    title="Add Virtual IP"
+    subtitle="{{ loadBalancer.id }}"
+    submit-text="Add Virtual IP"
+    cancel-text="Cancel">
+    </rx-form-item>
+    <rx-form-item label="VIP Type">
+        <span class="field-select">
+            <select
+                id="load_balancer_vip_type"
+                ng-model="fields.vipType"
+                ng-options="vipType.name for vipType in vipTypes"
+                required>
+            </select>
+        </span>
+    </rx-form-item>
+    <rx-form-item label="Ticket Number">
+        <input 
+            type="number" 
+            id="load_balancer_ticket_number" 
+            ng-model="fields.ticketNumber" 
+            required/>
+    </rx-form-item>
+    <rx-form-item label="Reason">
+        <textarea 
+            id="load_balancer_reason" 
+            rows="10" 
+            cols="50" 
+            ng-model="fields.reason">
+        </textarea>
+    </rx-form-item>
+</rx-modal-form>

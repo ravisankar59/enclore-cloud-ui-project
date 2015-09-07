@@ -1,0 +1,181 @@
+/**
+ * mixins.less
+ *
+ * Mixins & variables that we can use for other LESS files. Many of these were taken from the following:
+ * Sources: https://github.com/dmitryf/elements/blob/master/elements.less
+ *          https://gist.github.com/jayj/4012969
+ *
+ * @project encore
+ * @version 1.0
+ * @author Ernie Hsiung
+ * @copyright Year
+ * @license Type
+ */
+
+.transition(@duration:0.2s, @ease:ease-out) {
+    .transition-property(all, @duration, @ease);
+}
+
+.transition-property(@property: all, @duration: 0.2s, @ease:ease-out, @delay: 0s) when (@delay > 0s) {
+    .transition-value(@property @duration @delay @ease);
+}
+
+.transition-value(@value) {
+    -webkit-transition: @value;
+    -moz-transition: @value;
+    -o-transition: @value;
+    transition: @value;
+}
+
+.transition-property(@property: all, @duration: 0.2s, @ease:ease-out, @delay: 0s) when (@delay = 0s) {
+    .transition-value(@property @duration @ease);
+}
+
+.string-swap(@a, @b, @c) when(@a = @b) {
+    @a: @c;
+}
+
+.flexbox-direction(@direction: row) {
+    -webkit-flex-direction: @direction;
+    -moz-flex-direction: @direction;
+    -ms-flex-direction: @direction;
+    flex-direction: @direction;
+}
+
+.flexbox-order(@order: 0) {
+    -webkit-box-order: @order;
+    -mox-box-order: @order;
+    -webkit-flex-order: @order;
+    order: @order;
+}
+
+.flexbox-wrap(@wrap: nowrap) {
+    -webkit-box-wrap: @wrap;
+    -moz-box-wrap: @wrap;
+    flex-wrap: @wrap;
+}
+
+.flexbox-display() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flexbox(@count: 1) {
+    -webkit-box-flex: @count;
+    -moz-box-flex: @count;
+    -webkit-flex: @count;
+    -ms-flex: @count;
+    flex: @count;
+}
+
+.flex-flow(@direction: row, @wrap: nowrap) {
+    .flexbox-direction(@direction);
+    .flexbox-wrap(@wrap);
+}
+
+.flexbox-pack(@pack: start) {
+    -webkit-box-pack: @pack;
+    -moz-box-pack: @pack;
+    -webkit-flex-pack: @pack;
+}
+
+.flexbox-align(@align: stretch) {
+    -webkit-box-pack: @align;
+    -moz-box-pack: @align;
+    -webkit-flex-pack: @align;
+}
+
+.flexbox-grow(@ratio: 1) {
+    -webkit-flex-grow: @ratio;
+    -moz-flex-grow: @ratio;
+    -webkit-box-grow: @ratio;
+}
+
+// We're going to create a set list of columns for quick flexbox assignment.
+.flexbox-column-loop (@index) when (@index > 0) {
+    // create the actual css selector
+    .flex-columns-@{index} {
+        .flexbox(@index);
+    }
+
+    .flexbox-column-loop(@index - 1);
+}
+
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around 
+.justify-content(@justify: flex-start) {
+  -webkit-justify-content: @justify;
+     -moz-justify-content: @justify;
+      -ms-justify-content: @justify;
+          justify-content: @justify;
+}
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch 
+.align-items(@align: stretch) {
+  -webkit-align-items: @align;
+     -moz-align-items: @align;
+      -ms-align-items: @align;
+          align-items: @align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex items
+// auto | flex-start | flex-end | center | baseline | stretch 
+.align-self(@align: auto) {
+  -webkit-align-self: @align;
+     -moz-align-self: @align;
+      -ms-align-self: @align;
+          align-self: @align;
+}
+
+// This Max Values Variable in variables.less
+.flexbox-column-loop(@maxFlexBoxColumnWidth);
+
+.backface-visibility(@visible: hidden) {
+    backface-visibility: @visible;
+    -webkit-backface-visibility: @visible; /* Chrome and Safari */
+    -moz-backface-visibility: @visible; /* Firefox */
+    -ms-backface-visibility: @visible; /* Internet Explorer */
+}
+
+.background-image-gradient(@img) {
+    background-image: -webkit-linear-gradient(@img);
+    background-image: -moz-linear-gradient(@img);
+    background-image: -ms-linear-gradient(@img);
+    background-image: linear-gradient(@img);
+}
+
+.box-sizing(@box) {
+    -webkit-box-sizing: @box;
+    -moz-box-sizing: @box;
+    -ms-box-sizing: @box;
+    box-sizing: @box;
+}
+
+.background-size(@w, @h) {
+    -webkit-background-size: @w @h;
+    -moz-background-size: @w @h;
+    -ms-background-size: @w @h;
+    background-size: @w @h;
+}
+
+.animation(@anim) {
+    -webkit-animation: @anim;
+    -moz-animation: @anim;
+    -ms-animation: @anim;
+    animation: @anim;
+}
+
+.chevron-mixin(@state: 1) {
+    content: "\00bb";
+    -webkit-transform: rotate(90deg) scaleX(@state);
+    transform: rotate(90deg) scaleX(@state);
+    -webkit-transition: all .2s;
+    transition: all .2s;    
+}

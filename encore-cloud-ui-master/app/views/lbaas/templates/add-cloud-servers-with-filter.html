@@ -1,0 +1,67 @@
+<rx-modal-form
+    title="Add Cloud Servers" subtitle="{{ loadBalancer.id }}"
+    submit-text="Add Servers" cancel-text="Cancel">
+    <div class="form-item"> 
+        <table rx-bulk-select bulk-source="servers" selected-key="rowIsSelected" class="table-striped servers-list">
+            <thead>
+                <tr>
+                  <td colspan="5">
+                    <rx-search-box  id="searchNode" rx-placeholder="'Filter by any...'" ng-model="filter.searchKey"></rx-search-box>
+                  </td>
+                </tr>
+                <tr>
+                    <th class="column-title" rx-bulk-select-header-check></th>
+                    <th class="column-title">
+                            Name (IP)
+                    </th>
+                    <th class="column-title">
+                            Port
+                    </th>       
+                    <th class="column-title">
+                            Condition
+                    </th>
+                    <th class="column-title">
+                            Weight
+                    </th> 
+                </tr>
+            </thead>
+            <tbody>             
+                <tr ng-repeat="server in servers | LoadBalancersFilterModal:filter | rxSortEmptyTop: sort.predicate:sort.reverse" class="server-details"
+                    ng-class="{selected: server.rowIsSelected}">
+                   
+                    <td rx-bulk-select-row row="server"></td>
+                    <td>
+                      {{server.name}}<br>
+                      <span class="truncate subdued">
+                            {{server.ipAddress}}
+                      </span>
+                    </td>
+                    <td>
+                        <span class="field-input addcloudTxt">
+                            <input type="number" min="0" max="65535" ng-model="server.port" ng-disabled="!server.rowIsSelected">
+                        </span>
+                    </td>
+                    <td class="rxSelectExtended">
+                        <select rx-select ng-model="server.selectedCondition" id="protocolSelect" ng-disabled="!server.rowIsSelected">
+                            <option 
+                                ng-repeat="condition in server.conditions"  
+                                ng-selected="{{condition === server.selectedCondition}}"
+                                value="{{condition}}"
+                                >{{condition === 'DRAINING' ? 'DRAINING CONNECTIONS' : condition}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="field-input addcloudTxt">
+                            <input type="number" min="0" max="100" style="" ng-model="server.weight" ng-disabled="server.weightState === true ? true : !server.rowIsSelected">
+                        </span>
+                    </td>
+                </tr>
+                <tr ng-if="!servers.length">
+                    <td colspan="9">
+                        <span>No Servers have been created.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ </rx-modal-form>

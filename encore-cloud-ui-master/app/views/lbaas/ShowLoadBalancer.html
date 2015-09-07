@@ -1,0 +1,586 @@
+<rx-page title="'Load Balancer: ' + loadBalancer.name" subtitle="'ID: ' + loadBalancer.id" account-info-banner="true" account-number="{{accountNumber}}">
+    <div class="well lbaas-well" ng-if="lbaasIsSuspended">
+        <div class="lbaas-notification">
+            <rx-notification type="warning">
+                Load Balancer is suspended. Some actions will be disabled.
+            </rx-notification>
+        </div>
+    </div>
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <rx-reach-link
+                    ng-if="loadBalancer.id"
+                    class="btn-link msg-info"
+                    service-type="rax:load-balancer"
+                    load-balancer-id="{{loadBalancer.id}}"
+                    region="{{loadBalancer.region}}"
+                    reach-target="/load_balancers">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach
+                </rx-reach-link>
+            </li>
+            <li class="actions-item">
+                <a href="{{historicalUsageUrl}}" class="msg-info"><i class="fa fa-fw fa-external-link fa-lg"></i> View Historical Usage</a>
+            </li>
+            <li class="actions-item" tooltip="{{suspendTooltipText}}" ng-class="setDisableStyles">
+                <rx-modal-action
+                    pre-hook="actions.preEditErrorPage(this)"
+                    post-hook="actions.postEditErrorPage(fields)"
+                    template-url="views/lbaas/templates/change_error_page.html"
+                    class="btn-link msg-info">
+                    <i class="fa fa-fw fa-pencil-square-o fa-lg"></i> Edit Error Page
+                </rx-modal-action>
+            </li>
+            <li class="actions-item" tooltip="{{suspendTooltipText}}" ng-class="setDisableStyles">
+                <rx-modal-action
+                    pre-hook="actions.preEditLoadBalancerDetails(this)"
+                    post-hook="actions.postEditLoadBalancerDetails(fields)"
+                    template-url="views/lbaas/templates/edit-load-balancer.html"
+                    class="btn-link msg-info">
+                    <i class="fa fa-fw fa-pencil-square-o fa-lg"></i> Edit Load Balancer Details
+                </rx-modal-action>
+            </li>
+            <li class="actions-item" tooltip="{{suspendTooltipText}}" ng-class="setDisableStyles">
+                <rx-modal-action
+                    pre-hook="actions.preMoveHostModalHook(this)"
+                    post-hook="actions.postMoveHostModalHook(fields)"
+                    template-url="views/lbaas/templates/move-host.html"
+                    class="btn-link msg-info">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Move Host
+                </rx-modal-action>
+            </li>
+            <li class="msg-info" tooltip="{{suspendTooltipText}}" ng-class="setDisableStyles">
+                <a ng-click="syncLoadBalancer()">
+                    <i class="fa fa-fw fa-link fa-lg"></i> Sync Load Balancer
+                </a>
+            </li>
+            <li class="msg-info">
+                <rx-modal-action
+                    pre-hook="actions.preSuspendModalHook(this)"
+                    post-hook="actions.postSuspendModalHook(fields)"
+                    template-url="views/lbaas/templates/suspend-load-balancer.html"
+                    class="btn-link msg-info" ng-if="loadBalancer.status === 'ACTIVE'">
+                    <i class="fa fa-fw fa-power-off fa-lg"></i> Suspend Load Balancer
+                </rx-modal-action>
+                <rx-modal-action
+                    controller="UnSuspendLoadBalancerModalCtrl"
+                    template-url="views/lbaas/templates/unsuspend-load-balancer.html"
+                    class="btn-link msg-info" ng-if="lbaasIsSuspended"
+                    disable-esc>
+                    <i class="fa fa-fw fa-power-off fa-lg"></i> Unsuspend Load Balancer
+                </rx-modal-action>
+            </li>
+             <li class="action-item" tooltip="{{suspendTooltipText}}" ng-class="setDisableStyles">
+                <rx-modal-action
+                     post-hook="actions.postDeleteLoadBalancer()"
+                     template-url="views/lbaas/templates/delete-load-balancer.html"
+                     class="btn-link msg-warn">
+                    <i class="fa fa-fw fa-times fa-lg"></i> Delete Load Balancer
+                </rx-modal-action>
+            </li>
+        </ul>
+    </div>
+    <rx-metadata class="loadBalancer-details" ng-if="loadBalancer.id">
+        <section>
+            <rx-meta label="Region">{{loadBalancer.region ? loadBalancer.region : "N/A"}}</rx-meta>
+            <rx-meta label="Status">{{loadBalancer.status ? loadBalancer.status : "N/A"}}</rx-meta>
+            <rx-meta label="Age">{{loadBalancer.created.time ? (loadBalancer.created.time | rxAge) : "N/A"}}</rx-meta>
+            <rx-meta label="Created">{{loadBalancer.created.time ? loadBalancer.created.time : "N/A" | date:'MMM d, yyyy @ HH:mm (UTCZ)' }}</rx-meta>
+            <rx-meta label="Last Updated">{{loadBalancer.updated.time ? loadBalancer.updated.time : "N/A" | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}</rx-meta>
+            <rx-meta label="Protocol/Port">{{loadBalancer.protocol ? loadBalancer.protocol : "N/A"}} ({{loadBalancer.port}})</rx-meta>
+            <rx-meta label="Time Out">{{loadBalancer.timeout ? loadBalancer.timeout : "N/A"}} seconds</rx-meta>
+            <rx-meta label="Algorithm">{{loadBalancer.algorithm ? loadBalancer.algorithm : "N/A"}}</rx-meta>
+        </section>
+        <section>
+            <rx-meta label="Node Count">{{loadBalancer.nodes.length ? loadBalancer.nodes.length : "N/A"}}</rx-meta>
+            <rx-meta label="Cluster Name">{{loadBalancer.cluster.names? loadBalancer.cluster.name : "N/A"}}</rx-meta>
+            <rx-meta label="Cluster ID">{{loadBalancer.cluster.id ? loadBalancer.cluster.id : "N/A"}}</rx-meta>
+            <rx-meta label="Host">{{loadBalancer.host ? loadBalancer.host : "N/A"}}</rx-meta>
+            <rx-meta label="Error Page" ng-switch="errorLoading('errorPage')">
+                <span ng-switch-when="false" ng-bind-html=loadBalancer.errorPage></span>
+                <span ng-switch-when="true" class="msg-warn">Error loading Error Page details</span>
+            </rx-meta>
+        </section>
+    </rx-metadata>
+    <div class="instance-details-clear" ng-class="setDisableStyles">
+        <h2 class="pull-left title">Settings</h2>
+        <table class="table-striped loadBalancer-settings">
+            <thead>
+                <tr>
+                    <th class="column-title"> Setting </th>
+                    <th class="column-title"> Status </th>
+                    <th class="column-title"> Details </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Connection Logging</td>
+                    <td><div tooltip="{{suspendTooltipText}}">
+                        <rx-modal-action
+                            post-hook="{{postHookMethod}}"
+                            template-url="{{templateUrl}}"
+                            class="msg-action">
+                            <rx-custom-toggle-switch id="connectionLoggingToggleId"
+                                post-hook="actions.hookModalSettings({settingName: 'connectionLogging',
+                                    isEdit: false})"
+                                disabled="lbaasIsSuspended"
+                                toggle-model="actions.toggleStatus.connectionLogging">
+                            </rx-custom-toggle-switch>
+                        </rx-modal-action></div>
+                    </td>
+                    <td>
+                        <div>None</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Connection Throttling</td>
+                    <td><div tooltip="{{suspendTooltipText}}">
+                        <rx-modal-action
+                            pre-hook="{{preHookMethod}}"
+                            post-hook="{{postHookMethod}}"
+                            template-url="{{templateUrl}}"
+                            class="msg-action">
+                            <rx-custom-toggle-switch id="connectionThrottleToggleId"
+                                post-hook="actions.hookModalSettings({settingName: 'connectionThrottle',
+                                    isEdit: false})"
+                                disabled="lbaasIsSuspended"
+                                toggle-model="actions.toggleStatus.connectionThrottle">
+                            </rx-custom-toggle-switch>
+                        </rx-modal-action></div>
+                    </td>
+                    <td>
+                        <div class="pull-right" tooltip="{{suspendTooltipText}}">
+                            <rx-modal-action class="msg-info pull-right"
+                                pre-hook="{{preHookMethod}}"
+                                post-hook="{{postHookMethod}}"
+                                template-url="{{templateUrl}}">
+                                <span id="connectionThrottleEditId" ng-click="actions.callEditMethod({settingName: 'connectionThrottle',
+                                    isEdit: true})" ng-show="actions.toggleStatus.connectionThrottle">
+                                    <i class="fa fa-pencil-square-o fa-lg"></i> Edit
+                                </span>
+                            </rx-modal-action>
+                        </div>
+                        <div ng-if="!isEmpty(loadBalancer.connectionThrottle,'connectionThrottle')">
+                            <div>Maximum Connection Rate: {{loadBalancer.connectionThrottle.maxConnectionRate}}</div>
+                            <div>Maximum Number of Connections: {{loadBalancer.connectionThrottle.maxConnections}}</div>
+                            <div>Minimum Number of Connections: {{loadBalancer.connectionThrottle.minConnections}}</div>
+                            <div>Rate Interval: {{loadBalancer.connectionThrottle.rateInterval}}</div>
+                        </div>
+                        <div ng-if="isEmpty(loadBalancer.connectionThrottle,'connectionThrottle')">None</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Content Caching</td>
+                    <td><div tooltip="{{suspendTooltipText}}">
+                        <rx-modal-action ng-if="loadBalancer.protocol === 'HTTP'"
+                            post-hook="{{postHookMethod}}"
+                            template-url="{{templateUrl}}"
+                            class="msg-action">
+                            <rx-custom-toggle-switch id="contentCachingToggleId"
+                                post-hook="actions.hookModalSettings({settingName: 'contentCaching',
+                                    isEdit: false})"
+                                disabled="lbaasIsSuspended"
+                                toggle-model="actions.toggleStatus.contentCaching">
+                            </rx-custom-toggle-switch>
+                        </rx-modal-action></div>
+                        <div id="contentCachingNonHttpId" ng-if="loadBalancer.protocol !== 'HTTP'">
+                            <span class="metadata">Cannot be enabled for non-HTTP load balancers</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>None<div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Health Monitoring</td>
+                    <td><div tooltip="{{suspendTooltipText}}">
+                        <rx-modal-action
+                            post-hook="{{postHookMethod}}"
+                            template-url="{{templateUrl}}"
+                            class="msg-action">
+                            <rx-custom-toggle-switch id="healthMonitoringToggleId"
+                                post-hook="actions.hookModalSettings({settingName: 'healthMonitor',
+                                    isEdit: false})"
+                                disabled="lbaasIsSuspended"
+                                toggle-model="actions.toggleStatus.healthMonitor">
+                            </rx-custom-toggle-switch>
+                        </rx-modal-action></div>
+                    </td>
+                    <td>
+                        <div class="pull-right" tooltip="{{suspendTooltipText}}">
+                            <rx-modal-action class="msg-info pull-right"
+                                pre-hook="{{preHookMethod}}"
+                                post-hook="{{postHookMethod}}"
+                                template-url="{{templateUrl}}">
+                                <span id="healthMonitorEditId" ng-click="actions.callEditMethod({settingName: 'healthMonitor',
+                                    isEdit: true})" ng-show="actions.toggleStatus.healthMonitor">
+                                    <i class="fa fa-pencil-square-o fa-lg"></i> Edit
+                                </span>
+                            </rx-modal-action>
+                        </div>
+                        <div ng-if="!isEmpty(loadBalancer.healthMonitor,'healthMonitor')">
+                            <div>Type: {{loadBalancer.healthMonitor.type}}</div>
+                            <div>Delay: {{loadBalancer.healthMonitor.delay}}</div>
+                            <div>Timeout: {{loadBalancer.healthMonitor.timeout}}</div>
+                            <div>Attempts before deactivation: {{loadBalancer.healthMonitor.attemptsBeforeDeactivation}}</div>
+                            <div ng-if="loadBalancer.healthMonitor.path">HTTP Path: {{loadBalancer.healthMonitor.path}}</div>
+                            <div ng-if="loadBalancer.healthMonitor.statusRegex">Status Regex: {{loadBalancer.healthMonitor.statusRegex}}</div>
+                            <div ng-if="loadBalancer.healthMonitor.bodyRegex">Body Regex: {{loadBalancer.healthMonitor.bodyRegex}}</div>
+                        </div>
+                        <div ng-if="isEmpty(loadBalancer.healthMonitor,'healthMonitor')">None</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Temporary Rate Limit</td>
+                    <td><div tooltip="{{suspendTooltipText}}">
+                        <rx-modal-action id="addTemporaryRateLimit"
+                            pre-hook="{{preHookMethod}}"
+                            post-hook="{{postHookMethod}}"
+                            template-url="{{templateUrl}}"
+                            class="msg-action">
+                            <rx-custom-toggle-switch id="temporaryRateLimitToggleId"
+                                post-hook="actions.hookModalSettings({settingName: 'rateLimit',
+                                    isEdit: false})"
+                                disabled="lbaasIsSuspended"
+                                toggle-model="actions.toggleStatus.rateLimit">
+                            </rx-custom-toggle-switch></div>
+                        </rx-modal-action>
+                    </td>
+                    <td>
+                        <div class="pull-right" tooltip="{{suspendTooltipText}}">
+                            <rx-modal-action class="msg-info pull-right"
+                                pre-hook="{{preHookMethod}}"
+                                post-hook="{{postHookMethod}}"
+                                template-url="{{templateUrl}}">
+                                <span id="rateLimitEditId" ng-click="actions.callEditMethod({settingName: 'rateLimit',
+                                    isEdit: true})" ng-show="actions.toggleStatus.rateLimit">
+                                    <i class="fa fa-pencil-square-o fa-lg"></i> Edit
+                                </span>
+                            </rx-modal-action>
+                        </div>
+                        <div ng-if="!isEmpty(loadBalancer.rateLimit,'rateLimit')">
+                            <div>Requests Per Second: {{loadBalancer.rateLimit.maxRequestsPerSecond}}</div>
+                            <div>Expiration Time: {{loadBalancer.rateLimit.expirationTime | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}</div>
+                        </div>
+                        <div ng-if="isEmpty(loadBalancer.rateLimit,'rateLimit')">None</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Session Persistence</td>
+                    <td><div tooltip="{{suspendTooltipText}}">
+                        <rx-modal-action id="sessionPersistence"
+                            pre-hook="{{preHookMethod}}"
+                            post-hook="{{postHookMethod}}"
+                            template-url="{{templateUrl}}"
+                            class="msg-action">
+                            <rx-custom-toggle-switch id="sessionPersistenceToggleId"
+                                post-hook="actions.hookModalSettings({settingName: 'sessionPersistence',
+                                    isEdit: false})"
+                                disabled="lbaasIsSuspended"
+                                toggle-model="actions.toggleStatus.sessionPersistence">
+                            </rx-custom-toggle-switch>
+                        </rx-modal-action></div>
+                    </td>
+                    <td>
+                        <div ng-if="!isEmpty(loadBalancer.sessionPersistence,'sessionPersistence')">
+                            <div>Session Persistence: {{loadBalancer.sessionPersistence.persistenceType | loadBalancerSessionPersistence}}</div>
+                        </div>
+                        <div ng-if="isEmpty(loadBalancer.sessionPersistence,'sessionPersistence')">None</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SSL Termination</td>
+                    <td>
+                        <div tooltip="{{suspendTooltipText}}">
+                            <rx-modal-action id="addSslTermination"
+                                ng-if="loadBalancer.protocol === 'HTTP'"
+                                pre-hook="{{preHookMethod}}"
+                                post-hook="{{postHookMethod}}"
+                                template-url="{{templateUrl}}"
+                                class="msg-action">
+                                <rx-custom-toggle-switch id="sslTerminationToggleId"
+                                    post-hook="actions.hookModalSettings({settingName: 'sslTermination',
+                                        isEdit: false})" disabled="lbaasIsSuspended"
+                                    toggle-model="actions.toggleStatus.sslTermination">
+                                </rx-custom-toggle-switch>
+                            </rx-modal-action>
+                        </div>
+                        <div id="contentCachingNonHttpId" ng-if="loadBalancer.protocol !== 'HTTP'">
+                            <span class="metadata">Cannot be enabled for non-HTTP load balancers</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="!isEmpty(loadBalancer.sslTermination,'sslTermination') && loadBalancer.protocol === 'HTTP'">
+                            <div>Secure Traffic Only:
+                                {{loadBalancer.sslTermination.secureTrafficOnly ? "Enabled" : "Disabled"}}</div>
+                            <div>Secure Port: {{loadBalancer.sslTermination.securePort}}</div>
+                            <div>Certificate: <span class="truncate subdued ng-binding">
+                                Click Edit to View<span></div>
+                            <div>Intermediate Certificate: <span class="truncate subdued ng-binding">
+                                Click Edit to View</span></div>
+                        </div>
+                        <div ng-if="isEmpty(loadBalancer.sslTermination,'sslTermination')">None</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="node-details" ng-class="setDisableStyles">
+        <h2 class="pull-left title">Nodes</h2>
+        <ul>
+           <li class="msg-action pull-right lbaas-actions lbaas-addLink" tooltip="{{suspendTooltipText}}">
+               <rx-modal-action
+                   pre-hook="actions.preAddCloudServers(this)"
+                   post-hook="actions.postAddCloudServers(servers)"
+                   template-url="views/lbaas/templates/add-cloud-servers-with-filter.html">
+                   <i class="fa fa-plus fa-lg title"></i> Add Cloud Servers
+               </rx-modal-action>
+                <rx-modal-action
+                    post-hook="actions.postAddExternalNodes()"
+                    template-url="views/lbaas/templates/add-external-nodeList.html">
+                    <i class="fa fa-plus fa-lg title space-link"></i> Add External Nodes
+                </rx-modal-action>
+           </li>
+       </ul>
+
+        <table class="table-striped loadBalancer-nodes">
+             <thead>
+                 <tr>
+                        <td colspan='8'>
+                                <rx-search-box
+                                    rx-placeholder="'Filter by any...'"
+                                    ng-model="filter.nodes"></rx-search-box>
+                            </td>
+                        </tr>
+                    <th class="column-title" rx-status-header>
+                        <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="status"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="condition"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                            Condition
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="name"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+
+                            Name (ID)
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="address"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                            IP Address
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="port"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                            Port
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="type"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                            Type
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                                sort-method="sortCol(property)"
+                                sort-property="weight"
+                                predicate="sort.predicate"
+                                reverse="sort.reverse">
+                            Weight
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr ng-repeat="node in filterResult = (loadBalancer.nodes | filter:filter.nodes | orderBy: sort.predicate:sort.reverse | Paginate:pager)">
+                     <td rx-status-column status="{{node.nodeStatus}}" tool-tip="{{node.nodeStatus | uppercase}}">{{node.nodeStatus}}</td>
+                     <td>{{node.condition === 'DRAINING' ? 'DRAINING CONNECTIONS' : node.condition}}</td>
+                     <td>
+                        <a href="{{actions.getNodeUrl(node)}}">{{node.slice_name}}</a><br/>
+                        <span class="truncate subdued">{{node.slice_id}}</span>
+                     </td>
+                     <td>{{node.address}}</td>
+                     <td>{{node.port}}</td>
+                     <td>{{node.nodeType}}</td>
+                     <td ng-switch="node.weight">
+                         <span ng-switch-when="null">N/A</span>
+                         <span ng-switch-default>{{node.weight}}</span>
+                     </td>
+                    <td class="actions">
+                        <rx-action-menu tooltip="{{suspendTooltipText}}">
+                            <ul class="actions-area">
+                                <li class="msg-info" tooltip="{{suspendTooltipText}}">
+                                    <rx-modal-action
+                                        pre-hook="actions.preEditNode(this, node)"
+                                        post-hook="actions.postEditNode(changedNode)"
+                                        template-url="views/lbaas/templates/edit-node.html">
+                                        <i class="fa fa-fw fa-pencil-square-o fa-lg"></i> Edit Node Configuration
+                                    </rx-modal-action>
+                                </li>
+                                <rx-permission role="{{nodeRole}}">
+                                    <li class="actions-item btn-link msg-warn">
+                                        <a href="" ng-click='actions.deleteNode($index, node.id)'>
+                                            <i class="fa fa-fw fa-times fa-lg"></i>
+                                            Remove Node
+                                        </a>
+                                    </li>
+                                </rx-permission>
+                            </ul>
+                        </rx-action-menu>
+                    </td>
+                 </tr>
+                  <tr ng-if="!filterResult.length">
+                            <td colspan="3">
+                                <span ng-if="loadBalancer.nodes.length">No items found</span>
+                                <span ng-if="!loadBalancer.nodes.length">No Nodes have been added.
+                                </span>
+                            </td>
+                        </tr>
+             </tbody>
+            <tfoot ng-show="loadBalancer.nodes.length">
+                <tr class="paginate-area">
+                    <td colspan="8" style="text-align:center;">
+                        <rx-paginate page-tracking="pager"></rx-paginate>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="instance-tables flex-container" ng-class="setDisableStyles">
+        <div class="flex-item">
+                <h2 class="pull-left title">Virtual IPs</h2>
+                <rx-permission role="{{roles}}">
+                    <ul class="actions-area pull-right lbaas-actions lbaas-addLink">
+                        <li class="msg-action" tooltip="{{suspendTooltipText}}">
+                            <rx-modal-action
+                                post-hook="actions.postAddVirtualIp(fields)"
+                                template-url="views/lbaas/templates/add-virtual-ip.html"
+                                classes="msg-action">
+                                <i class="fa fa-fw fa-plus fa-lg"></i> Add Virtual IP
+                            </rx-modal-action>
+                        </li>
+                    </ul>
+                </rx-permission>
+                <table class="table-striped loadBalancer-virtualIps">
+                     <thead>
+                        <tr>
+                            <td colspan="3">
+                                <rx-search-box
+                                    rx-placeholder="'Filter by any...'"
+                                    ng-model="filter.key"></rx-search-box>
+                            </td>
+                        </tr>
+                         <tr>
+                            <th class="column-title"> IP Address </th>
+                            <th class="column-title"> Type </th>
+                            <th class="column-title actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr ng-repeat="vip in filterResult = (loadBalancer.virtualIps | filter:filter.key) ">
+                             <td>{{vip.ip_address}}</td>
+                             <td>{{vip.ip_type}}</td>
+                             <td>
+                                 <rx-action-menu tooltip="{{suspendTooltipText}}">
+                                   <ul class="actions-area">
+                                        <li class="msg-warn">
+                                            <rx-modal-action
+                                                post-hook="actions.postDeleteVip(vip)"
+                                                template-url="views/lbaas/templates/delete-vip.html"
+                                                class="msg-warn">
+                                                <i class="delete-vip-action fa fa-times fa-lg"></i>Delete VIP
+                                            </rx-modal-action>
+                                        </li>
+                                    </ul>
+                                 </rx-action-menu>
+                             </td>
+                         </tr>
+                         <tr ng-if="!filterResult.length">
+                            <td colspan="3" class="dataTables_empty">
+                                <span ng-if="loadBalancer.virtualIps.length">No items found</span>
+                                <span ng-if="!loadBalancer.virtualIps.length">No Virtual IPs have been added.
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex-item flex-accessList">
+                <h2 class="pull-left title">Access Controls</h2>
+                <ul>
+                    <li class="msg-action pull-right lbaas-actions lbaas-addLink">
+                        <rx-modal-action
+                            pre-hook='actions.preAddAccessRule()'
+                            post-hook='actions.postAddAccessRule()'
+                            template-url='views/lbaas/templates/add-access-control-rules.html'>
+                            <i class="fa fa-plus fa-lg title"></i>Add Access Control Rule
+                        </rx-modal-action>
+                    </li>
+                </ul>
+                <table class="table-striped loadBalancer-accessList">
+                    <thead>
+                        <tr>
+                            <!-- Filter Row -->
+                            <td colspan='3'>
+                                <rx-search-box
+                                    rx-placeholder="'Filter by any...'"
+                                    ng-model="filter.keyword"></rx-search-box>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="column-title"> IP Address </th>
+                            <th class="column-title"> Type </th>
+                            <th class="column-title actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="control in filterResult = (loadBalancer.accessList | filter:filter.keyword)">
+                            <td>{{control.address}}</td>
+                            <td>{{control.type}}</td>
+                            <td tooltip="{{suspendTooltipText}}">
+                                <a href="" ng-click='deleteAccessId(control)' ng-if='control.id'>
+                                    <i class="deleteAccessControl fa fa-fw fa-times fa-lg"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr ng-if="!filterResult.length">
+                            <td colspan="2" class="dataTables_empty">
+                                <span ng-if="loadBalancer.accessList.length">No items found</span>
+                                <span ng-if="!loadBalancer.accessList.length && !errorLoading('accessList')">No Access Controls have been created.</span>
+                                <span ng-if="!loadBalancer.accessList.length && errorLoading('accessList')">Error loading Access Controls</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</rx-page>

@@ -1,0 +1,58 @@
+<rx-page title="'Snapshot: ' + (snapshot.display_name ? snapshot.display_name : 'N/A')" subtitle="'ID: ' + snapshot.id" account-info-banner="true" account-number="{{accountNumber}}">
+    <div ng-if="snapshot">
+        <div class="page-actions">
+            <ul class="actions-area">
+                <li class="actions-item">
+                    <rx-modal-action
+                        post-hook="createVolume(fields, snapshot.id, region).then(createdVolume)"
+                        template-url="views/cbs/CreateVolumeFromSnapshot.html"
+                        class="msg-action">
+                        <i class="fa fa-plus fa-lg"></i>
+                        Create Volume from Snapshot
+                    </rx-modal-action>
+                </li>
+                <li class="actions-item">
+                    <rx-reach-link
+                        class="btn-link msg-info"
+                        service-type="snapshots"
+                        reach-target="/servers">
+                        <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Snapshots
+                    </rx-reach-link>
+                </li>
+                <li class="actions-item msg-warn">
+                    <rx-modal-action
+                        post-hook="deleteSnapshot()"
+                        template-url="views/cbs/DeleteSnapshot.html">
+                        <i class="fa fa-times fa-lg"></i> Delete Snapshot
+                    </rx-modal-action>
+                </li>
+            </ul>
+        </div>
+
+        <rx-metadata class="metadata snapshot-details metadata-top">
+            <section>
+                <rx-meta label='Volume ID'>
+                    {{snapshot.volume_id ? snapshot.volume_id : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Description'>
+                    {{snapshot.display_description ? snapshot.display_description : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Status'>
+                    {{snapshot.status ? (snapshot.status | rxCapitalize) : "N/A"}}
+                </rx-meta>
+            </section>
+            <section>
+                <rx-meta label='Size'>
+                    {{snapshot.size ? (snapshot.size | rxDiskSize) : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Age'>
+                    {{snapshot.created_on ? (snapshot.created_on | rxAge) : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Created'>
+                    {{snapshot.created_on ? (snapshot.created_on | date:'MMM d, yyyy @ HH:mm (UTCZ)') : "N/A"}}
+                </rx-meta>
+            </section>
+        </rx-metadata>
+
+    </div>
+</rx-page>

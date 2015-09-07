@@ -1,0 +1,133 @@
+<rx-page title="'Block Storage Snapshots'" subtitle="snapshots.length + ' Snapshots found for ' + user" status="{{PRODUCT_VERSIONS['Cloud Block Storage']}}" account-info-banner="true" account-number="{{accountNumber}}">
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <rx-reach-link
+                    class="btn-link msg-info"
+                    service-type="snapshots"
+                    reach-target="/servers">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Snapshots
+                </rx-reach-link>
+            </li>
+        </ul>
+    </div>
+
+    <div class="table-filters">
+        <table rx-floating-header class="table-striped snapshots-list">
+            <thead>
+                <tr>
+                    <th colspan="7">
+                        <rx-search-box  rx-placeholder="'Filter by any...'" ng-model="filter.keyword"></rx-search-box>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="column-title status" rx-status-header>
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="status"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="display_name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Name/ID
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="volume_id"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Volume
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="created_on"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Created/Age
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="size"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Size
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="region"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Region
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="snapshot in snapshots | SnapshotAttributes:filter | orderBy: sort.predicate:sort.reverse | Paginate:pager" class="snapshot-details">
+                    <td rx-status-column status="{{ snapshot.status }}" api="{{ statusMappingsAPI }}" tooltip-content="{{ snapshot.status | uppercase }}">
+                    </td>
+                    <td>
+                        <a class="view" href="/cloud/{{accountNumber}}/{{user}}/cbs/snapshots/{{snapshot.region}}/{{snapshot.id}}">{{snapshot.display_name ? snapshot.display_name : "N/A"}}</a><br />
+                        <span class="subdued">{{snapshot.id ? snapshot.id : "N/A"}}</span>
+                    </td>
+                    <td>{{snapshot.volume_id ? snapshot.volume_id : "N/A"}}</td>
+                    <td ng-if="!snapshot.created_on">N/A</td>
+                    <td ng-if="snapshot.created_on">
+                        {{snapshot.created_on | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}<br />
+                        <span class="subdued">{{snapshot.created_on | rxAge}}</span>
+                    </td>
+                    <td>{{snapshot.size || snapshot.size=="0"  ? (snapshot.size | rxDiskSize) : "N/A"}}</td>
+                    <td>{{snapshot.region ? snapshot.region : "N/A"}}</td>
+                    <td>
+                        <rx-action-menu>
+                            <ul class="actions-area">
+                                <li class="msg-action">
+                                    <rx-modal-action
+                                        post-hook="createVolume(fields, snapshot.id, snapshot.region).then(createdVolume)"
+                                        template-url="views/cbs/CreateVolumeFromSnapshot.html">
+                                        <i class="fa fa-plus fa-lg"></i> Create Volume
+                                    </rx-modal-action>
+                                </li>
+                                <li class="msg-warn">
+                                    <rx-modal-action
+                                        post-hook="deleteSnapshot(snapshot.id, snapshot.region)"
+                                        template-url="views/cbs/DeleteSnapshot.html">
+                                        <i class="fa fa-times fa-lg"></i> Delete Snapshot
+                                    </rx-modal-action>
+                                </li>
+                            </ul>
+                        </rx-action-menu>
+                    </td>
+                </tr>
+                <tr ng-if="!snapshots.length && loaded">
+                    <td colspan="8">
+                        No Snapshots have been created.
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-show="snapshots.length">
+                <tr class="paginate-area">
+                    <td colspan="12">
+                        <rx-paginate page-tracking="pager"></rx-paginate>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</rx-page>

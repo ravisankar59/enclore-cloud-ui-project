@@ -1,0 +1,87 @@
+{
+    "name": "Mosso",
+    "tags": [],
+    "type": "CLOUD",
+    "number": "323676",
+    "id": 323676,
+    "instructions": null,
+    "serviceLevel": "managed",
+    "serviceType": "devops",
+    "supportRegion": "US",
+    "accountPlanRequest": {
+        "status": "pending",
+        "id": "6308",
+        "serviceType": "sysops",
+        "serviceLevel": "managed",
+        "links": {
+            "self": {
+                "href": "https://staging.dfw.support.encore.rackspace.com/api/support-accounts/323676/plan-request/6308",
+                "id": "6308"
+            }
+        }
+    },
+    "linkedAccountNumber": null,
+    "rcn": "RCN-000-065-068",
+    "status": "Active",
+    "users": [
+        {
+            "id": "10090449",
+            "username": "testuserforthisaccount",
+            "email": "testuser@rackspacetest.com"
+        },
+        {
+            "id": "295",
+            "username": "hub_cap",
+            "email": "mbasnight@mosso.com"
+        }
+    ],
+    "badges": [
+        {
+            "id": "302",
+            "name": "Devops",
+            "description": "Devops",
+            "url": "https://8423524f2686ac4f958c-3926186336a34cf9a63ab95d7fefb059.ssl.cf1.rackcdn.com/devops-logo-003.png"
+        }
+    ],
+    "teams": [
+        {
+            "description": "Managed Colocation",
+            "tags": [
+                "cloud_us",
+                "Managed_Colocation"
+            ],
+            "number": "33",
+            "subregion": "null",
+            "segment": "Managed Colo",
+            "id": "33",
+            "name": "Managed Colocation",
+            "region": "Americas",
+            "flags": null,
+            "subsegment": null,
+            "type": "revenue",
+            "internalEmails": [],
+            "internalPhoneNumbers": [],
+            "businessUnit": "Enterprise"
+        },
+        {
+            "description": "Team D3-4",
+            "tags": [
+                "support-drawer",
+                "team_d3-4"
+            ],
+            "number": "1501",
+            "subregion": "US",
+            "segment": "Pure Managed",
+            "id": "1501",
+            "name": "Team D3-4",
+            "region": "US",
+            "flags": ["primary"],
+            "subsegment": null,
+            "type": "support",
+            "internalEmails": [],
+            "internalPhoneNumbers": [],
+            "businessUnit": "SMB"
+        }
+    ],
+    "roles": []
+}

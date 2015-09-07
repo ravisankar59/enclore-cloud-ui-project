@@ -1,0 +1,18 @@
+{
+    "volumes": [{
+        "display_name": "DFWVolume",
+        "volume_type": "SATA",
+        "id": "d990c6ee-32c5-49cc-b88a-206009f3b01e",
+        "bootable": "false",
+        "snapshot_id": null,
+        "display_description": "",
+        "source_volid": null,
+        "size": 100,
+        "snapshot_count": 0,
+        "created_on": "2014-08-01T22:36:15.000000",
+        "metadata": {},
+        "availability_zone": "nova",
+        "attachments": [],
+        "status": "available"
+    }]
+}

@@ -1,0 +1,22 @@
+{
+  "volume_attachments": [
+    {
+      "device": "/dev/xvdd",
+      "server_id": "0202630a-d392-4bdb-b3fa-c7b80ec3f7e9",
+      "id": "bcf2fea6-91c1-4a9a-b49d-204543ebfb56",
+      "volume_id": "bcf2fea6-91c1-4a9a-b49d-204543ebfb56"
+    },
+    {
+      "device": "/dev/xvdb",
+      "server_id": "0202630a-d392-4bdb-b3fa-c7b80ec3f7e9",
+      "id": "a171216b-ecf1-4a40-a781-87d38e758cab",
+      "volume_id": "a171216b-ecf1-4a40-a781-87d38e758cab"
+    },
+    {
+      "device": "/dev/xvdm",
+      "server_id": "0202630a-d392-4bdb-b3fa-c7b80ec3f7e9",
+      "id": "db36d06c-b8ed-45b7-9099-92197904cff7",
+      "volume_id": "db36d06c-b8ed-45b7-9099-92197904cff7"
+    }
+  ]
+}

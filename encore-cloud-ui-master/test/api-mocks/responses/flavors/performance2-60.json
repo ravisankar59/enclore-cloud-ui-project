@@ -1,0 +1,30 @@
+{
+    "flavor": {
+        "swap": "",
+        "bandwidth": 5000,
+        "id": "performance2-60",
+        "vcpus": 16,
+        "flavor_disabled": false,
+        "links": [
+            {
+                "rel": "self",
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-60"
+            },
+            {
+                "rel": "bookmark",
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/performance2-60"
+            }
+        ],
+        "ram": 61440,
+        "disk_size": 40,
+        "name": "60 GB Performance",
+        "data_disk": 600,
+        "extra_specs": {
+            "class": "performance2",
+            "disk_io_index": "60",
+            "number_of_data_disks": "2",
+            "policy_class": "performance_flavor",
+            "resize_policy_class": "performance_flavor"
+        }
+    }
+}

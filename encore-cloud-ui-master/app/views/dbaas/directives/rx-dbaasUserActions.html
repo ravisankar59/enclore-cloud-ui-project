@@ -1,0 +1,25 @@
+<ul class="actions-area">
+    <li class="msg-info-blue">
+        <rx-modal-action
+            pre-hook="editUser.preHook(this)"
+            post-hook="editUser.postHook(fields)"
+            template-url="views/dbaas/actions/EditUser.html">
+            <i class="editUserAction fa fa-user fa-lg"></i> Edit User</a>
+        </rx-modal-action>
+    </li>
+    <li class="msg-info">
+        <rx-modal-action
+            pre-hook="manageUserAccess.preHook(this)"
+            post-hook="manageUserAccess.postHook(fields)"
+            template-url="views/dbaas/actions/ManageUserAccess.html">
+            <i class="manageUserAccessAction fa fa-plus fa-lg"></i> Manage User Access</a>
+        </rx-modal-action>
+    </li>
+    <li class="msg-warn">
+        <rx-modal-action
+            post-hook="deleteUser.postHook()"
+            template-url="views/dbaas/actions/DeleteUser.html">
+            <i class="deleteUserAction fa fa-times fa-lg"></i> Delete User</a>
+        </rx-modal-action>
+    </li>
+</ul>

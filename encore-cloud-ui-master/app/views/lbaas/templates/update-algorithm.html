@@ -1,0 +1,18 @@
+<rx-modal-form
+     title="Change Algorithm"
+     subtitle="{{ loadBalancer.id }}"
+     submit-text="Submit" cancel-text="Cancel">
+
+	<rx-option-table
+                id="algorithmTable"
+                data="algorithmFields.data"
+                columns="algorithmFields.columns"
+                type="radio"
+                model="algorithmFields.modelData"
+                field-id="optionTable"
+                class="full-width"
+                empty-message="You don't have any Algorithm!"
+                selected="algorithmFields.selected"
+                >
+    </rx-option-table>
+</rx-modal-form>

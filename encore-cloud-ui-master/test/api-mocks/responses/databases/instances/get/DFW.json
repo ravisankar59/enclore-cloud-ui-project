@@ -1,0 +1,43 @@
+{
+    "instances": [
+        {
+            "updated_on": "2014-08-20T09:22:50",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/instances/e36c8dd4-f369-4b70-88cb-e1b38079ee01"
+                },
+                {
+                    "rel": "bookmark",
+                    "href": "https://api.staging.dfw1.clouddb.rackspace.net/instances/e36c8dd4-f369-4b70-88cb-e1b38079ee01"
+                }
+            ],
+            "volume": {
+                "size": 8
+            },
+            "created_on": "2014-08-20T09:22:50",
+            "name": "DFW_Instance",
+            "id": "e36c8dd4-f369-4b70-88cb-e1b38079ee01",
+            "flavor": {
+                "links": [
+                    {
+                        "rel": "self",
+                        "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/flavors/1"
+                    },
+                    {
+                        "rel": "bookmark",
+                        "href": "https://api.staging.dfw1.clouddb.rackspace.net/flavors/1"
+                    }
+                ],
+                "ram": null,
+                "disk_size": null,
+                "name": "512MB Instance",
+                "id": "1",
+                "vcpus": null
+            },
+            "hostname": "",
+            "region": "DFW",
+            "status": "ACTIVE"
+        }
+    ]
+}

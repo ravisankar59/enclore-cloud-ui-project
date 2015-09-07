@@ -1,0 +1,96 @@
+<rx-page title="'Create a New Volume'">
+    <div class="server-details">
+        <!-- wait until regions populated to show form -->
+        <form ng-show="regions" class="rx-form page" name="createVolume">
+            <rx-form-item label="Name">
+                <input type="text" id="volumeName" ng-model="volume.display_name" maxlength="128" required>
+            </rx-form-item>
+
+            <rx-form-item label="Description">
+                <input type="text" id="volumeDescription" ng-model="volume.display_description">
+            </rx-form-item>
+
+            <rx-form-item
+                label="Type">
+                <span class="field-select">
+                    <select
+                        name="volumeType"
+                        id="volumeType"
+                        ng-model="volume.volume_type"
+                        ng-change="updateMinSize()"
+                        required>
+                        <option
+                            ng-repeat="type in types"
+                            value="{{type.value}}"
+                            ng-disabled="type.disabled"
+                            ng-selected="{{type.value == volume.volume_type}}"
+                            >{{type.label}}</option>
+                    </select>
+                </span>
+            </rx-form-item>
+
+            <rx-form-item
+                label="Size"
+                description="SATA 75 GB - 1024 GB<br/>SSD 50 GB - 1024 GB"
+                suffix="GB">
+                <input type="number" id="volumeSize" name="volumeSize" min="{{minSize}}" max="1024" ng-model="volume.size" required>
+            </rx-form-item>
+
+            <rx-form-item
+                label="Region"
+                description="Volumes must be attached in the same data center.">
+                <span class="field-select">
+                    <select
+                        name="volumeRegion"
+                        id="volumeRegion"
+                        ng-model="request.region"
+                        required>
+                        <option
+                            ng-repeat="loopedRegion in regions"
+                            value="{{loopedRegion.value}}"
+                            ng-disabled="loopedRegion.disabled"
+                            ng-selected="{{loopedRegion.value == region}}"
+                            >{{loopedRegion.label}}</option>
+                    </select>
+                </span>
+            </rx-form-item>
+
+            <rx-form-item
+                label="Snapshot">
+                <span class="field-select">
+                    <select
+                        name="volumeSpecifySnapshot"
+                        id="volumeSpecifySnapshot"
+                        ng-model="snapshotsTable.visible"
+                        ng-required="true">
+                        <option
+                            ng-repeat="specifySnapshot in snapshotSelect"
+                            value="{{specifySnapshot.value}}"
+                            ng-selected="{{specifySnapshot.label == 'None'}}"
+                            >{{specifySnapshot.label}}</option>
+                    </select>
+                </span>
+            </rx-form-item>
+
+            <div ng-if="snapshotsTable.visible=='true'">
+            <rx-form-fieldset
+                legend="Snapshots">
+                <rx-option-table
+                    id="volumeSnapshot"
+                    data="snapshotsTableData"
+                    columns="snapshotsTableColumns"
+                    type="radio"
+                    model="volume.snapshot_id"
+                    field-id="optionSnapshots"
+                    class="full-width"
+                    ></rx-option-table>
+                </div>
+            </rx-form-fieldset>
+
+            <div class="form-actions">
+                <button class="button submit" ng-click="sendCreateRequest()" type="submit" ng-disabled="createVolume.$invalid || !loaded">Create New Volume</button>
+                <button id="btnCancel" class="button cancel" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</rx-page>

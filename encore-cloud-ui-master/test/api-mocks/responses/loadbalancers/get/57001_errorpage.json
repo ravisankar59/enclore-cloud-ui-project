@@ -1,0 +1,5 @@
+{
+    "errorPage": {
+        "content": "&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;&lt;title&gt;Service Unavailable&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;body, p, h1 {font-family: Verdana, Arial, Helvetica, sans-serif;}h2 {font-family: Arial, Helvetica, sans-serif;color: #b10b29;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h2&gt;Service Unavailable&lt;/h2&gt;&lt;p&gt;The service is temporarily unavailable. Please try again later.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+    }
+}

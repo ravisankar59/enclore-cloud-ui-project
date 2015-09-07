@@ -1,0 +1,1 @@
+{"flavorRef":"1","name":"testInstance","volume":{"size":"2"},"databases":\[{"name":"testDatabase"}\],"users":\[{"databases":\[{"name":"testDatabase"}\],"name":"testUser","password":"password"}\]}

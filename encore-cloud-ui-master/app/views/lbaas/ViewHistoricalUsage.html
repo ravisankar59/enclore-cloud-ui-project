@@ -1,0 +1,119 @@
+<rx-page title="'Load Balancer: ' + loadBalancer.name" subtitle="'ID: ' + loadBalancer.id" account-info-banner="true" account-number="323676">
+  <div class="table-filters">
+    <h2 class="pull-left title">Historical Usage</h2>
+      <table rx-floating-header class="table-striped loadbalancers-historyUsage">
+          <thead>
+              <tr>
+                <th class='filter-header' colspan=8 >
+                    <div ng-init='dateRangeOpts = {}' >
+                        <rx-date-range data='historicalUsages' class='lbaas-date-range' 
+                                from='"start_time"' to='"end_time"' 
+                                filter='dateRangeOpts' >
+                        </rx-date-range>
+                    </div>
+                </th>
+              </tr>
+              <tr>
+                  <th class="column-title lbaas-history-nameId">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="id"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Name (ID)
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="start_time"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Start Date
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="end_time"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          End Date
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="num_polls"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Polls
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="average_num_connections"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Avg Connections
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="num_vips"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          VIPs
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="incoming_transfer"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          BW In
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="outgoing_transfer"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          BW Out
+                      </rx-sortable-column>
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="historicalUsage in historicalUsages | rxDateRange:dateRangeOpts | orderBy: sort.predicate:sort.reverse | Paginate:pager">
+                  <td>
+                      <span class="truncate subdued">{{historicalUsage.id}}</span>
+                  </td>
+                  <td>{{historicalUsage.start_time | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}</td>
+                  <td>{{historicalUsage.end_time | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}</td>
+                  <td>{{historicalUsage.num_polls}}</td>
+                  <td>{{historicalUsage.average_num_connections}}</td>
+                  <td>{{historicalUsage.num_vips}}</td>
+                  <td>{{historicalUsage.incoming_transfer | bytes }}</td>
+                  <td>{{historicalUsage.outgoing_transfer | bytes }}</td>
+              </tr>
+              <tr ng-if="!historicalUsages.length">
+                  <td colspan="9">
+                      No Historical Usages Found.
+                  </td>
+              </tr>
+          </tbody>
+          <tfoot ng-show="true">
+              <tr class="paginate-area">
+                  <td colspan="9" style="text-align:center;">
+                      <rx-paginate page-tracking="pager"></rx-paginate>
+                  </td>
+              </tr>
+          </tfoot>
+      </table>
+  </div>
+</rx-page>

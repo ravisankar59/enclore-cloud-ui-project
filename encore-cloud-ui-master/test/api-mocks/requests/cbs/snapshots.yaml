@@ -1,0 +1,103 @@
+# Fail getting Snapshots
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots$
+        query:
+            volumeid: ^21d811b5-ff93-4d38-b19c-4b913af5fbca$
+        method: GET
+    response:
+        status: 404
+
+# Get Snapshots (ORD)
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/snapshots/get/ORD.json
+
+# Get Snapshots (ORD)
+-   request:
+        url: ^/api/users/hub_cap/block_storage/DFW/snapshots$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/snapshots/get/DFW.json
+
+# Get Snapshot (ORD)
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots/1a50a111-b5f5-4ac3-b5c3-f99b63f3c77d$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/snapshots/get/573511aa.json
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots/1a50a111-b5f5-4ac3-b5c3-f99b63f3c77x$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/snapshots/get/NullName.json
+
+# Get Snapshot (ORD) for Empty Labels
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots/3e6b32f5-b626-4a54-a401-41bdc4e60a60$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/snapshots/get/EmptyLabels.json
+
+# Create Snapshot from Volume
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots$
+        method: POST
+        post: '{"force":"true","display_name":"SNAP-001","volume_id":"10225e08-a4bd-49fb-9237-ce1b7eaaddb2"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/cloud/users/hub_cap/block_storage/ORD/snapshots$
+        method: POST
+        post: '{"force":"true","display_name":"SNAP-001","volume_id":"10225e08-a4bd-49fb-9237-ce1b7eaaddb2"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots$
+        method: POST
+        post: '{"force":"false","display_name":"SNAP-001","volume_id":"f7add1d7-5cbe-4c5f-aca2-ffc2718ef406"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/cloud/users/hub_cap/block_storage/ORD/snapshots$
+        method: POST
+        post: '{"force":"false","display_name":"SNAP-001","volume_id":"f7add1d7-5cbe-4c5f-aca2-ffc2718ef406"}'
+    response:
+        status: 200
+
+
+# Delete Snapshot
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots/22f1ad21-9986-4cbb-bdb2-52ef73bf2024$
+        method: DELETE
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots/a82760a0-aa03-40a1-ad7e-63decfc95a5e$
+        method: DELETE
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots/1a50a111-b5f5-4ac3-b5c3-f99b63f3c77d$
+        method: DELETE
+    response:
+        status: 200
+
+# Delete Snapshot to simulate a failure
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/snapshots/b0f76484-f98f-4965-afe7-d0bdfe478bb6$
+        method: DELETE
+    response:
+        status: 404

@@ -1,0 +1,8 @@
+{
+  "error": {
+    "type": "Not Found",
+    "message": "Database such_storage not found",
+    "code": 404
+  }
+}
+

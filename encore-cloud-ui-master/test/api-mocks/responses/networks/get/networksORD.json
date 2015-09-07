@@ -1,0 +1,7 @@
+{
+    "networks": [
+        {"status": "ACTIVE", "label": "ord-test-network", "region": "ORD", "id": "c6e72aa4-d09f-421e-862f-1c8461739614", "cidr": "192.168.3.0/24"},
+        {"status": "ACTIVE", "label": "public", "region": "ORD", "id": "00000000-0000-0000-0000-000000000000", "cidr": null},
+        {"status": "ACTIVE", "label": "private", "region": "ORD", "id": "11111111-1111-1111-1111-111111111111", "cidr": null}
+    ]
+}

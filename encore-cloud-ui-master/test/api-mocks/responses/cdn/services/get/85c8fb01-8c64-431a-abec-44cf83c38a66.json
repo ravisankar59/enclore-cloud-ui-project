@@ -1,0 +1,48 @@
+{
+    "service": {
+        "errors": [
+            {
+                "message": "Mal-formed Akamai policy ids: None"
+            }
+        ],
+        "origins": [
+            {
+                "rules": [],
+                "port": 80,
+                "origin": "oopsydaisy.com",
+                "ssl": false
+            }
+        ],
+        "restrictions": [
+            {
+                "rules": [],
+                "name": "website only"
+            }
+        ],
+        "status": "failed",
+        "name": "01_oopsydaisy.com",
+        "domains": [
+            {
+                "domain": "oopsydaisy.com",
+                "protocol": "http"
+            }
+        ],
+        "id": "85c8fb01-8c64-431a-abec-44cf83c38a66",
+        "caching": [
+            {
+                "ttl": 3600,
+                "name": "default"
+            },
+            {
+                "rules": [
+                    {
+                        "request_url": "/index.htm",
+                        "name": "index"
+                    }
+                ],
+                "ttl": 1200,
+                "name": "home"
+            }
+        ]
+    }
+}

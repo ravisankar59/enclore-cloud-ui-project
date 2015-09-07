@@ -1,0 +1,291 @@
+### Servers Listings Page From Loadbalancers
+#-   request:
+#        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD$
+#        #headers:
+#            #referer: ^.*/loadbalancers/create$
+#        method: GET
+#    response:
+#        status: 200
+#        headers:
+#            content-type: application/json
+#        latency: 100
+#        file: test/api-mocks/responses/servers/nextGen/servers/get/ORD_short.json
+#
+### Servers Listings Page From Loadbalancers
+#-   request:
+#        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/DFW$
+#        #headers:
+#            #referer: ^.*/loadbalancers/create$
+#        method: GET
+#    response:
+#        status: 200
+#        headers:
+#            content-type: application/json
+#        latency: 100
+#        file: test/api-mocks/responses/servers/nextGen/servers/get/DFW_short.json
+
+## Servers Listings Page
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        latency: 100
+        file: test/api-mocks/responses/servers/nextGen/servers/get/ORD_short.json
+
+## Servers Listings Page
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/DFW$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        latency: 100
+        file: test/api-mocks/responses/servers/nextGen/servers/get/DFW_short.json
+
+# Delete an attachment
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/volume_attachments/10225e08-a4bd-49fb-9237-ce1b7eaaddb2$
+        method: DELETE
+    response:
+        status: 200
+
+# Get Volume Attachments from a Server Detail Page
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/volume_attachments$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/2999ca73_volumeAttachments.json
+
+# Get empty Volume Attachments from a Server Detail Page
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/5000/volume_attachments$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/5000_volumeAttachments.json
+
+# Get empty Volume Attachments from a Server Detail Page
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/9ae1032c-b39d-4eeb-b4f8-eb9b97a89d1f/volume_attachments$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/9ae1032c_volumeAttachments.json
+
+# Get empty Volume Attachments from a Server Detail Page
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/1111032c-b39d-4eeb-b4f8-eb9b97a89d1f/volume_attachments$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/1111032c_volumeAttachments.json
+
+# Change Server Name
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"name":"TestUpdateServerName"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"name":"Nickleback"}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/nextGen/servers/put/nameChangeError.json
+
+# Change Server Nickname
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/nickname$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"nickname":"TestNickname"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/cc2bb500-d6b9-4117-afbc-f9bf6f9635f3/action/nickname$
+        method: PUT
+        headers:
+            content-type: application/json
+        post: '{"nickname":"TestServerNicknameFail"}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/nextGen/servers/put/nicknameChangeError.json
+
+# Create Server
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD$
+        method: POST
+        headers:
+            content-type: application/json
+        # post: '{"name":"test","image":"59c037c1-70ec-41e4-aa17-73a9b0cb6b16","flavor":"2","networks":\[{"uuid":"00000000-0000-0000-0000-000000000000"},{"uuid":"11111111-1111-1111-1111-111111111111"}\]}'
+        post: '{"name":"test","flavor":"2","image":"59c037c1-70ec-41e4-aa17-73a9b0cb6b16","networks":\[{"uuid":"00000000-0000-0000-0000-000000000000"},{"uuid":"11111111-1111-1111-1111-111111111111"}\]}'
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/nextGen/servers/post/createNextGen.json
+
+# Delete Server
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b$
+        method: DELETE
+    response:
+        status: 200
+
+# Server Details
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/2999ca73.json
+
+# Server Details
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/9ae1032c-b39d-4eeb-b4f8-eb9b97a89d1f$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/9ae1032c.json
+
+# Server Details
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/1111032c-b39d-4eeb-b4f8-eb9b97a89d1f$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/1111032c.json
+
+# Server Details - Suspended
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/ee56fac7-636d-43fb-8853-7e1a73112c10$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/ee56fac7.json
+
+# Server Details Build - Spawning
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/3c23393a-628a-435c-963a-f064849b12c7$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/serverSpawning.json
+
+# Server Details Build - Deleting
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/3c0bf745-0783-4aac-9957-d0d2529a0bd8$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/serverDeleting.json
+
+# Server Details - nextGen Deleting
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/00000000-0783-4aac-9957-d0d2529a0bd8$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/nextGenServerDeleting.json
+
+# Empty Server Details
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/5000$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/servers/get/5000.json
+
+# Server Details error
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2801f5f3-1645-4610-b1ad-5db2d412e5d3$
+        method: GET
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/nextGen/servers/get/detailError.json
+
+## This is a second server that doesn't have any actions stubbed out, so they all fail (for testing purposes)
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/29b8a58f-e5a2-4599-9ba7-65d8cd461481$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/nextGen/servers/get/29b8a58f.json
+
+## This is a third server that's high performance
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/73004384-f9ac-4dcc-9895-31e1998f2b97$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/nextGen/servers/get/73004384.json
+
+# Create an attachment (from server page)
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/volume_attachments$
+        method: POST
+        post: '{"volume_id":"d989194e-940b-447e-ac12-4e4f0f1d86ea","device":"/dev/xvdb"}'
+    response:
+        status: 200
+
+# Create an attachment (from volume page)
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/volume_attachments$
+        method: POST
+        post: '{"volume_id":"128124a8-e2e0-4107-b56b-8b7572af2c58","device":"/dev/xvdb"}'
+    response:
+        status: 200
+
+# Create an attachment fail
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/volume_attachments$
+        method: POST
+        post: '{"volume_id":"88e4605a-80ae-409a-92f0-2a5b8c04a5de"}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/nextGen/servers/post/attachVolumeFail.json
+
+# Delete an attachment
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/volume_attachments/10225e08-a4bd-49fb-9237-ce1b7eaaddb2$
+        method: GET
+    response:
+        status: 200
+
+# Suspended Status
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/status$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/nextGen/servers/get/suspendedStatus.json
+
+# Active Status
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2])/servers/ORD/e2fedc60-5b7f-204d-74a4-c75a17cf889e/status$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/nextGen/servers/get/activeStatus.json

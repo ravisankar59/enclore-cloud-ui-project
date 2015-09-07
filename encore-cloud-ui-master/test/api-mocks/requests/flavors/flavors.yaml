@@ -1,0 +1,19 @@
+# Flavors GET Flavor Details
+-   request:
+        url: ^/api/users/hub_cap/flavors/ORD/2$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/flavors/2.json
+-   request:
+        url: ^/api/users/(hub_cap|uk_william)/flavors/(ORD|LON)/io1-15$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/flavors/io1-15.json
+-   request:
+        url: ^/api/users/hub_cap/flavors/ORD/performance2-60$
+        method: GET
+    response:
+        status: 404
+        file: test/api-mocks/responses/flavors/flavorFail.json

@@ -1,0 +1,446 @@
+/* TODO replace 'table' with something more modular */
+table {
+    background-color: @white;
+}
+/* Status table: https://one.rackspace.com/display/clouddb/Instance+State+Table */
+table .status-ACTIVE {
+    color: transparent;
+    background-color: #ddffd3;
+}
+table .status-SUSPENDED {
+    color: transparent;
+    background: #ffa61b url(./images/warning-triangle.png) center no-repeat;
+}
+table .status-ERROR,
+table .status-BLOCKED,
+table .status-SHUTDOWN,
+table .status-FAILED {
+    color: transparent;
+    background: @warnRed url(./images/error-stop.png) center no-repeat;
+}
+table .status-BUILD,
+table .status-REBUILD,
+table .status-RESCUE,
+table .status-REBOOT,
+table .status-HARD_REBOOT,
+table .status-SOFT_REBOOT,
+table .status-RESIZE,
+table .status-BACKUP {
+    background: #83c9fe url(./images/info-circled.png) center no-repeat;
+    color: transparent;
+}
+
+table.option-table {
+    width: 100%;
+}
+
+.column-title {
+    color: @white;
+    font-size: 13px;
+    line-height: 1;
+    background: @tableHeaderBg;
+    border: 1px solid @tableHeaderBorder;
+    a,
+    &a {
+        color: @white;
+        cursor: pointer;
+    }
+    a, > b {
+        /* Style grandfathered from font-awesome, so they are default display:inline-block; */
+        display: inline;
+    }
+    &.actions {
+        width: 15px;
+    }
+}
+
+table.subtable {
+    table-layout: fixed;
+    margin-left: 2%;
+    width: 98%;
+
+    td {
+        padding: 5px 10px;
+    }
+
+    th.column-title:first-child {
+        border-left-width: 0;
+    }
+
+    th.column-title:last-child {
+        border-right: 1px solid @subtableBorder;
+        width: 15px;
+    }
+
+    th.column-title {
+        border-color: darken(@subtableBorder, 15%);
+        background-color: @subtableBorder;
+        border-top: 0;
+        border-bottom: 0;
+    }
+
+    .field-description {
+        margin: 0;
+    }
+
+}
+
+.remove-server {
+    cursor: pointer;
+    color: #616161;
+}
+
+a.remove-server:hover {
+    color: #fc0f1d;
+}
+
+td.expanded {
+    background-color: @subtableBorder;
+    border-bottom-color: @subtableBorder;
+}
+
+.double-chevron-cell {
+    padding: 0 10px;
+}
+
+.double-chevron {
+    cursor: pointer;
+    &::after {
+        display:inline-block;
+        color: @subduedText;
+        font-size: 20px;
+        .chevron-mixin;
+    }
+}
+
+td.expanded .double-chevron {
+    &::after {
+        color: @white;
+        .chevron-mixin(-1);
+    }
+}
+
+.expanded-container {
+    padding: 0 3px 3px 3px;
+    background-color: @subtableBorder;
+}
+
+/* Spacing for server details page and server actions */
+
+.instance-tables {
+    padding-top: 20px;
+}
+
+.server-details, .volume-details, .image-details, .loadBalancer-details, .snapshot-details {
+    clear:left;
+}
+
+.filter-box {
+    font-size:76%;
+    font-style:italic;
+    margin: 4px 5px 0 5px;
+}
+
+.table-filters {
+    margin-top:1em;
+    clear:both;
+
+    .filter-box {
+        font-size: 85%;
+        width: 20em;
+        margin: 2px 5px
+    }
+}
+
+.dbaas-actions {
+    font-size:85%;
+}
+
+.add-cloud-servers {
+     .field-label {
+        clear: both;
+        margin-bottom: 15px;
+     }
+     td {
+        padding: 10px;
+        div {
+            margin: 0 0 5px 0;
+        }
+        .field-description {
+            margin: 0;
+        }
+     }
+}
+
+.lbaas-servers-list {
+    table-layout: fixed;
+
+    & > thead th {
+        width: 100%;
+    }
+    & > thead th:last-child {
+        width: 20px;
+    }
+
+    .server-details td:last-child {
+        text-align:center;
+    }
+
+    .server-details td:nth-child(2) {
+        border-right: 1px solid @tableBorder;
+    }
+}
+
+/* Hide the long-form ipv6 version of IP Addresses in data tables; you never know when you'll need them back. */
+.version-6 {
+    display:none;
+}
+
+.related-menu .menu-content {
+    overflow: visible;
+}
+
+.keypair {
+  word-wrap: break-word;
+  max-width: 400px;
+}
+
+.os-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    vertical-align: middle;
+    margin-right: 0.3em;
+
+    &.white-background {
+        border: 3px solid #fff;
+        background-color: #fff;
+    }
+
+    &.os-linux {
+        background-image: url('../images/ticket-os-linux.png');
+    }
+
+    &.os-windows {
+        background-image: url('../images/ticket-os-windows.png');
+    }
+}
+.next-gen {
+    .option-table {
+        min-width: inherit;
+    }
+}
+
+.flavors {
+    .flex-container {
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        & > .flex-item {
+            -webkit-flex: 1 0;
+            flex: 1 auto;
+            margin: 0 10px;
+
+            &:first-child {
+                -webkit-flex: 1 auto;
+                flex: 1 auto;
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+.migration-citation {
+    color: #6fc067;
+}
+
+.migration-link {
+    color: #ffe3b7;
+}
+a.disabled {
+    color: #D5D3D3;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.more-info {
+    color: #ffe3b7;
+}
+
+/* Styles for batch actions */
+thead th.batch-actions-header {
+    background: #C5E5C7;
+    text-align: center;
+    color: #555;
+    font-weight: normal;
+    border: 1px solid @tableBorder;
+
+    button {
+        color: #4682c2;
+    }
+}
+
+td[rx-bulk-select-row] label {
+    width: 100%;
+}
+
+/* Batch Action menu */
+.batch-action-menu-container {
+    position: relative;
+    width: 5px;
+    height: 0;
+    & > i {
+        cursor: pointer;
+        color: @subduedText;
+        &:hover {
+            color: @subduedTextHover;
+        }
+    }
+}
+
+.batch-actions-area {
+    font-size: 115%;
+    line-height: 2em;
+}
+
+.batch-action-list-hideable {
+    float: left;
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    right: -115px;
+    min-width: 20em;
+    font-size: 12px;
+    border: 4px solid @white;
+    border-radius: 4px;
+    background: @white;
+    text-shadow: rgba(0, 0, 0, 0.09) 1px 1px 1px;
+    box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 4px 0px;
+    padding: 6px;
+
+    &:before {
+        content:  "\f0d8";
+        text-shadow: rgba(0, 0, 0, 0.35) 0px -1px 1px;
+        font-family: FontAwesome;
+        text-decoration: inherit;
+        color: @white;
+        font-size: 24px;
+        display: block;
+        left: 230px;
+        position: absolute;
+        top: -23px;
+        width: 0;
+        z-index: 1;
+    }
+
+    i {
+        margin-right: 5px;
+    }
+}
+
+.batch-action-list {
+    float: right;
+    z-index: 5;
+}
+
+.suspend-servers {
+    table-layout: fixed;
+    th.column-title:nth-child(1) { width: 40%; }
+    th.column-title:nth-child(2) { width: 60%; }
+    td { overflow: hidden; }
+    .delete-x:hover {
+        color: #fc0f1d;
+        cursor: pointer;
+    }
+}
+
+.suspend-servers .pagination {
+    & > li:nth-child(1) { display: none }
+    & > li:nth-child(2) { display: none }
+    .pagination-per-page { display: none; }
+}
+
+.suspend-unsuspend-modal.modal-body {
+    padding-top: 10px;
+}
+
+.modal-footer.admin-authenticate {
+    background-color: #ffa61b;
+
+    padding: 15px;
+    margin: 5px;
+
+    .field-label {
+        color: #ffe3b7;
+    }
+
+    .footer-auth-key {
+        color: #996410;
+        margin-right: 20px;
+        margin-top: 5px;
+        height: 100px;
+        float: left;
+    }
+
+    .footer-auth-description {
+        color: white;
+    }
+}
+
+.add-public-ip {
+    margin:1em 0;
+}
+
+i.removeAddressAction, i.deleteAccessControl {
+    color: #959595;
+}
+
+.server-suspend-success {
+    color: #15b667;
+}
+
+.server-suspend-inprogress {
+    color: #db7821;
+}
+
+.server-suspend-error {
+    color: #eb2124;
+}
+
+.selected td:not(.status) {
+    background: @tableRowSelected;
+    border-color: #bad4bb;
+    // this 'double' makes it so that the border-color applies to the top border as well
+    // @see http://stackoverflow.com/questions/7942212/css-table-row-border-color-with-border-collapse
+    border-style: double;
+}
+
+.suspend-unsuspend-modal .status-updates {
+    padding-top: 15px;
+
+    .number-processed {
+        padding-top: 3px;
+    }
+}
+
+disabled-option {
+    label {
+        cursor: not-allowed;
+        display: block;
+        padding: 4px 6px;
+        color: #999999;
+        background-color: #D0D0D0;
+        .rxCheckbox {
+            height: 13px;
+            width: 13px;
+            vertical-align: middle;
+            margin-bottom: 2px;
+        }
+    }
+}
+
+.server-gen-filter {
+    margin-left: 10px;
+}

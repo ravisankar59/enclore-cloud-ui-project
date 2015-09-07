@@ -1,0 +1,19 @@
+{
+  "accountPlanRequest": null,
+  "name": null,
+  "rcn": "RCN-000-065-068",
+  "tags": [],
+  "status": "Active",
+  "serviceLevel": "managed",
+  "type": "CLOUD",
+  "linkedAccountNumber": null,
+  "number": "323676",
+  "instructions": {
+    "date": "2014-07-01T14:35:28Z",
+    "text": "TESTING UPDATING INSTRUCTIONS qgypihzqgebhagdejozlbfflsjmwmbqaiqcrjnszrrpjosicqd",
+    "authorSso": "nika.miller"
+  },
+  "supportRegion": "US",
+  "serviceType": "sysops",
+  "id": 323676
+}

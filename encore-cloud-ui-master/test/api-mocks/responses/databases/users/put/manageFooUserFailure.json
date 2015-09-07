@@ -1,0 +1,7 @@
+{
+  "error": {
+    "type": "Not Found",
+    "message": "User foouser not found",
+    "code": 404
+  }
+}

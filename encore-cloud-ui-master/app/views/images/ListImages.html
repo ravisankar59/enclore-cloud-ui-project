@@ -1,0 +1,154 @@
+<rx-page account-info-banner="true" account-number="{{accountNumber}}" team-id="" title="'Images'" subtitle="images.length + ' Images found for ' + user" status="{{PRODUCT_VERSIONS['Images']}}">
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <rx-reach-link
+                    class="btn-link msg-info"
+                    service-type="images"
+                    reach-target="/servers">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Server Images
+                </rx-reach-link>
+            </li>
+        </ul>
+    </div>
+
+    <div class="table-filters">
+        <table rx-floating-header class="table-striped images-list">
+            <thead>
+                <tr>
+                    <th colspan="9">
+                        <rx-search-box rx-placeholder="'Filter by any...'"  ng-model="filter.keyword"></rx-search-box>
+                            <span class="select-wrapper multi-select-container images-table-header">        
+                                <span class="field-label">Filter By Type:</span>
+                                <rx-multi-select id="imageSelectFilter" ng-model="visibilityFilter.selected.image_type">
+                                    <span class="dropdownHeader" >Next Gen</span>
+                                    <rx-select-option value="public">Public</rx-select-option>
+                                    <rx-select-option value="private">Private</rx-select-option>
+                                    <rx-select-option value="shared">Shared</rx-select-option>
+                                    <span class="dropdownHeader" >First Gen</span>
+                                    <rx-select-option value="base">Public</rx-select-option>
+                                    <rx-select-option value="snapshot">Custom</rx-select-option>
+                                </rx-multi-select>
+                           </span>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="column-title" rx-status-header>
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="status"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="gen"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Gen
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Name (UUID)
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                             sort-method="sortCol(property)"
+                             sort-property="associated_server"
+                             predicate="sort.predicate"
+                             reverse="sort.reverse">
+                            Parent Server
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="created"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Created
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="region"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Region
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="osType"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            OS
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="visibility"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Type
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="image in images | Apply:visibilityFilter | filter:filter.keyword | rxSortEmptyTop: sort.predicate:sort.reverse | Paginate:pager " class="image-details">
+                    <!-- TODO replace status image with correct background -->
+                    <td rx-status-column status="{{ image.status | uppercase }}" api="images" tooltip-content="{{ image.status | uppercase }}">
+                    </td>
+                    <td>{{image.gen}}</td>
+                    <td ng-switch="image.gen">
+                        <a ng-switch-when="Next" href="{{image.url}}">{{image.name}}</a>
+                        <span ng-switch-when="First">{{image.name}}</span><br>
+                        <span class="subdued">{{image.id}}</span>
+                    </td>
+                    <td><a href="{{image.associatedServerUrl}}">{{image.associated_server}}</a></td>
+                    <td>{{image.created | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}</td>
+                    <td>{{image.region}}</td>
+                    <td ng-switch="image.osType">
+                        <i ng-switch-when="linux" class="os-icon os-linux"></i>
+                        <i ng-switch-when="windows" class="os-icon os-windows"></i>
+                    </td>
+                    <td>{{image.visibility | rxCapitalize}}</td>
+                    <td class="actions">
+                        <rx-action-menu ng-if="image.gen === 'Next' && (image.status.toLowerCase() === 'active' || image.status.toLowerCase() === 'error')">
+                            <rx-image-actions account-number="accountNumber" image="image" user="user"></rx-image-actions>
+                        </rx-action-menu>
+                        <rx-action-menu ng-if="image.gen === 'First' && image.visibility === 'private' && (image.status.toLowerCase() === 'active' || image.status.toLowerCase() === 'error')">
+                            <rx-first-gen-image-actions account-number="accountNumber" image="image" user="user" post-hook="loadImages"></rx-first-gen-image-actions>
+                        </rx-action-menu>
+                    </td>
+                </tr>
+                <tr ng-if="!images.length && loaded">
+                    <td colspan="9">
+                        No Images have been created.
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-show="images.length">
+                <tr class="paginate-area">
+                    <td colspan="12" style="text-align:center;">
+                        <rx-paginate page-tracking="pager"></rx-paginate>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</rx-page>

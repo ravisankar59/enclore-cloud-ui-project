@@ -1,0 +1,216 @@
+<rx-page account-info-banner="true" account-number="{{accountNumber}}" team-id="" title="'Cloud Servers'" subtitle="servers.length + ' Servers found for ' + user" status="{{PRODUCT_VERSIONS['Servers']}}">
+    <rx-notification type="warning" stack="page" ng-if="migrating">
+        <span class="migration-citation">**</span>
+        This First Generation server will be converted to Next Generation soon (hover over server names to see specific dates).
+        You can choose to convert it yourself by soft rebooting the server.
+        (<a class="migration-link" href="http://www.rackspace.com/knowledge_center/article/next-generation-cloud-servers-migration-considerations-and-options" target="_blank">More info on server conversion and scheduling.</a>)
+    </rx-notification>
+
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <a href="/cloud/{{accountNumber}}/{{user}}/servers/create" class="msg-action" id="create-server">
+                    <i class="fa fa-fw fa-plus fa-lg"></i>
+                    Create New Server
+                </a>
+            </li>
+            <li class="actions-item">
+                <rx-reach-link
+                    class="btn-link msg-info"
+                    reach-target="/servers">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Servers
+                </rx-reach-link>
+            </li>
+            <li class="actions-item">
+              <a href="https://one.rackspace.com/x/7JN0Aw" target="_blank" class="msg-info">
+                <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Flavors Wiki (internal)
+              </a>
+            </li>
+            <li class="actions-item">
+              <a href="http://www.rackspace.com/calculator" target="_blank" class="msg-info">
+                <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Calculator
+              </a>
+            </li>
+            <li class="actions-item">
+              <a href="http://www.rackspace.com/cloud/servers" target="_blank" class="msg-info">
+                <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Cloud Servers Overview
+              </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="table-filters">
+        <table rx-floating-header rx-bulk-select bulk-source="servers" selected-key="rowIsSelected" rx-floating-header class="table-striped servers-list">
+            <thead>
+                <tr>
+                    <th colspan="10" class="filter-header">
+                        <rx-search-box ng-model="filter.keyword" rx-placeholder="'Filter by any...'"></rx-search-box>
+                        <span class="select-wrapper multi-select-container images-table-header server-gen-filter">
+                            <span class="field-label">Filter By Gen:</span>
+                            <rx-multi-select ng-model="genType.selected.gen">
+                                <rx-select-option value="Next">Next Gen</rx-select-option>
+                                <rx-select-option ng-if="hasFirstGen" value="First" >First Gen</rx-select-option>
+                                <disabled-option ng-if="!hasFirstGen">
+                                    <label>
+                                        <div class="rxCheckbox rx-disabled">
+                                            <div class="fake-checkbox">
+                                                <div class="tick fa fa-check">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span>First Gen</span>
+                                    </label>
+                                </disabled-option>
+                            </rx-multi-select>
+                       </span>
+                        <rx-batch-actions>
+                            <li class="actions-item">
+                                <rx-modal-action
+                                    template-url="views/servers/templates/bulk-suspend-modal.html"
+                                    controller="rxSuspendServersCtrl"
+                                    classes="msg-info"
+                                    disable-esc>
+                                    <i class="fa fa-fw fa-power-off msg-info"></i>
+                                    Suspend Selected Servers
+                                </rx-modal-action>
+                            </li>
+                            <li class="actions-item">
+                                <rx-modal-action
+                                    template-url="views/servers/templates/bulk-suspend-modal.html"
+                                    controller="rxUnSuspendServersCtrl"
+                                    classes="msg-info"
+                                    disable-esc>
+                                    <i class="fa fa-fw fa-power-off msg-info"></i>
+                                    Unsuspend Selected Servers
+                                </rx-modal-action>
+                            </li>
+                        </rx-batch-actions>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="column-title" rx-status-header>
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="status"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                    </th>
+                    <!-- TODO hook this checkbox up to something -->
+                    <th class="column-title" rx-bulk-select-header-check></th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="gen"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Gen
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Name (UUID)
+                        </rx-sortable-column>
+                    </th>
+
+                    <th class="column-title">IPs</th>
+                    <th class="column-title">Flavor</th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="image.name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Image (OS)
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="created"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Created
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="region"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Region
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="server in servers | Apply:genType | ServersFilter:filter | rxSortEmptyTop: sort.predicate:sort.reverse | Paginate:pager " class="server-details"
+                    ng-class="{selected: server.rowIsSelected}">
+                    <!-- TODO replace status image with correct background -->
+
+                    <td rx-status-column status="{{ server.status }}" api="servers" tooltip-content="{{ server.status | uppercase }}">
+                    </td>
+                    <!-- TODO hook this checkbox up to something -->
+                    <td rx-bulk-select-row row="server"></td>
+                    <td>{{server.gen}}</td>
+                    <td>
+                        <a href="{{server.url}}">{{server.name}}</a>
+                        <span ng-if="isServerMigrating(server)"
+                              class="migration-citation"
+                              tooltip="This server will be converted to a Next Generation server after {{ server.migrationDateTill | date : 'longDate' }}"
+                              tooltip-placement="right">**</span><br />
+                        <span class="subdued">{{server.id}}</span><br/>
+                    </td>
+                    <td>
+                        <div ng-repeat="address in server.addresses" class="iptype-{{address.ip_type}} version-{{address.version}}">
+                            {{address.ip_address}}
+                        </div>
+                    </td>
+                    <td>{{server.flavor.name}}</td>
+                    <td ng-switch="server.image.metadata.os_type">
+                        <i ng-switch-when="linux" class="os-icon os-linux"></i>
+                        <i ng-switch-when="windows" class="os-icon os-windows"></i>
+                        {{server.image.name}}
+                    </td>
+                    <td ng-switch="server.created">
+                        <span ng-switch-when="">N/A</span>
+                        <span ng-switch-default>{{server.created | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}</span>
+                    </td>
+                    <td>{{server.region}}</td>
+                    <td class="actions" ng-switch="server.gen">
+                        <span ng-switch-when="First">
+                            <rx-action-menu>
+                                <rx-first-gen-actions account-number="accountNumber" user="user" server="server" actions="actionList" load-servers="loadServers()"></rx-first-gen-actions>
+                            </rx-action-menu>
+                        </span>
+                        <span ng-switch-when="Next">
+                            <rx-action-menu>
+                                <rx-next-gen-actions account-number="accountNumber" user="user" server="server" actions="actionList" load-servers="loadServers()"></rx-next-gen-actions>
+                            </rx-action-menu>
+                        </span>
+                    </td>
+                </tr>
+                <tr ng-if="!servers.length && loaded">
+                    <td colspan="9">
+                        <span>No Servers have been created.</span>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot ng-show="servers.length">
+                <tr class="paginate-area">
+                    <td colspan="12" style="text-align:center;">
+                        <rx-paginate page-tracking="pager"></rx-paginate>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</rx-page>

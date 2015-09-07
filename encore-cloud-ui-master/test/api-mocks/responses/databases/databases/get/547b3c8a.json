@@ -1,0 +1,14 @@
+{
+  "databases": [
+    {
+      "name": "so_data",
+      "collate": "",
+      "character_set": ""
+    },
+    {
+      "name": "such_storage",
+      "collate": "",
+      "character_set": ""
+    }
+  ]
+}

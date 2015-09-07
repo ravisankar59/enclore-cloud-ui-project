@@ -1,0 +1,29 @@
+<rx-modal-form
+    title="Create snapshot">
+    <rx-form-item label="Snapshot Name">
+        <input type="text" id="snapshotName" ng-model="fields.display_name">
+    </rx-form-item>
+    <rx-form-item label="Description">
+        <input type="text" id="snapshotDescription" ng-model="fields.display_description">
+    </rx-form-item>
+    <rx-form-item label="Force snapshot if volume is currently mounted?">
+        <span class="field-select">
+            <select id="snapshotForce" ng-model="fields.force" ng-required="true">
+                <option
+                    ng-repeat="type in forceTypes"
+                    value="{{type.value}}"
+                    ng-disabled="type.disabled"
+                    ng-selected="{{type.value === fields.force}}"
+                    >{{type.label}}</option>
+            </select>
+        </span>
+    </rx-form-item>
+
+    <rx-form-item label="About Creating Snapshots">
+        <ol class="list">
+            <li>All writes to the volume should be flushed before creating the snapshot, either by unmounting any file systems on the volume, or by detaching the volume before creating the snapshot.</li>
+            <li>Snapshots are incremental, so each time you create a new snapshot, you are appending the incremental changes for the new snapshot to the previous one.</li>
+            <li>The previous snapshot is still available.</li>
+        </ol>
+    </rx-form-item>
+</rx-modal-form>

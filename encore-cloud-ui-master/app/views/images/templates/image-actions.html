@@ -1,0 +1,17 @@
+<ul class="actions-area">
+    <li class="actions-item" ng-if="image.name && image.status.toLowerCase() === 'active' ">
+        <a href="/cloud/{{accountNumber}}/{{user}}/servers/create/{{image.region}}/{{image.id}}" class="create-server msg-action">
+            <i class="fa fa-fw fa-plus fa-lg"></i> Create Server from Image
+        </a>
+    </li>
+    <li class="msg-warn actions-item" ng-if="image.gen === 'Next'
+                    && image.visibility === 'private'
+                    && (image.status.toLowerCase() === 'active' || image.status.toLowerCase() === 'error')" >
+        <rx-modal-action
+                post-hook="deleteImage(image)"
+                template-url="views/images/DeleteImage.html"
+                classes="msg-warn">
+            <i class="delete-image-action fa fa-fw fa-times fa-lg"></i> Delete Image
+        </rx-modal-action>
+    </li>
+</ul>

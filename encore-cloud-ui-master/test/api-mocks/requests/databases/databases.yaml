@@ -1,0 +1,45 @@
+
+# Database Details
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/databases$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/databases/get/432e170c.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/547b3c8a-a8d8-40b9-ba92-324afa7b90ef/databases$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/databases/get/547b3c8a.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/emptydbinstance/databases$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/databases/get/emptydbinstance_dbs.json
+
+# Create a database
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/databases$
+        method: POST
+        post: '{"databases":\[{"name":"testingdb","character_set":"utf8","collate":"utf8_general_ci"}\]}'
+    response:
+        status: 200
+
+# Delete a database
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/databases/so_data$
+        method: DELETE
+    response:
+        status: 200
+
+# Delete a database - failure
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/databases/such_storage$
+        method: DELETE
+    response:
+        status: 404
+        file: test/api-mocks/responses/databases/databases/delete/deleteSuchStorageFailure.json

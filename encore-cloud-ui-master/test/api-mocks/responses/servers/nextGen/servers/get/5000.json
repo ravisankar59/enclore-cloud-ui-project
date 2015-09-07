@@ -1,0 +1,51 @@
+{
+  "server": {
+    "status": "ACTIVE",
+    "addresses": [],
+    "name": "Making sure it all still works",
+    "region": "ORD",
+    "progress": 100,
+    "metadata": {},
+    "image": {
+      "name": "image007",
+      "id": "1095301f-9836-49c6-9709-878515bee7fd",
+      "links": [
+        {
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/a126754b-e5f3-41f9-8a47-b94f2f606aa6",
+          "rel": "bookmark"
+        }
+      ]
+    },
+    "updated": "2013-07-24T03:37:19Z",
+    "vm_state": "active",
+    "created": "2013-07-24T03:31:06Z",
+    "power_state": 1,
+    "task_state": null,
+    "user_id": "295",
+    "disk_config": "AUTO",
+    "tenant_id": "323676",
+    "flavor": {
+      "name": "512MB Standard Instance",
+      "id": "2",
+      "links": [
+        {
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+          "rel": "bookmark"
+        }
+      ]
+    },
+    "host_id": "c9ad727ea68dbfa26c75414168ded823e3cbc53756b0fb884c0dec2d",
+    "ohthree": "https://staging-alerts.ohthree.com:8080/ord/instance/5000",
+    "id": "5000",
+    "links": [
+      {
+        "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/5000",
+        "rel": "self"
+      },
+      {
+        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/5000",
+        "rel": "bookmark"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+<rx-modal-form
+     title="Edit Load Balancer Details"
+     subtitle="{{loadBalancer.id}}"
+     submit-text="Save Details" cancel-text="Cancel">
+    <div>
+
+        <rx-form-item label="Name">
+            <input
+                id="nameSelected" 
+                type="text" 
+                ng-model="fields.selectedName"
+                maxlength="128"
+                required/>
+        </rx-form-item>
+
+        <rx-form-item label="Protocol">
+            <span class="field-select">
+                <select
+                    id="protocolSelect"
+                    ng-model="fields.selectedProtocol"
+                    ng-options="p.name for p in fields.protocols"
+                    ng-change="changeProtocol()"
+                    required >
+                </select>
+            </span>
+        </rx-form-item>
+
+        <rx-form-item label="Port">
+            <span class="field-input">
+                <input type="number" min="1" max="65535" id="portSelected" ng-model="fields.selectedPort" required>
+            </span>
+        </rx-form-item>
+
+
+        <rx-form-item label="Timeout" description="Timeout in seconds: Min (30) - Max (120)">
+            <input
+                type="number"
+                id="timeoutSelected"
+                ng-model="fields.selectedTimeout"
+                min="30"
+                max="120"
+                class="field-input" required>
+        </rx-form-item>
+        
+        <rx-form-item label="Algorithm" id="algorithm" description="{{fields.selectedAlgorithm.description}}">
+            <span class="field-select">
+                <select
+                    id="algorithmSelect"
+                    ng-model="fields.selectedAlgorithm"
+                    ng-options="p.name for p in fields.algorithms"
+                    ng-change="changeAction()"
+                    required >
+                </select>
+            </span>
+        </rx-form-item>
+    </div>                      
+</rx-modal-form>

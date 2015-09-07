@@ -1,0 +1,41 @@
+<div class='rxDateRange-wrapper'>
+    <form name='rxDateRangeForm' rx-form>
+        <rx-form-section>
+            <rx-field>
+                <rx-field-content>
+                    <rx-input>
+                        <rx-prefix>
+                            <label class='label'>From Date</label>
+                        </rx-prefix>
+                        <input type='text' placeholder='mm/dd/yy' name='fromDate' 
+                            ng-model='fromDate' date dateRange/>
+                        <rx-prefix>
+                            <label class='label'>To Date</label>
+                        </rx-prefix>
+                        <input type='text' placeholder='mm/dd/yy' name='toDate'
+                            ng-model='toDate' date dateRange dateExceed />
+                        <a class='button xs' ng-click='actions.updateData()'>Update Range</a>
+                    </rx-input> 
+                    <rx-help-text class='label' ng-hide='showRangeMessage || hasError'>
+                        Enter both From and To Dates in order to filter based 
+                        on Start Date and End Date
+                    </rx-help-text>
+                    <rx-help-text class='label' ng-show='showRangeMessage'>
+                        {{rangeMessage}}
+                    </rx-help-text>
+                    <rx-inline-error ng-show='hasError'>
+                        <span ng-show='rxDateRangeForm.$error.date'>
+                            Date(s) entered is not a valid format. 
+                        </span>
+                        <span ng-show='rxDateRangeForm.$error.dateRange'>
+                            From Date cannot be less than the To Date
+                        </span>
+                        <span ng-show='rxDateRangeForm.$error.dateExceed'>
+                            End Date is greater than Today's Date.
+                        </span>
+                    </rx-inline-error>
+                </rx-field-content>
+            <rx-field>
+        </rx-form-section>
+    </form>
+</div>

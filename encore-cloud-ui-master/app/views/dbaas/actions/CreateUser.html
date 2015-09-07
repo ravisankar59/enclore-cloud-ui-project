@@ -1,0 +1,36 @@
+<rx-modal-form title="Create User" subtitle="{{instance.name}}" submit-text="Create User" cancel-text="Cancel">
+    <rx-form-item
+            label="Username"
+            description="Max length 16 characters.">
+        <input id="dbaas-user-name" type="text" ng-model="fields.user.username" ng-required="true">
+    </rx-form-item>
+    <rx-form-item
+            label="Password"
+            description="Max length 64 characters. Letters (upper and lower case), numbers, '@', '?', '#', '_', and spaces allowed. '@', '?', '#', '_', and spaces are not allowed at beginning or end.">
+        <input id="dbaas-user-password" type="password" ng-model="fields.user.password" ng-required="true">
+    </rx-form-item>
+    <rx-form-item
+            label="Host"
+            description="Restrict logins to matching IPs only. Use % as a wildcard. <a target='_blank' href='http://www.rackspace.com/knowledge_center/article/managing-users-for-cloud-databases#create'>View examples.</a>">
+        <input
+            id="dbaas-user-host"
+            type="text"
+            ng-pattern="/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|%)/"
+            ng-model="fields.user.host">
+    </rx-form-item>
+    <div class="inline-table">
+        <rx-form-fieldset
+                legend="Databases">
+            <rx-option-table
+                    ng-show="instance.dbList.length"
+                    type="checkbox"
+                    data="instance.dbList"
+                    columns="instance.userColumns"
+                    model="fields.user.dbList"
+                    required="true"
+                    field-id="dbaas-user-checkbox">
+            </rx-option-table>
+        </rx-form-fieldset>
+    </div>
+    <span class="msg-warn" ng-show="!instance.dbList.length">No Databases have been created for this Instance.</span>
+</rx-modal-form>

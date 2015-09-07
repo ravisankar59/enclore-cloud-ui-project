@@ -1,0 +1,15 @@
+<rx-modal-form
+    title="Add External Node"
+    submit-text="Add Servers" cancel-text="Cancel">
+
+    <rx-form-item
+        label="IP Address">
+        <input id="lbaas-external-node-ip" type="text" required ng-model="fields.host">
+    </rx-form-item>
+
+    <rx-form-item
+        label="Port">
+        <input id="lbaas-external-node-port" type="number" min="0" max="65535" required ng-pattern="/\d{1,5}/" ng-model="fields.port">
+    </rx-form-item>
+
+</rx-modal-form>

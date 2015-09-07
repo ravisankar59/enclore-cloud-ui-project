@@ -1,0 +1,57 @@
+-   request:
+        url: ^/api/encore/users/hub_cap/account$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/hub_cap.json
+
+-   request:
+        url: ^/api/encore/users/hub_cap/account$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/uk_william.json
+
+# Get support service account info for rackconnect version 3 user
+-   request:
+        url: ^/api/encore/users/rcstable01/account$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/account-5911499.json
+
+# Get support service account info for rackconnect version 2 user
+-   request:
+        url: ^/api/encore/users/rcstable02/account$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/account-5911500.json
+
+-   request:
+        url: ^/api/encore/users/non_managed_test_user/account$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/non_managed_test_user.json
+
+-   request:
+        url: ^/api/encore/accounts/323676$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/account-323676.json
+
+-   request:
+        url: ^/api/encore/accounts/10323676$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/account-10323676.json
+
+-   request:
+        url: ^/api/encore/accounts/323676/admin-user$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/supportService/get/accountAdmin-323676.json

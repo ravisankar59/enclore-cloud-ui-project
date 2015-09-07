@@ -1,0 +1,23 @@
+<h2 class="title">SSH Key</h2>
+
+<table class="ssh-keys">
+    <thead>
+        <tr role="row">
+            <th class="column-title">Name</th>
+            <th class="column-title">Public Key</th>
+            <th class="column-title">Fingerprint</th>
+        </tr>
+    </thead>
+    <tbody ng-switch="isEmpty(server.keypair)">
+        <tr ng-switch-when="false">
+            <td>{{server.keypair.name}}</td>
+            <td class="keypair">{{server.keypair.public_key}}</td>
+            <td>{{server.keypair.fingerprint}}</td>
+        </tr>
+        <tr ng-switch-default>
+            <td colspan="3">
+                No SSH Key on this server.
+            </td>
+        </tr>
+    </tbody>
+</table>

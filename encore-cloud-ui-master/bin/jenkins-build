@@ -1,0 +1,54 @@
+#!/bin/bash
+
+git config --global user.email "jenkins@jenkins.ui.encore.rackspace.com"
+git config --global user.name "Jenkins"
+
+PROJECT_ID="cloud_ui"
+
+FPM_DESCRIPTION="Project: Encore Cloud UI"
+PACKAGE_NAME="encore_$PROJECT_ID"
+BUILD_DATE=$(date +%s)
+
+
+npm install
+bower install
+grunt build
+
+# move to salt
+mkdir -p rpm/srv/nginx/angularweb
+cp -r dist/cloud/ rpm/srv/nginx/angularweb/${PROJECT_ID}
+
+VERSION=$(cat package.json | python -c 'import json,sys;obj=json.load(sys.stdin);release=obj["version"].split("-");print release[0];')
+
+# Build RPM and Create Feature Branch
+if [ "$Branch" == "master" ]; then
+    grunt bump-only --setversion=$VERSION
+    grunt bump-only:${ReleaseType}
+    VERSION=$(cat package.json | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["version"]')
+    PKG_VERSION=${VERSION}
+    RELEASE_BRANCH=Release_$VERSION
+else
+    # Grunt-Bump sucks. Work around until I can open a PR
+    SHA=$(git log --pretty=format:%h -n1 HEAD)
+    grunt bump-only --setversion=$VERSION-$SHA
+
+    # DEB will not allow dashes, although not compatible with semver. Gotta convert to underscore
+    PKG_VERSION=${VERSION}_${SHA}
+    RELEASE_BRANCH=$Branch
+fi
+
+
+fpm -s dir -t rpm -v "${PKG_VERSION}" -n "${PACKAGE_NAME}" --description "${FPM_DESCRIPTION}" -a all --rpm-user nginx --epoch "${BUILD_DATE}" --rpm-group nginx -a x86_64 -C ./rpm .
+scp ./*.rpm repo_user@repo-n01.inova.ui.encore.rackspace.com:/srv/repo/nightly
+ssh repo_user@repo-n01.inova.ui.encore.rackspace.com "createrepo --database --update /srv/repo/nightly"
+
+# Push up branch updates
+git checkout -b $RELEASE_BRANCH
+grunt bump-commit
+git push origin $RELEASE_BRANCH
+
+# Export variables for downstream jobs
+echo "PACKAGE_NAME=$PACKAGE_NAME" >> build.properties
+echo "VERSION=$PKG_VERSION" >> build.properties
+echo "RELEASE_BRANCH=$RELEASE_BRANCH" >> build.properties
+echo "GIT_URL=$GIT_URL" >> build.properties

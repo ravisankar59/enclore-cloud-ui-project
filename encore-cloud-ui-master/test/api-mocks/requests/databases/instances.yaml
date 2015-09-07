@@ -1,0 +1,125 @@
+# DBaaS GET
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/STAGING.json
+
+# DBaaS GET
+-   request:
+        url: ^/api/users/hub_cap/dbaas/DFW/instances$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/DFW.json
+
+# Instance Details
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/432e170c.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/547b3c8a-a8d8-40b9-ba92-324afa7b90ef$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/547b3c8a.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/null_db$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/nullDb.json
+
+# DBaaS instance after newly created instance (where there's a BUILD status)
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/554cdd04-9b30-4555-a5e7-07844e9549d9$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/554cdd04.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/emptydbinstance$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/emptydbinstance.json
+
+# Root User Details
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/root$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/rootEnabled.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/547b3c8a-a8d8-40b9-ba92-324afa7b90ef/root$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/rootDisabled.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/emptydbinstance/root$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/get/rootDisabled.json
+
+# Enable Root
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/root$
+        method: POST
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/instances/post/rootEnabled.json
+
+# Create an instance
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances$
+        method: POST
+        headers:
+            content-type: application/json
+        file: test/api-mocks/requests/databases/post-requests/createDatabaseInstance.json
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/databases/instances/post/createInstance.json
+
+# Resize an instance
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/action/resize_instance/5$
+        method: POST
+    response:
+        status: 200
+
+# Resize a volume
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/action/resize_volume/15$
+        method: POST
+    response:
+        status: 200
+
+# Restart an instance
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/action/restart$
+        method: POST
+    response:
+        status: 200
+
+# Delete an instance
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace$
+        method: DELETE
+    response:
+        status: 200
+
+

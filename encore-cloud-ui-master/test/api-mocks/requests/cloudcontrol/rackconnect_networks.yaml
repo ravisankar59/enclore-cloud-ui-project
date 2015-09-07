@@ -1,0 +1,8 @@
+-   request:
+        url: ^/api/cloudcontrol/ORD/5911499/rackconnect/cloud_networks$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/cloudcontrol/rackconnect_networks.json

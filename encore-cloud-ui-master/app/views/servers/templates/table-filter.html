@@ -1,0 +1,12 @@
+    <rx-search-box rx-placeholder="'Filter by any...'"  ng-model="filterModel"></rx-search-box>
+    <ul ng-show="haveBulkActions && rowsSelected" class="actions-area pull-right" id="batch-actions">
+        <li class="msg-info-blue">
+            <a ng-click="toggleBulkActions()"><i class="fa fa-cogs fa-lg"></i> Batch Actions</a>
+        </li>
+        <div ng-show="displayed" class="batch-action-menu-container">
+            <div class="batch-action-list batch-action-list-hideable">
+                <ul class="actions-area" ng-transclude>
+                </ul>
+          </div>
+        </div>
+    </ul>

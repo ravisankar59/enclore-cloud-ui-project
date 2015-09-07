@@ -1,0 +1,17 @@
+<rx-modal-form title="Create Database" subtitle="{{instance.name}}" submit-text="Create Database" cancel-text="Cancel">
+    <rx-form-item 
+        label="Database Name"
+        description="Max length 64 characters. Letters (upper and lower case), numbers, '@', '?', '#', '_', and spaces allowed. '@', '?', '#', '_', and spaces are not allowed at beginning or end">
+        <input type="text" id="databaseName" ng-model="fields.database.name" required>
+    </rx-form-item>
+    <rx-form-item 
+        label="Character Set"
+        description="Leave blank for utf8">
+        <input type="text" id="characterSet" ng-model="fields.database.character_set">
+    </rx-form-item>
+    <rx-form-item 
+        label="Collation"
+        description="Leave blank for utf8_general_ci">
+        <input type="text" id="collate" ng-model="fields.database.collate">
+    </rx-form-item>
+</rx-modal-form>

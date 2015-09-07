@@ -1,0 +1,24 @@
+{
+    "addresses": [
+        {
+            "id": "2d0f586b-37a7-4ae0-adac-2743d5feb450",
+            "version": 4,
+            "ip_type": "public-rackconnect-server",
+            "ip_address": "203.0.113.110"
+        },
+        {
+            "id": "07426958-1ebf-4c38-b032-d456820ca21a",
+            "version": 4,
+            "ip_type": "private-rackconnect-cloud network",
+            "ip_address": "192.168.100.5"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "/api/5911499/servers/2999ca73-f2d7-4275-ba45-84753332903b/rackconnect"
+        },
+        "src": {
+            "href": "https://rc.rs.com/v3/5911499/public_ips?cloud_server_id=2999ca73-f2d7-4275-ba45-84753332903b"
+        }
+    }
+}

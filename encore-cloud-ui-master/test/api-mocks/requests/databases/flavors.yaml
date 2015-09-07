@@ -1,0 +1,14 @@
+# DBaaS Get Flavors
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/flavors$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/flavors/get/STAGING.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/DFW/flavors$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/flavors/get/DFW.json

@@ -1,0 +1,426 @@
+{
+    "services": [
+        {
+            "id": "1a8e397f-a4cf-4071-b799-d5cb9301eeb3",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 80,
+                    "origin": "www.yahoo.com",
+                    "ssl": false
+                }
+            ],
+            "name": "00_kitchensink.com",
+            "domains": [
+                {
+                    "domain": "test.fsfsmfsfsdfsdofsdcksite888.com",
+                    "protocol": "http"
+                },
+                {
+                    "domain": "blog.kitchensink.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "1f63c0fd-17eb-425f-855f-15cdf08f938f",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "9cfd9b2f-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "9cfd9b2c-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "9cfd9b2e-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "delete_in_progress"
+        },
+        {
+            "id": "24073404-719b-4a15-8096-40f606aa5854",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "mywebsite1.com",
+                    "ssl": false
+                }
+            ],
+            "name": "bad_caching_name",
+            "domains": [
+                {
+                    "domain": "6b730c97-968e-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "3b5dd02a-5298-489c-99b8-2c3779dfe358",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "5d6637fa-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "5d6637f8-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "5d6637f9-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "delete_in_progress"
+        },
+        {
+            "id": "40489e0d-cc20-478b-8cb0-760ad96c3f79",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "a31667b7-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "a31667b4-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "a31667b6-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "delete_in_progress"
+        },
+        {
+            "id": "4b5e8eb9-30e0-4378-9ff1-c19b0b7c9318",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "279ec2d6-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "279ec2d4-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "279ec2d5-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "55fc9a88-965c-42a6-af75-20be2597d1e5",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "8d0f6216-968e-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "8d0f6214-968e-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "8d0f6215-968e-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "create_in_progress"
+        },
+        {
+            "id": "5da647ad-8630-4307-bada-d8f36cc29972",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "48e466bc-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "48e466ba-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "48e466bb-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "62ab9af5-63e7-49cd-bdd4-43132c4feb50",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "d25bdd9a-968e-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "d25bdd98-968e-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "d25bdd99-968e-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "637758ba-5322-4f1b-b41e-01e06717bbdf",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "7d808640-968e-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "7d80863e-968e-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "7d80863f-968e-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "delete_in_progress"
+        },
+        {
+            "id": "6b882af6-d6d9-4bd8-aa8e-1414405e8d48",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "2163b818-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "2163b816-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "2163b817-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "delete_in_progress"
+        },
+        {
+            "id": "6c5032e5-686a-42a1-b1c6-bafa0eb68e40",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "6b501534-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "6b501532-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "6b501533-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "80c920ce-15f0-4edf-aae4-99731756e33b",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 80,
+                    "origin": "104.130.27.124",
+                    "ssl": false
+                }
+            ],
+            "name": "manual-1",
+            "domains": [
+                {
+                    "domain": "orange.cnamecdn.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "85c8fb01-8c64-431a-abec-44cf83c38a66",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 80,
+                    "origin": "oopsydaisy.com",
+                    "ssl": false
+                }
+            ],
+            "name": "01_oopsydaisy.com",
+            "domains": [
+                {
+                    "domain": "oopsydaisy.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "failed"
+        },
+        {
+            "id": "976b1a62-2b7c-4473-9a2f-68059ae2886b",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "8077d0a1-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "8077d09e-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "8077d0a0-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "delete_in_progress"
+        },
+        {
+            "id": "9b8b1d58-fb8c-4ecf-8a7d-da18b89e9681",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "caad1f32-968e-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "caad1f30-968e-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "caad1f31-968e-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "delete_in_progress"
+        },
+        {
+            "id": "9f888f0a-c7d6-48a8-ba87-4b00b6d04d19",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 80,
+                    "origin": "18c7c380-9db7-11e4-ba24-bc764e207c0a.com",
+                    "ssl": false
+                }
+            ],
+            "name": "18c7b836-9db7-11e4-ba24-bc764e207c0a",
+            "domains": [
+                {
+                    "domain": "rrr-9db7-11e4-ba24-bc764e207c0a.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "a2ca95ba-7aa6-412c-ac9a-71f184b4ba9d",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "58227d26-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "58227d24-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "58227d25-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "c013e20a-28a9-48bf-a25f-e9e02202a310",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "abd04080-968e-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "abd0407e-968e-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "abd0407f-968e-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "f2caecb4-18dc-44ed-ac16-e0bbce49d6b2",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "88f5c913-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "88f5c910-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "88f5c912-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "create_in_progress"
+        },
+        {
+            "id": "f6bab744-b4b3-4bb7-9fb1-dc1d8ed34ea6",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 443,
+                    "origin": "358a8bd2-968f-11e4-a36e-bc764e1c1a01.com",
+                    "ssl": false
+                }
+            ],
+            "name": "358a8bd0-968f-11e4-a36e-bc764e1c1a01",
+            "domains": [
+                {
+                    "domain": "358a8bd1-968f-11e4-a36e-bc764e1c1a01.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        },
+        {
+            "id": "f7574b83-ae6e-4378-8436-968cc1c0039c",
+            "origins": [
+                {
+                    "rules": [],
+                    "port": 80,
+                    "origin": "4795f2cc-968a-11e4-b3c3-28cfe91478b9.com",
+                    "ssl": false
+                }
+            ],
+            "name": "4795e947-968a-11e4-8028-28cfe91478b9",
+            "domains": [
+                {
+                    "domain": "4f22d6b0-968a-11e4-83c8-28cfe91478b9.com",
+                    "protocol": "http"
+                }
+            ],
+            "status": "deployed"
+        }
+    ]
+}

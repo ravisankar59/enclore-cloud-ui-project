@@ -1,0 +1,8 @@
+{
+    "network": {
+        "id": "c6e72aa4-d09f-421e-862f-1c8461739614",
+        "label": "test-network",
+        "cidr": "192.168.3.0/24",
+        "region": "ORD"
+    }
+}

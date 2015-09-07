@@ -1,0 +1,17 @@
+-   request:
+        url: ^/api/cloudcontrol/rcstable01/5911499/rackconnect_account$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/cloudcontrol/rackconnect_account_v3.json
+
+-   request:
+        url: ^/api/cloudcontrol/rcstable02/5911500/rackconnect_account$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/cloudcontrol/rackconnect_account_v2.json

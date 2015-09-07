@@ -1,0 +1,27 @@
+-   request:
+        url: ^/api/encore/accounts/323676/users$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/encore/users.json
+
+-   request:
+        url: ^/api/encore/accounts/10323676/users$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/encore/users.json
+
+-   request:
+        url: ^/api/encore/accounts/5911499/users$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/encore/rcv3_users.json
+
+-   request:
+        url: ^/api/encore/accounts/5911500/users$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/encore/rcv2_users.json

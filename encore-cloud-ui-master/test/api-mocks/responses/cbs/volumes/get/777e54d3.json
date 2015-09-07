@@ -1,0 +1,24 @@
+{
+  "volume": {
+    "snapshot_id": null,
+    "status": "available",
+    "size": 100,
+    "attachments": [
+        {
+          "server_id": "2999ca73-f2d7-4275-ba45-84753332903b",
+          "device": "/dev/xvdb",
+          "volume_id": "10225e08-a4bd-49fb-9237-ce1b7eaaddb2",
+          "id": "10225e08-a4bd-49fb-9237-ce1b7eaaddb2"
+        }
+    ],
+    "volume_type": "SATA",
+    "availability_zone": "nova",
+    "created_on": "2013-11-01T22:32:43.000000",
+    "source_volid": null,
+    "bootable": "false",
+    "id": "777e54d3-4fe5-4c9d-9b92-31a96f6aefa4",
+    "display_description": "this is Leonel's awesomer test volume",
+    "display_name": "",
+    "metadata": {}
+  }
+}

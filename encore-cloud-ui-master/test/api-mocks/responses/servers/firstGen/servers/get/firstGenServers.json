@@ -1,0 +1,708 @@
+{
+    "servers": [
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "c6e2fed0-75bf-420d-a744-7cfc75a1889e"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.86.18"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:28a0"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "10.23.202.10"
+                }
+            ],
+            "flavor": {
+                "vcpus": null,
+                "id": "2",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "512 MB Standard",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-21T16:44:05Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "PREP_RESCUE",
+            "name": "Prep Rescue Server",
+            "power_state": 1,
+            "updated": "2013-11-21T16:48:18Z",
+            "tenant_id": "323676",
+            "metadata": {},
+            "host_id": "d67f8ee68c5afab4655e3965f3093fb420e90312a3ae327480d802f3",
+            "id": "2999ca73-f2d7-4275-ba45-84753332903b"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "2999ca73-f2d7-4275-ba45-84753332903b"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.86.18"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:28a0"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "10.23.202.10"
+                }
+            ],
+            "flavor": {
+                "vcpus": null,
+                "id": "2",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "512 MB Standard",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-21T16:44:05Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "SUSPENDED",
+            "name": "Suspended Server",
+            "power_state": 1,
+            "updated": "2013-11-21T16:48:18Z",
+            "tenant_id": "323676",
+            "metadata": {},
+            "host_id": "d67f8ee68c5afab4655e3965f3093fb420e90312a3ae327480d802f3",
+            "id": "e2fedc60-5b7f-204d-74a4-c75a17cf889e"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "c6e2fed0-75bf-420d-a744-7cfc75a1889e"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.86.18"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:28a0"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.23.202.10"
+                }
+            ],
+            "flavor": {
+                "vcpus": null,
+                "id": "2",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "512 MB Standard",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-21T16:44:05Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "ACTIVE",
+            "name": "Kevin's Test Demo",
+            "power_state": 1,
+            "updated": "2013-11-21T16:48:18Z",
+            "tenant_id": "323676",
+            "metadata": {},
+            "host_id": "d67f8ee68c5afab4655e3965f3093fb420e90312a3ae327480d802f3",
+            "id": "2999ca73-f2d7-4275-ba45-84753332903b"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "test_create_server_image",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {},
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/605add7c-8685-484c-8a7f-c0b7f7180c39",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "605add7c-8685-484c-8a7f-c0b7f7180c39"
+            },
+            "progress": "",
+            "addresses": [],
+            "flavor": {
+                "vcpus": null,
+                "id": "performance1-1",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/performance1-1",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "1 GB Performance",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/73891b29-426f-42d5-8540-8104dbdbd66a",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/73891b29-426f-42d5-8540-8104dbdbd66a",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-13T21:32:19Z",
+            "vm_state": "error",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "ERROR",
+            "name": "Kevin's Test Server",
+            "power_state": 0,
+            "updated": "2013-11-13T21:32:19Z",
+            "tenant_id": "323676",
+            "metadata": {},
+            "host_id": "",
+            "id": "73891b29-426f-42d5-8540-8104dbdbd66a"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "CentOS 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/f70ed7c7-b42e-4d77-83d8-40fa29825b85",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "f70ed7c7-b42e-4d77-83d8-40fa29825b85"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.65.187"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "10.23.194.244"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:0052:07b4:0a0b:ff00:282a"
+                }
+            ],
+            "flavor": {
+                "vcpus": null,
+                "id": "2",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "512 MB Standard",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/cb363000-1aa9-4526-9326-d73ebcffc76b",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/cb363000-1aa9-4526-9326-d73ebcffc76b",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-10-25T12:56:42Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "ACTIVE",
+            "name": "test_lb2",
+            "power_state": 1,
+            "updated": "2013-10-25T12:59:34Z",
+            "tenant_id": "323676",
+            "metadata": {
+                "build_config": "base,monitoring,driveclient,updates,mailgun,backup",
+                "rax_service_level_automation": "Complete"
+            },
+            "host_id": "b6fce85ba0302743e5f43b7e0205b9cb86395006f3d05654c62f3f68",
+            "id": "cb363000-1aa9-4526-9326-d73ebcffc76b"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "c6e2fed0-75bf-420d-a744-7cfc75a1889e"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.78.55"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "10.23.198.139"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:0052:07b4:0a0b:ff00:04be"
+                }
+            ],
+            "flavor": {
+                "vcpus": null,
+                "id": "2",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "512 MB Standard",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/13708ab7-e027-49a2-9260-9bea115fc0b8",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/13708ab7-e027-49a2-9260-9bea115fc0b8",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-10-25T12:56:12Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "ACTIVE",
+            "name": "test_lb1",
+            "power_state": 1,
+            "updated": "2013-10-25T13:01:28Z",
+            "tenant_id": "323676",
+            "metadata": {
+                "build_config": "base,monitoring,driveclient,updates,mailgun,backup",
+                "rax_service_level_automation": "Complete"
+            },
+            "host_id": "0d22556d18e4d2a6e46d4edcd3b62f9639414a3fd02c5997f04e50bd",
+            "id": "13708ab7-e027-49a2-9260-9bea115fc0b8"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "c6e2fed0-75bf-420d-a744-7cfc75a1889e"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.223.208.18"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:28a0"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "192.237.161.15"
+                }
+            ],
+            "flavor": {
+                "id": "io1-15",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/io1-15",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "15 GB I/O v1",
+                "vcpus": null,
+                "ram": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-21T16:44:05Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "ACTIVE",
+            "name": "Leonel Server",
+            "power_state": 1,
+            "updated": "2013-11-21T16:48:18Z",
+            "tenant_id": "223676",
+            "metadata": {},
+            "host_id": "d67f8ee68c5afab4655e3965f3093fb420e90312a3ae327480d802f3",
+            "id": "9ae1032c-b39d-4eeb-b4f8-eb9b97a89d1f"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "c6e2fed0-75bf-420d-a744-7cfc75a1889e"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.223.208.18"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:28a0"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "192.237.161.15"
+                }
+            ],
+            "flavor": {
+                "id": "performance2-60",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-60",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "60 GB Performance",
+                "vcpus": 16,
+                "ram": 61440,
+                "disk_size": 40
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-21T16:44:05Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "STAGING",
+            "status": "ACTIVE",
+            "name": "Leonel Bad Server",
+            "power_state": 1,
+            "updated": "2013-11-21T16:48:18Z",
+            "tenant_id": "223676",
+            "metadata": {},
+            "host_id": "d67f8ee68c5afab4655e3965f3093fb420e90312a3ae327480d802f3",
+            "id": "1111032c-b39d-4eeb-b4f8-eb9b97a89d1f"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "c6e2fed0-75bf-420d-a744-7cfc75a1889e"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.86.18"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:28a0"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "10.23.202.10"
+                }
+            ],
+            "flavor": {
+                "id": "performance2-60",
+                "links": [
+                    {
+                        "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-60",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "60 GB Performance",
+                "vcpus": 16,
+                "ram": 61440,
+                "disk_size": 40
+            },
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/c4e412cc-64ab-43de-8d80-9761506a24e8",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-21T16:44:05Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": "deleting",
+            "region": "STAGING",
+            "status": "ACTIVE",
+            "name": "nextGen Deleting Server",
+            "power_state": 1,
+            "updated": "2013-11-21T16:58:18Z",
+            "tenant_id": "223676",
+            "metadata": {},
+            "host_id": "d67f8ee60c5afab4655e3965f3093fb420e90312a3ae327480d802f3",
+            "id": "00000000-0783-4aac-9957-d0d2529a0bd8"
+        }
+    ]
+}

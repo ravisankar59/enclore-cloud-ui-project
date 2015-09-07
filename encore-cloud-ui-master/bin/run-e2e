@@ -1,0 +1,87 @@
+#!/bin/bash
+
+ENVIRONMENT=$1
+
+if [ -z "$ENVIRONMENT" ]; then
+    set +x
+    echo 'No Environment Found'
+    exit -1
+fi
+
+PROTRACTOR="./node_modules/protractor/bin/protractor"
+WEBDRIVER="./node_modules/protractor/bin/webdriver-manager"
+
+function message
+{
+    set +x
+    DATE=`date`
+    echo ""
+    echo "==========================================="
+    echo ""
+    echo "        " "$1"
+    echo ""
+    echo "==========================================="
+    echo ""
+    set -x
+}
+
+function remove_fixtures
+{
+    message "Removing Fixtures"
+    # REMOVE FIXTURES
+    if [ "$ENVIRONMENT" == "staging" ]; then
+        # Clear out existing fixtures
+        time grunt remove-fixtures --stack >> ./$ENVIRONMENT-fixtures.log 2>&1
+    else
+        # Clear out existing fixtures
+        time grunt remove-fixtures --stack --env="$ENVIRONMENT" >> ./$ENVIRONMENT-fixtures.log 2>&1
+    fi
+}
+
+# Remove Fixtures at any exit point of the script
+trap remove_fixtures EXIT INT TERM
+
+message "START TESTING"
+time npm install --loglevel=warn
+
+# Set up necessary credentials/fixtures
+cp ~/secrets.js ./test/secrets.js
+
+remove_fixtures
+
+# SETUP FIXTURES
+if [ "$ENVIRONMENT" == "staging" ]; then
+    # Create fixtures
+    time grunt setup-fixtures --stack >> ./$ENVIRONMENT-fixtures.log 2>&1
+else
+    # Create fixtures
+    time grunt setup-fixtures --stack --env="$ENVIRONMENT" >> ./$ENVIRONMENT-fixtures.log 2>&1
+fi
+
+# Kill selenium if running
+pkill -f selenium || true
+
+# Update Selenium
+$WEBDRIVER update --standalone
+$WEBDRIVER start --standalone &> /dev/null &
+
+sleep 5
+
+# EXIT CLEANLY
+TEST_STATUS=0
+
+# SMOKE
+time $PROTRACTOR test/conf/smoke/protractor.$ENVIRONMENT.conf.js --env=$ENVIRONMENT &> ./$ENVIRONMENT-smoke.log || TEST_STATUS=$?
+
+# REGRESSION
+time $PROTRACTOR test/conf/regression/protractor.$ENVIRONMENT.conf.js &> ./$ENVIRONMENT-regression.log || TEST_STATUS=$?
+
+message "START Smoke Run Log"
+cat ./$ENVIRONMENT-smoke.log
+message "ENDED Smoke Run Log "
+
+message "START Regression Run Log"
+cat ./$ENVIRONMENT-regression.log
+message "ENDED Regression Run Log"
+
+exit $TEST_STATUS

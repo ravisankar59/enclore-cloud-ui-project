@@ -1,0 +1,87 @@
+{
+    "service": {
+        "id": "1a8e397f-a4cf-4071-b799-d5cb9301eeb3",
+        "caching": [
+            {
+                "ttl": 0,
+                "name": "No Cache",
+                "rules": [
+                    {
+                        "name": "Stock Data",
+                        "request_url": "/stocks.json"
+                    }
+                ]
+            },
+            {
+                "ttl": 60,
+                "name": "Short Cache",
+                "rules": [
+                    {
+                        "name": "Status Update Feed",
+                        "request_url": "/status.xml"
+                    }
+                ]
+            },
+            {
+                "ttl": 1800,
+                "name": "Medium Cache",
+                "rules": [
+                    {
+                        "name": "Content Feed",
+                        "request_url": "/atom.xml"
+                    }
+                ]
+            },
+            {
+                "ttl": 86400,
+                "name": "Long Cache",
+                "rules": [
+                    {
+                        "name": "Videos",
+                        "request_url": "/videos/*.mp4"
+                    }
+                ]
+            }
+        ],
+        "origins": [
+            {
+                "port": 80,
+                "rules": [
+                    {
+                        "name": "Default Origin",
+                        "request_url": "/"
+                    },
+                    {
+                        "name": "Videos",
+                        "request_url": "/videos/*.mp4"
+                    }
+                ],
+                "ssl": false,
+                "origin": "www.yahoo.com"
+            }
+        ],
+        "name": "00_kitchensink.com",
+        "domains": [
+            {
+                "protocol": "http",
+                "domain": "test.kitchensink.com"
+            },
+            {
+                "protocol": "http",
+                "domain": "blog.kitchensink.com"
+            }
+        ],
+        "restrictions": [
+            {
+                "name": "website only",
+                "rules": [
+                    {
+                        "name": "mocksite.com",
+                        "referrer": "www.mocksite.com"
+                    }
+                ]
+            }
+        ],
+        "status": "deployed"
+    }
+}

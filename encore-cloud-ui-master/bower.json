@@ -1,0 +1,14 @@
+{
+  "name": "encore-cloud-ui",
+  "version": "0.26.0-64e0d58",
+  "dependencies": {
+    "encore-ui": "1.26.1",
+    "pure": "~0.5.0",
+    "encore-ui-svcs": "0.4.0"
+  },
+  "devDependencies": {
+    "angular-scenario": "~1.2.28",
+    "angular-mocks": "~1.2.28",
+    "jquery": "2.0.3"
+  }
+}

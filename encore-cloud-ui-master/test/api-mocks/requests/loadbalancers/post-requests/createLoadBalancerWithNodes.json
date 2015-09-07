@@ -1,0 +1,1 @@
+{"name":"test_update_lb","virtualIps":\[{"type":"PUBLIC"}\],"protocol":"DNS_TCP","port":53,"algorithm":"RANDOM","timeout":30,"nodes":\[{"address":"10.182.86.18","port":53,"condition":"ENABLED"},{"address":"192.168.2.36","port":53,"condition":"ENABLED"}\]}

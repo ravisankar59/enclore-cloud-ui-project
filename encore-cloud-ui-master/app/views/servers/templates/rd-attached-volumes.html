@@ -1,0 +1,25 @@
+<h2 class="title">Attached Volumes</h2>
+
+<table class="table-striped server-attached-volumes">
+	<thead>
+	    <tr role="row">
+	    	<th>ID</th>
+	    	<th>Name</th>
+	    	<th>Device</th>
+	    	<!-- th>Size</th -->
+	    </tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="volume_attachment in volumeAttachments">
+			<td><a href="/cloud/{{accountNumber}}/{{user}}/cbs/volumes/{{server.region}}/{{volume_attachment.id}}">{{volume_attachment.id}}</a></td>
+			<td>{{volume_attachment.server_id}}</td>
+			<td>{{volume_attachment.device}}</td>
+			<!-- td>{{volume_attachment.volume_id}}</td -->
+		</tr>
+		<tr ng-if="!volumeAttachments.length">
+		    <td colspan="4">
+		        No Volumes have been attached on this server.
+		    </td>
+		</tr>
+	</tbody>
+</table>

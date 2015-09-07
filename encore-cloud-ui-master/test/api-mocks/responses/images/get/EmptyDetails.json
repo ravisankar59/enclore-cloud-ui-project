@@ -1,0 +1,18 @@
+{
+    "image": {
+        "tags": [],
+        "visibility": "",
+        "created": "",
+        "status": "",
+        "size": 0,
+        "name": "CoreOS (Alpha)",
+        "region": "",
+        "id": "",
+        "file": "/v2/images/7813d849-03ab-4b1a-96fc-f9ffd1215a90/file",
+        "checksum": "096e214f365996c66e0630318c532042",
+        "updated": "",
+        "self": "/v2/images/7813d849-03ab-4b1a-96fc-f9ffd1215a90",
+        "osType": "linux",
+        "schema": "/v2/schemas/image"        
+    }
+}

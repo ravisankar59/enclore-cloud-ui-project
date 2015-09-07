@@ -1,0 +1,276 @@
+{
+  "flavors": [
+    {
+      "name": "512MB Standard Instance",
+      "id": "2",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/2"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/2"
+        }
+      ],
+      "disk_size": 20,
+      "vcpus": 1,
+      "ram": 512
+    },
+    {
+      "name": "1GB Standard Instance",
+      "id": "3",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/3"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/3"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 1,
+      "ram": 1024
+    },
+    {
+      "name": "2GB Standard Instance",
+      "id": "4",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/4"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/4"
+        }
+      ],
+      "disk_size": 80,
+      "vcpus": 2,
+      "ram": 2048
+    },
+    {
+      "name": "4GB Standard Instance",
+      "id": "5",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/5"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/5"
+        }
+      ],
+      "disk_size": 160,
+      "vcpus": 2,
+      "ram": 4096
+    },
+    {
+      "name": "8GB Standard Instance",
+      "id": "6",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/6"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/6"
+        }
+      ],
+      "disk_size": 320,
+      "vcpus": 4,
+      "ram": 8192
+    },
+    {
+      "name": "15GB Standard Instance",
+      "id": "7",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/7"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/7"
+        }
+      ],
+      "disk_size": 620,
+      "vcpus": 6,
+      "ram": 15360
+    },
+    {
+      "name": "30GB Standard Instance",
+      "id": "8",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/8"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/8"
+        }
+      ],
+      "disk_size": 1200,
+      "vcpus": 8,
+      "ram": 30720
+    },
+    {
+      "name": "1 GB Performance",
+      "id": "performance1-1",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-1"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance1-1"
+        }
+      ],
+      "disk_size": 20,
+      "vcpus": 1,
+      "ram": 1024
+    },
+    {
+      "name": "2 GB Performance",
+      "id": "performance1-2",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-2"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance1-2"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 2,
+      "ram": 2048
+    },
+    {
+      "name": "4 GB Performance",
+      "id": "performance1-4",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-4"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance1-4"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 4,
+      "ram": 4096
+    },
+    {
+      "name": "8 GB Performance",
+      "id": "performance1-8",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-8"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance1-8"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 8,
+      "ram": 8192
+    },
+    {
+      "name": "120 GB Performance",
+      "id": "performance2-120",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-120"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance2-120"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 32,
+      "ram": 122880
+    },
+    {
+      "name": "15 GB Performance",
+      "id": "performance2-15",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-15"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance2-15"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 4,
+      "ram": 15360
+    },
+    {
+      "name": "30 GB Performance",
+      "id": "performance2-30",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-30"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance2-30"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 8,
+      "ram": 30720
+    },
+    {
+      "name": "60 GB Performance",
+      "id": "performance2-60",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-60"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance2-60"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 16,
+      "ram": 61440
+    },
+    {
+      "name": "90 GB Performance",
+      "id": "performance2-90",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-90"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/performance2-90"
+        }
+      ],
+      "disk_size": 40,
+      "vcpus": 24,
+      "ram": 92160
+    }
+  ]
+}

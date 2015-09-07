@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "name": "testuser",
+      "password": "",
+      "host": "%",
+      "databases": [
+        {
+          "name": "test_database",
+          "collate": "",
+          "character_set": ""
+        },
+          {
+          "name": "test_database2",
+          "collate": "",
+          "character_set": ""
+        }
+      ]
+    },
+    {
+      "name": "foouser",
+      "password": "",
+      "host": "%",
+      "databases": [
+        {
+          "name": "so_data",
+          "collate": "",
+          "character_set": ""
+        }
+      ]
+    }
+  ]
+}

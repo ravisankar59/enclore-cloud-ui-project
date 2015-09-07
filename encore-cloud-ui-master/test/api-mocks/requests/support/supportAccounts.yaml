@@ -1,0 +1,13 @@
+-   request:
+        url: ^/api/support-accounts/323676/badges$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/support/get/badges-323676.json
+
+-   request:
+        url: ^/api/support-accounts/10323676/badges$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/support/get/badges-10323676.json

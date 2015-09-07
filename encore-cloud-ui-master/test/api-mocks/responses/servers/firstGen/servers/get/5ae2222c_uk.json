@@ -1,0 +1,66 @@
+{
+    "server": {
+        "status": "ACTIVE",
+        "addresses": [
+            {
+                "version": "4",
+                "ip_type": "private",
+                "ip_address": "10.182.76.126"
+            },
+            {
+                "version": "4",
+                "ip_type": "public",
+                "ip_address": "10.23.192.133"
+            }
+        ],
+        "name": "UK Server",
+        "region": "LON",
+        "progress": 100,
+        "metadata": {
+            "rax_service_level_automation": "Complete",
+            "FG2NG_self_migration_available_from": "2014-12-25 00:00:00",
+            "FG2NG_self_migration_available_till": "2015-01-20 00:00:00"
+        },
+        "image": {
+            "name": "image007",
+            "id": "1095301f-9836-49c6-9709-878515bee7fd",
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/a126754b-e5f3-41f9-8a47-b94f2f606aa6",
+                    "rel": "bookmark"
+                }
+            ]
+        },
+        "updated": "2015-03-12T16:29:59Z",
+        "vm_state": "",
+        "created": "2015-03-12T16:29:59Z",
+        "power_state": null,
+        "task_state": null,
+        "user_id": "",
+        "disk_config": "",
+        "tenant_id": "",
+        "flavor": {
+            "name": "512MB Standard Instance",
+            "id": "2",
+            "bandwidth": "0",
+            "links": [
+                {
+                    "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+                    "rel": "bookmark"
+                }
+            ]
+        },
+        "host_id": "e78880b6fa7eead9c771d40f344285df",
+        "id": "5ae2222c-b39d-4eeb-b4f8-eb9b97a89d1f",
+        "links": [
+            {
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/2999ca73-f2d7-4275-ba45-84753332903b",
+                "rel": "self"
+            },
+            {
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/2999ca73-f2d7-4275-ba45-84753332903b",
+                "rel": "bookmark"
+            }
+        ]
+    }
+}

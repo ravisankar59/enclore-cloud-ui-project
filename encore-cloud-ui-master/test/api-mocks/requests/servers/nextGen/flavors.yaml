@@ -1,0 +1,15 @@
+# Get Server Flavors (ORD)
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2]|non_managed_test_user)/flavors/ORD$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/flavors/get/ORD.json
+
+# Get Server Flavors (DFW)
+-   request:
+        url: ^/api/users/(hub_cap|rcstable0[1,2]|non_managed_test_user)/flavors/DFW$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/nextGen/flavors/get/DFW.json

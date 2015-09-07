@@ -1,0 +1,12 @@
+{
+  "snapshots": [{
+    "metadata": {},
+    "display_description": "DFW snapshot.",
+    "id": "2fff15f3-9471-409f-a75d-3eebc2f31ea5",
+    "created_on": "2014-08-20T20:23:06.000000",
+    "size": 100,
+    "display_name": "DFW-TEST",
+    "volume_id": "6de44ac6-99af-4694-8352-89c8b6b8ed19",
+    "status": "available"
+  }]
+}

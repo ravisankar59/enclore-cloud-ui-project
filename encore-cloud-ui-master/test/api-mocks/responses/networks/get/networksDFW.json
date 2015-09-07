@@ -1,0 +1,7 @@
+{
+    "networks": [
+        {"status": "ACTIVE", "label": "dfw-test-network", "region": "DFW", "id": "4ea71cc2-7ad3-423c-98a4-dc5b077c0c70", "cidr": "192.168.3.0/24"},
+        {"status": "ACTIVE", "label": "public", "region": "DFW", "id": "00000000-0000-0000-0000-000000000000", "cidr": null},
+        {"status": "ACTIVE", "label": "private", "region": "DFW", "id": "11111111-1111-1111-1111-111111111111", "cidr": null}
+    ]
+}

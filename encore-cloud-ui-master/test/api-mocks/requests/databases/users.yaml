@@ -1,0 +1,119 @@
+# Users Details
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/users/get/432e170c.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/547b3c8a-a8d8-40b9-ba92-324afa7b90ef/users$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/users/get/547b3c8a.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/emptydbinstance/users$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/databases/users/get/emptydbinstance_users.json
+
+# Create a user
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users$
+        method: POST
+        post: '{"users":\[{"databases":\[{"name":"so_data"}\],"name":"dbuser","password":"password","host":"%"}\]}'
+    response:
+        status: 200
+
+# Create a user (ERROR)
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users$
+        method: POST
+        post: '{"users":\[{"databases":\[{"name":"so_data"}\],"name":"dbuser","password":"badpassword","host":"%"}\]}'
+    response:
+        status: 400
+        file: test/api-mocks/responses/databases/users/post/createUserRepeatFailure.json
+
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/547b3c8a-a8d8-40b9-ba92-324afa7b90ef/users$
+        method: POST
+        post: '{"users":\[{"databases":\[{"name":"so_data"}\],"name":"dbuser","password":"badpassword","host":"%"}\]}'
+        file: test/api-mocks/responses/databases/users/post/createUserRepeatFailure.json
+
+# Delete a user
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/testuser$
+        method: DELETE
+    response:
+        status: 200
+
+# Delete a user - failure
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/foouser$
+        method: DELETE
+    response:
+        status: 404
+        file: test/api-mocks/responses/databases/users/delete/deleteFooUserFailure.json
+
+# Edit a user
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/testuser$
+        method: PUT
+    response:
+        status: 200
+
+# Edit a user - failure
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/foouser$
+        method: PUT
+    response:
+        status: 404
+        file: test/api-mocks/responses/databases/users/put/editFooUserFailure.json
+
+# Manage user access
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/testuser/databases/access$
+        method: PUT
+    response:
+        status: 200
+
+# Manage user access - failure
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/foouser/databases/access$
+        method: PUT
+    response:
+        status: 404
+        file: test/api-mocks/responses/databases/users/put/manageFooUserFailure.json
+
+# Database Edit Users - grant access
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/testuser/databases$
+        method: PUT
+    response:
+        status: 200
+
+# Database Edit Users - grant access failure
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/foouser/databases$
+        method: PUT
+    response:
+        status: 404
+        file: test/api-mocks/responses/databases/users/put/manageFooUserFailure.json
+
+# Database Edit Users - revoke access
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/(:?testuser|foouser|baruser|bazuser)/databases/so_data$
+        method: DELETE
+    response:
+        status: 200
+
+# Database Edit Users - revoke access failure
+-   request:
+        url: ^/api/users/hub_cap/dbaas/STAGING/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace/users/foouser/databases/so_data$
+        method: DELETE
+    response:
+        status: 404
+        file: test/api-mocks/responses/databases/users/put/manageFooUserFailure.json

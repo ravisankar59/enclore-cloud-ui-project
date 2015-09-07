@@ -1,0 +1,72 @@
+{
+    "loadBalancers": [
+        {
+            "name": "DFW C01",
+            "id": 2343,
+            "protocol": "HTTP",
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2014-07-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "174.106.24.22",
+                    "id": 9,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "3003:4801:79d2:0000:07b4:0a0b:0000:0001",
+                    "id": 8005806,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2014-08-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "DFW"
+        },
+        {
+            "name": "DFW C01",
+            "id": 2344,
+            "protocol": "HTTP",
+            "port": 88,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2014-07-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "174.106.24.22",
+                    "id": 9,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "3003:4801:79d2:0000:07b4:0a0b:0000:0001",
+                    "id": 8005806,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2014-08-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "DFW"
+        }        
+    ]
+}

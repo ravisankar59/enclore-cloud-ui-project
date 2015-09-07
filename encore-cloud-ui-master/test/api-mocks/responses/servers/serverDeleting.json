@@ -1,0 +1,93 @@
+{
+    "server": {
+        "name": "TestFreddyCreateDelete-2",
+        "flavor": {
+            "name": "512MB Standard",
+            "vcpus": null,
+            "id": "2",
+            "ram": null,
+            "disk_size": null,
+            "links": [{
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2",
+                "rel": "bookmark"
+            }]
+        },
+        "keypair": "",
+        "admin_pass": "",
+        "ohthree": "https://staging-alerts.ohthree.com:8080/ord/instance/9cd297bd-3db9-4896-8ead-a880ad3586ff",
+        "links": [{
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/9cd297bd-3db9-4896-8ead-a880ad3586ff",
+            "rel": "self"
+        }, {
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/9cd297bd-3db9-4896-8ead-a880ad3586ff",
+            "rel": "bookmark"
+        }],
+        "region": "ORD",
+        "vm_state": "building",
+        "power_state": 0,
+        "disk_config": "AUTO",
+        "task_state": "deleting",
+        "status": "BUILD",
+        "host_id": "0d22556d18e4d2a6e46d4edcd3b62f9639414a3fd02c5997f04e50bd",
+        "user_id": "295",
+        "image": {
+            "name": "CreatFirstGenNextGenImage2",
+            "status": "ACTIVE",
+            "min_ram": 256,
+            "metadata": {
+                "com.rackspace__1__build_managed": "1",
+                "org.openstack__1__os_version": "5.0",
+                "legacy_snapshot": "True",
+                "image_type": "snapshot",
+                "com.rackspace__1__visible_core": "1",
+                "com.rackspace__1__build_rackconnect": "0",
+                "com.rackspace__1__visible_rackconnect": "0",
+                "os_type": "linux",
+                "com.rackspace__1__options": "0",
+                "com.rackspace__1__build_core": "1",
+                "org.openstack__1__architecture": "x64",
+                "com.rackspace__1__visible_managed": "1",
+                "org.openstack__1__os_distro": "org.centos",
+                "auto_disk_config": "True"
+            },
+            "created": "2014-01-24T03:37:22Z",
+            "min_disk": 9,
+            "progress": 100,
+            "id": "08d462d1-4832-4d29-993a-ad490e74fd22",
+            "disk_config": "AUTO",
+            "links": [{
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/images/08d462d1-4832-4d29-993a-ad490e74fd22",
+                "rel": "self"
+            }, {
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/08d462d1-4832-4d29-993a-ad490e74fd22",
+                "rel": "bookmark"
+            }, {
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/08d462d1-4832-4d29-993a-ad490e74fd22",
+                "rel": "alternate"
+            }],
+            "updated": "2014-01-24T03:45:57Z"
+        },
+        "addresses": [{
+            "ip_address": "10.23.192.30",
+            "ip_type": "public",
+            "id": null,
+            "version": 4
+        }, {
+            "ip_address": "2001:4801:7808:52:aedb:3ae4:a92f:1cb3",
+            "ip_type": "public",
+            "id": null,
+            "version": 6
+        }, {
+            "ip_address": "10.182.64.11",
+            "ip_type": "private",
+            "id": null,
+            "version": 4
+        }],
+        "metadata": {},
+        "progress": 0,
+        "created": "2014-08-22T19:21:55Z",
+        "id": "9cd297bd-3db9-4896-8ead-a880ad3586ff",
+        "updated": "2014-08-22T19:22:13Z",
+        "tenant_id": "323676"
+    }
+}

@@ -1,0 +1,106 @@
+{
+  "flavors": [
+    {
+      "ram": 512,
+      "disk_size": null,
+      "id": "1",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/flavors/1"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/flavors/1"
+        }
+      ],
+      "name": "512MB",
+      "vcpus": null
+    },
+    {
+      "ram": 1024,
+      "disk_size": null,
+      "id": "2",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/flavors/2"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/flavors/2"
+        }
+      ],
+      "name": "1GB",
+      "vcpus": null
+    },
+    {
+      "ram": 2048,
+      "disk_size": null,
+      "id": "3",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/flavors/3"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/flavors/3"
+        }
+      ],
+      "name": "2GB",
+      "vcpus": null
+    },
+    {
+      "ram": 4096,
+      "disk_size": null,
+      "id": "4",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/flavors/4"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/flavors/4"
+        }
+      ],
+      "name": "4GB",
+      "vcpus": null
+    },
+    {
+      "ram": 8192,
+      "disk_size": null,
+      "id": "5",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/flavors/5"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/flavors/5"
+        }
+      ],
+      "name": "8GB",
+      "vcpus": null
+    },
+    {
+      "ram": 16384,
+      "disk_size": null,
+      "id": "6",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/v1.0/323676/flavors/6"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://api.staging.dfw1.clouddb.rackspace.net/flavors/6"
+        }
+      ],
+      "name": "16GB",
+      "vcpus": null
+    }
+  ]
+}

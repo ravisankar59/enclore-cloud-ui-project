@@ -1,0 +1,124 @@
+/*
+
+# Common Styles
+These are common styles that will be re-used across the site
+
+*/
+
+.truncate {
+    display: inline-block;
+    max-width: 125px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.btn-action {
+    display: inline-block;
+    background-color: @actionGreen;
+    border: 0;
+    padding: 0.7em 1.5em;
+    margin: 1em 0;
+    a {
+        color: #fff;
+    }
+}
+
+.actions-area {
+    font-size:115%;
+    line-height:2em;
+    .spinner-container {
+        width: 1.1em;
+        height: 2em;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .msg-info {
+        &.rx-cloud-control-link-action,
+        &.rx-reach-link-action {
+            .msg-info;
+        }
+        .rx-spinner {
+            border-bottom-color: @infoOrange;
+            border-right-color: @infoOrange;
+        }
+    }
+    a {
+        cursor: pointer;
+    }
+}
+
+.instance-details {
+    clear: left;
+}
+.instance-details-clear {
+  clear: both;
+}
+
+
+/*
+This can be added to hide an element but not remove it from the spacing of the
+page
+*/
+.invisible {
+    visibility: hidden;
+}
+
+.btn-link:focus {
+    outline: none;
+}
+
+/* Flex Layouts */
+
+.flex-container {
+    clear: both;
+    .flexbox-display();
+
+    .align-items(center);
+    .justify-content(center);
+}
+
+.flex-item {
+    width:100%;
+    margin-left: 10px;
+    &:first-child {
+        margin-right: 10px;
+        margin-left: 0;
+    }
+    .align-self(flex-start);
+}
+
+rx-modal-action.link-disabled {
+  pointer-events: none;
+  a {
+      color: #D5D3D3;
+  }
+  .rx-spinner {
+    margin-left: 10px;
+    border-bottom-color: #D5D3D3;
+    border-right-color: #D5D3D3;
+  }
+}
+
+/* Override until fixed in Encore-UI */
+.modal {
+    padding-right: 0;
+}
+.modal-header {
+    padding-right: inherit;
+
+    .modal-close {
+        right: @modalPadding;
+    }
+}
+.option-table {
+    min-width: 39em;
+}
+
+// Override until rxMetaData comes out with fix
+// - padding between title and rxMetaData
+
+.metaData-top{
+    padding-top: 18px;
+}

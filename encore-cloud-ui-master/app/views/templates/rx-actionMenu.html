@@ -1,0 +1,4 @@
+<div class="action-menu-container">
+    <i ng-show="hideable" ng-click="toggle()" class="fa fa-cog fa-lg"></i>
+    <div ng-show="displayed" ng-click="modalToggle()" class="action-list" ng-class="{'action-list-hideable': hideable}" ng-transclude></div>
+</div>

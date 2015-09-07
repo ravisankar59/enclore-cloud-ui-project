@@ -1,0 +1,14 @@
+<rx-modal-form title="Suspend Load Balancer"
+    subtitle="{{loadBalancer.id}}"
+    submit-text="Suspend Load Balancer"
+    cancel-text="Cancel">
+    <rx-form-item label="Ticket Number">
+        <span class="field-input">
+          <input type="number" class="no-spin-button" id="ticketNumber" ng-model="fields.ticketNumber" required>
+    </rx-form-item>
+
+    <rx-form-item label="Reason">
+        <textarea ng-model="fields.reason" rows="10" cols="50" required>
+        </textarea>
+    </rx-form-item>
+</rx-modal-form>

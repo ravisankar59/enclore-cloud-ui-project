@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "name": "testuser",
+      "password": "",
+      "host": "%",
+      "databases": [
+        {
+          "name": "so_data",
+          "collate": "",
+          "character_set": ""
+        },
+        {
+          "name": "database_name",
+          "collate": "",
+          "character_set": ""
+        }
+      ]
+    },
+    {
+      "name": "foouser",
+      "password": "",
+      "host": "%",
+      "databases": [
+        {
+          "name": "so_data",
+          "collate": "",
+          "character_set": ""
+        }
+      ]
+    },
+    {
+      "name": "baruser",
+      "password": "",
+      "host": "%",
+      "databases": [
+        {
+          "name": "so_data",
+          "collate": "",
+          "character_set": ""
+        }
+      ]
+    },
+    {
+      "name": "bazuser",
+      "password": "",
+      "host": "%",
+      "databases": [
+        {
+          "name": "so_data",
+          "collate": "",
+          "character_set": ""
+        }
+      ]
+    }
+  ]
+}

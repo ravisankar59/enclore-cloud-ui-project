@@ -1,0 +1,18 @@
+{
+  "volume": {
+    "snapshot_id": null,
+    "display_name": "Volume-28-ManySnapshots",
+    "volume_type": "SATA",
+    "id": "88e4605a-80ae-409a-92f0-2a5b8c04a5de",
+    "bootable": "false",
+    "snapshot_id": null,
+    "display_description": null,
+    "source_volid": null,
+    "size": 1000,
+    "created_on": "2013-11-19T22:18:21.000000",
+    "metadata": {},
+    "availability_zone": "nova",
+    "attachments": [],
+    "status": "available"
+  }
+}

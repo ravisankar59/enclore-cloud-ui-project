@@ -1,0 +1,57 @@
+{
+  "server": {
+    "metadata": {},
+    "nextGenEligible": true,
+    "updated": "",
+    "admin_pass": "wfI17N1ImRog11",
+    "progress": 0,
+    "links": [],
+    "tenant_id": "",
+    "flavor": {
+      "disk_size": null,
+      "ram": null,
+      "id": "1",
+      "links": [],
+      "name": "",
+      "vcpus": null
+    },
+    "image": {
+      "metadata": {},
+      "updated": "",
+      "disk_config": "",
+      "progress": 0,
+      "min_ram": null,
+      "min_disk": null,
+      "id": "67",
+      "status": "",
+      "created": "",
+      "name": "",
+      "links": []
+    },
+    "host_id": "7782a7f13957738cb8295912060751fc",
+    "disk_config": "",
+    "user_id": "",
+    "task_state": "",
+    "region": "DFW",
+    "vm_state": "",
+    "id": 110148710,
+    "status": "BUILD",
+    "addresses": [
+      {
+        "ip_type": "public",
+        "id": null,
+        "version": "4",
+        "ip_address": "184.106.255.28"
+      },
+      {
+        "ip_type": "private",
+        "id": null,
+        "version": "4",
+        "ip_address": "10.179.215.31"
+      }
+    ],
+    "created": "",
+    "name": "Rog11",
+    "power_state": null
+  }
+}

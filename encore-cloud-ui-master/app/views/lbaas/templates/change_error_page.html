@@ -1,0 +1,22 @@
+<rx-modal-form
+    title="Change Error Page"
+    subtitle="{{loadBalancer.id}}"
+    submit-text="Save Error Page" cancel-text="Cancel">
+
+    <rx-form-item label="Type">
+    	<span class="field-select">
+          <select
+            id="errorType"
+           	ng-model="fields.selectedType"
+           	ng-options="p for p in fields.errorType"
+            ng-change="changeAction()"
+           	required>
+        </select>
+    </rx-form-item>
+
+	<rx-form-item label="Content">
+	    <textarea ng-disabled="!fields.isCustomSelected" ng-class="{fade:!fields.isCustomSelected}" ng-model="fields.errorPageContent" rows="10" cols="50">
+      </textarea>
+
+	</rx-form-item>
+</rx-modal-form>

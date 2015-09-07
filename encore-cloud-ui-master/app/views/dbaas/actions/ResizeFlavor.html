@@ -1,0 +1,20 @@
+<rx-modal-form title="Resize Flavor" subtitle="{{instance.name}}" submit-text="Resize Flavor" cancel-text="Cancel">
+    <rx-notification type="error" ng-if="!flavors">
+        Retrieval of server sizes failed.
+    </rx-notification>
+    <div ng-if="flavors">
+        <p>Current Flavor: {{instance.flavor.name}}</p>
+        <rx-form-item label="New Flavor">
+            <span class="field-select">
+                <select id="instanceFlavor" ng-model="fields.flavor" ng-required="true">
+                    <option
+                        ng-repeat="type in flavors"
+                        value="{{type.value}}"
+                        ng-disabled="type.disabled"
+                        ng-selected="{{type.value == model}}"
+                        >{{type.label}}</option>
+                </select>
+            </span>
+        </rx-form-item>
+    </div>
+</rx-modal-form>

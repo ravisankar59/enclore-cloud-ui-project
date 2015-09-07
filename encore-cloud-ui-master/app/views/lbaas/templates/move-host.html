@@ -1,0 +1,18 @@
+<rx-modal-form title="Move Host"
+    subtitle="{{loadBalancer.id}}"
+    submit-text="Move Host"
+    cancel-text="Cancel">
+    <div>
+        <rx-form-item label="Select Host">
+            <span class="field-select">
+                <select
+                    id="hostSelect"
+                    ng-model="fields.selectedHost"
+                    ng-options="p.name for p in fields.hosts"
+                    ng-change="changeAction()"
+                    required >
+                </select>
+            </span>
+        </rx-form-item>
+    </div>
+</rx-modal-form>

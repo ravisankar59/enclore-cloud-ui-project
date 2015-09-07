@@ -1,0 +1,12 @@
+{
+    "snapshot": {
+        "volume_id": "573511aa-0fa6-4af0-8d43-4d7eac874c5b",
+        "display_name": "Test Snapshot",
+        "created_on": "2015-02-19T15:09:24Z",
+        "status": "available",
+        "size": 75,
+        "display_description": "Testing",
+        "metadata": {},
+        "id": "1a50a111-b5f5-4ac3-b5c3-f99b63f3c77d"
+    }
+}

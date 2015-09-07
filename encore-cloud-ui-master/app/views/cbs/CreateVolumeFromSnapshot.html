@@ -1,0 +1,27 @@
+<rx-modal-form
+    title="Create Volume from Snapshot">
+    <rx-form-item label="Volume Name">
+        <input type="text" id="volume-name" ng-model="fields.display_name" required>
+    </rx-form-item>
+
+    <rx-form-item label="Description">
+        <input type="text" id="volume-description" ng-model="fields.display_description">
+    </rx-form-item>
+
+    <rx-form-item label="Size" description="100gb - 1024gb" suffix="gb">
+        <input type="number" id="volume-size" ng-model="fields.size" min="100" max="1024" required>
+    </rx-form-item>
+
+   <rx-form-item label="Type">
+        <span class="field-select">
+            <select id="volume-type" ng-model="fields.volume_type" ng-required="true">
+                <option
+                    ng-repeat="type in types"
+                    value="{{type.value}}"
+                    ng-disabled="type.disabled"
+                    ng-selected="{{type.value == model}}"
+                    >{{type.label}}</option>
+            </select>
+        </span>
+    </rx-form-item>
+</rx-modal-form>

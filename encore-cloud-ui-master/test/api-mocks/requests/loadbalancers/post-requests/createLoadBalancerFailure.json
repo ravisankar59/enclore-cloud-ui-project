@@ -1,0 +1,1 @@
+{"name":"fail","virtualIps":\[{"type":"PUBLIC"}\],"protocol":"DNS_TCP","port":53,"algorithm":"RANDOM","timeout":30}

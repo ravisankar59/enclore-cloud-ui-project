@@ -1,0 +1,81 @@
+<h2 class="title">Backup Schedule</h2>
+
+<table class="table-striped server-backup-schedule">
+    <thead>
+        <tr role="row">
+            <th class="column-title">Enabled</th>
+            <th class="column-title">Daily</th>
+            <th class="column-title">Weekly</th>
+            <th class="column-title">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-if="backupSchedule">
+            <td id="backup_enabled">{{backupSchedule.enabled}}</td>
+            <td>{{backupSchedule.daily}}</td>
+            <td>{{backupSchedule.weekly}}</td>
+            <td>
+                <ul>
+                    <li class="related-data-action-item">
+                        <rx-modal-action
+                            pre-hook="backupScheduleActions.preHooks.updateBackupSchedule(this)"
+                            post-hook="backupScheduleActions.postHooks.updateBackupSchedule(fields)"
+                            template-url="updateBackupSchedule.html">
+                            {{ backupSchedule.enabled && 'Update' || 'Enable' }}
+                        </rx-modal-action>
+                        <script type="text/ng-template" id="updateBackupSchedule.html">
+                            <rx-modal-form
+                                title="Update Backup Schedule">
+                                <rx-form-item label="Daily Backup Window (GMT)">
+                                    <span class="field-select">
+                                        <select id="daily" ng-model="fields.daily" ng-required="true">
+                                            <option
+                                                ng-repeat="type in hours"
+                                                value="{{type.value}}"
+                                                ng-disabled="type.disabled"
+                                                ng-selected="{{type.value === fields.daily}}"
+                                                >{{type.label}}</option>
+                                        </select>
+                                    </span>
+                                </rx-form-item>
+                                <rx-form-item label="Weekly Backup Window">
+                                    <span class="field-select">
+                                        <select id="weekly" ng-model="fields.weekly" ng-required="true">
+                                            <option
+                                                ng-repeat="type in days"
+                                                value="{{type.value}}"
+                                                ng-disabled="type.disabled"
+                                                ng-selected="{{type.value === fields.weekly}}"
+                                                >{{type.label}}</option>
+                                        </select>
+                                    </span>
+                                </rx-form-item>
+                            </rx-modal-form>
+                        </script>
+                    </li>
+                    <li ng-if="backupSchedule.enabled == true" class="related-data-action-item msg-warn">
+                        <rx-modal-action
+                            post-hook="backupScheduleActions.postHooks.deleteBackupSchedule(fields)"
+                            template-url="disableSchedule.html">
+                            Disable
+                        </rx-modal-action>
+                        <script type="text/ng-template" id="disableSchedule.html">
+                            <rx-modal-form
+                                title="Disable Backup Schedule"
+                                submit-text="Yes"
+                                cancel-text="No">
+                                <p class="form-description">
+                                    Are you sure you want to disable this server's backup schedule?</p>
+                            </rx-modal-form>
+                        </script>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr ng-if="!backupSchedule">
+            <td colspan="4">
+                No backups have been scheduled on this server.
+            </td>
+        </tr>
+    </tbody>
+</table>

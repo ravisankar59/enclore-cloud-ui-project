@@ -1,0 +1,42 @@
+{
+  "instance": {
+    "updated_on": "2014-01-08T21:17:24",
+    "links": [
+      {
+        "rel": "self",
+        "href": "https://api.staging.ord1.clouddb.rackspace.net/v1.0/323676/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace"
+      },
+      {
+        "rel": "bookmark",
+        "href": "https://api.staging.ord1.clouddb.rackspace.net/instances/432e170c-7cbd-4144-8da0-6d0a4c705ace"
+      }
+    ],
+    "volume": {
+      "used": 0.17594099999999999,
+      "size": 15
+    },
+    "created_on": "2014-01-08T21:17:18",
+    "name": "AlphaInstance",
+    "id": "432e170c-7cbd-4144-8da0-6d0a4c705ace",
+    "flavor": {
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.staging.ord1.clouddb.rackspace.net/v1.0/323676/flavors/1"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://api.staging.ord1.clouddb.rackspace.net/flavors/1"
+        }
+      ],
+      "ram": null,
+      "disk_size": null,
+      "name": "512MB Instance",
+      "id": "1",
+      "vcpus": null
+    },
+    "hostname": "df71988f9e44f90532e70006c2d76d2491ddef5d.staging.rackspaceclouddb.com",
+    "region": "STAGING",
+    "status": "ACTIVE"
+  }
+}

@@ -1,0 +1,65 @@
+<rx-modal-form
+    title="Enable Health Monitoring"
+    subtitle="{{loadBalancer.id}}"
+    submit-text="Save Monitoring Settings"
+    cancel-text="Cancel">
+    <rx-form-item label="Monitor Type">
+        <span class="field-select">
+            <select id="monitorType" ng-model="fields.type" ng-required="true">
+                <option
+                    ng-repeat="type in loadBalancer.validMonitors"
+                    value="{{type}}"
+                    ng-selected="{{type === fields.type}}"
+                    >{{type}}</option>
+            </select>
+        </span>
+    </rx-form-item>
+    <rx-form-item label="Delay" suffix="seconds">
+        <input 
+            type="text" 
+            id="delay" 
+            ng-model="fields.delay" 
+            placeholder="10" 
+            required="true" />
+    </rx-form-item>
+    <rx-form-item label="Timeout" suffix="seconds">
+        <input 
+            type="text" 
+            id="timeout" 
+            ng-model="fields.timeout" 
+            placeholder="5" 
+            required="true" />
+    </rx-form-item>
+    <rx-form-item label="Attempts">
+        <input 
+            type="text" 
+            id="attempts" 
+            ng-model="fields.attemptsBeforeDeactivation" 
+            placeholder="2" 
+            required="true" />
+    </rx-form-item>
+    <rx-form-item label="HTTP Path" ng-if="fields.type == 'HTTP' || fields.type == 'HTTPS'">
+        <input 
+            type="text" 
+            id="httpPath" 
+            ng-model="fields.path" 
+            placeholder="/" 
+            required="true" />
+    </rx-form-item>
+    <rx-form-item label="Status Regex" ng-if="fields.type == 'HTTP' || fields.type == 'HTTPS'">
+        <input 
+            type="text" 
+            id="statusRegex" 
+            ng-model="fields.statusRegex" 
+            placeholder="^[234][0-9][0-9]$" 
+            required="true" />
+    </rx-form-item>
+    <rx-form-item label="Body Regex" ng-if="fields.type == 'HTTP' || fields.type == 'HTTPS'">
+        <input 
+            type="text" 
+            id="bodyRegex" 
+            ng-model="fields.bodyRegex" 
+            placeholder="Optional" />
+    </rx-form-item>
+    <p ng-if="fields.attemptsBeforeDeactivation">Servers not responding after {{fields.attemptsBeforeDeactivation}} attempts will be disabled from serving traffic.</p>
+</rx-modal-form>

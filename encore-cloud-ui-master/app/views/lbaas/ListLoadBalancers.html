@@ -1,0 +1,232 @@
+<rx-page title="'Load Balancers'" subtitle="loadBalancers.length + ' Load Balancers found for ' + user" status="{{PRODUCT_VERSIONS['Load Balancers']}}" account-info-banner="true" account-number="{{accountNumber}}">
+
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <a href="/cloud/{{accountNumber}}/{{user}}/loadbalancers/create" class="msg-action create-instance">
+                <i class="fa fa-fw fa-plus fa-lg"></i>
+                Create New Load Balancer
+                </a>
+            </li>
+            <li class="actions-item">
+                <rx-reach-link
+                    class="btn-link msg-info"
+                    reach-target="/load_balancers">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Load Balancers
+                </rx-reach-link>
+            </li>
+        </ul>
+    </div>
+
+    <div class="table-filters">
+      <table rx-floating-header class="table-striped loadbalancers-list">
+          <thead>
+              <tr>
+                <th colspan="10">
+                    <rx-search-box rx-placeholder="'Filter by any...'" ng-model="filter.keyword"></rx-search-box>
+                    <rx-select-filter filter="statuses"></rx-select-filter>
+                </th>
+              </tr>
+              <tr>
+                  <th class="column-title" rx-status-header>
+                        <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="status"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="name"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Name (ID)
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="virtualIps.ip_address"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          IP Address
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="protocol"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Protocol (Port) 
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="nodeCount"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Node Count
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="cluster.name"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Cluster
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="region"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Region
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="created.time"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Created Date
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title">
+                      <rx-sortable-column
+                              sort-method="sortCol(property)"
+                              sort-property="updated.time"
+                              predicate="sort.predicate"
+                              reverse="sort.reverse">
+                          Updated Date
+                      </rx-sortable-column>
+                  </th>
+                  <th class="column-title actions"></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="loadBalancer in loadBalancers | Apply:statuses | LoadBalancersFilter:filter | orderBy: sort.predicate:sort.reverse | Paginate:pager">
+                  <td rx-status-column status="{{ loadBalancer.status }}" api="loadBalancers" tooltip-content="{{ loadBalancer.status | uppercase }}">
+                  </td>
+                  <td>
+                      <a href="{{loadBalancer.url}}">{{loadBalancer.name}}</a><br>
+                      <span class="truncate subdued">{{loadBalancer.id}}</span>
+                  </td>
+                  <td>
+                    <div id= "virtualIpData" tooltip="{{ ipAddressTooltip(loadBalancer.virtualIps) }}">
+                      <div ng-repeat="ip in loadBalancer.virtualIps" class="iptype-{{ip.ip_type}} version-{{ip.version}}">
+                          <span class="truncate">{{ip.ip_address}}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{{loadBalancer.protocol}} ({{loadBalancer.port}})</td>
+                  <td>{{loadBalancer.nodeCount}}</td>
+                  <td><span class="truncate">{{loadBalancer.cluster.name}}</span></td>
+                  <td>{{loadBalancer.region}}</td>
+                  <td>{{loadBalancer.created.time | date:'short'}}</td>
+                  <td>{{loadBalancer.updated.time | date:'short'}}</td>
+                  <td>
+                      <rx-action-menu ng-show ="loadBalancer.status == 'ACTIVE'" ng-click="fetchLoadBalancerActions(loadBalancer)">
+                          <ul class="actions-area">
+                              <li ng-if="loadBalancer.status == 'ACTIVE' && !logConnections">
+                                  <rx-modal-action
+                                      post-hook="toggleLogConnection(loadBalancer)"
+                                      template-url="views/lbaas/templates/enable-connection-logging.html"
+                                      ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-book fa-lg"></i>Enable Logging<span rx-spinner toggle="fetchSpinner"></span>
+                                  </rx-modal-action>
+                              </li>
+                              <li ng-if="logConnections">
+                                  <rx-modal-action
+                                      post-hook="toggleLogConnection(loadBalancer)"
+                                      template-url="views/lbaas/templates/disable-connection-logging.html"
+                                      ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-book fa-lg"></i>Disable Logging<span rx-spinner toggle="fetchSpinner"></span>
+                              </li>
+                              <li ng-if="!contentCaching && loadBalancer.protocol == 'HTTP'">
+                                  <rx-modal-action
+                                      post-hook="toggleContentCaching(loadBalancer)"
+                                      template-url="views/lbaas/templates/enable-content-caching.html"
+                                      ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-archive fa-lg"></i>Enable Content Caching<span rx-spinner toggle="fetchSpinner"></span>
+                                  </rx-modal-action>
+                              </li>
+                              <li ng-if="contentCaching && loadBalancer.protocol == 'HTTP'">
+                                  <rx-modal-action
+                                      post-hook="toggleContentCaching(loadBalancer)"
+                                      template-url="views/lbaas/templates/disable-content-caching.html"
+                                      ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-archive fa-lg"></i>Disable Content Caching<span rx-spinner toggle="fetchSpinner"></span>
+                              </li>
+                              <li ng-if="connectionThrottle.maxConnections">
+                                  <rx-modal-action
+                                       pre-hook="updateConnectionThrottle.preHook(this, loadBalancer)"
+                                       post-hook="disableConnectionThrottle.postHook(loadBalancer, fields)"
+                                       template-url="views/lbaas/templates/disable-connection-throttle.html"
+                                       ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-tachometer fa-lg"></i>Disable Connection Throttling<span rx-spinner toggle="fetchSpinner"></span>
+                                  </rx-modal-action>
+                              </li>
+                              <li ng-if="!connectionThrottle.maxConnections">
+                                  <rx-modal-action
+                                       pre-hook="updateConnectionThrottle.preHook(this, loadBalancer)"
+                                       post-hook="updateConnectionThrottle.postHook(loadBalancer, fields)"
+                                       template-url="views/lbaas/templates/update-connection-throttle.html"
+                                       ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-tachometer fa-lg"></i>Enable Connection Throttling<span rx-spinner toggle="fetchSpinner"></span>
+                                  </rx-modal-action>
+                              </li>
+                              <li ng-if="!healthMonitor.type">
+                                  <rx-modal-action
+                                       pre-hook="updateHealthMonitor.preHook(this, loadBalancer)"
+                                       post-hook="updateHealthMonitor.postHook(loadBalancer, fields)"
+                                       template-url="views/lbaas/templates/enable-health-monitoring.html"
+                                       ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-stethoscope fa-lg"></i>Enable Health Monitoring<span rx-spinner toggle="fetchSpinner"></span>
+                                  </rx-modal-action>
+                              </li>
+                              <li ng-if="healthMonitor.type">
+                                  <rx-modal-action
+                                       pre-hook="disableHealthMonitor.preHook(this, loadBalancer)"
+                                       post-hook="disableHealthMonitor.postHook(loadBalancer)"
+                                       template-url="views/lbaas/templates/disable-health-monitoring.html"
+                                       ng-class="fetchSpinner ? 'link-disabled' : 'msg-info'">
+                                      <i class="fa fa-stethoscope fa-lg"></i>Disable Health Monitoring<span rx-spinner toggle="fetchSpinner"></span>
+                                  </rx-modal-action>
+                              </li>
+                              <li class="msg-warn">
+                                  <rx-modal-action
+                                      post-hook="deleteLoadBalancer(loadBalancer)"
+                                      template-url="views/lbaas/templates/delete-load-balancer.html"
+                                      class="msg-warn">
+                                      <i class="delete-loadbalancer-action fa fa-times fa-lg"></i>Delete Load Balancer
+                                  </rx-modal-action>
+                              </li>
+                          </ul>
+                      </rx-action-menu>
+                  </td>
+              </tr>
+              <tr ng-if="!loadBalancers.length && loaded">
+                  <td colspan="9">
+                      No Load Balancers have been created.
+                  </td>
+              </tr>
+          </tbody>
+          <tfoot ng-show="true">
+              <tr class="paginate-area">
+                  <td colspan="9" style="text-align:center;">
+                      <rx-paginate page-tracking="pager"></rx-paginate>
+                  </td>
+              </tr>
+          </tfoot>
+      </table>
+    </div>
+</rx-page>

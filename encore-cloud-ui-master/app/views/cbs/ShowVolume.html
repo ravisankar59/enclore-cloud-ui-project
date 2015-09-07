@@ -1,0 +1,202 @@
+<rx-page title="'Volume: ' + volume.display_name" subtitle="'ID: ' + volume.id" account-info-banner="true" account-number="{{accountNumber}}">
+    <div ng-if="volume">
+        <div class="page-actions">
+            <ul class="actions-area">
+                <li class="actions-item">
+                    <rx-modal-action
+                        pre-hook="preCreateSnapshot(this)"
+                        post-hook="createSnapshot(fields, volume.id, region).then(createdSnapshot)"
+                        template-url="views/cbs/CreateSnapshot.html"
+                        classes="msg-action">
+                        <i class="fa fa-fw fa-plus fa-lg"></i> Create Snapshot
+                    </rx-modal-action>
+                </li>
+                <li class="actions-item">
+                    <rx-reach-link
+                        class="btn-link msg-info"
+                        service-type="volumes"
+                        region="{{ region }}"
+                        storage-id="{{ volume.id }}"
+                        reach-target="/servers">
+                        <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach
+                    </rx-reach-link>
+                </li>
+                <li class="actions-item" ng-if="canAttach()">
+                    <rx-modal-action
+                         pre-hook="attachVolume.preHook(this)"
+                         post-hook="attachVolume.postHook(fields)"
+                         template-url="views/cbs/AttachVolume.html"
+                         classes="msg-info">
+                        <i class="fa fa-fw fa-paperclip fa-lg"></i> Attach Volume
+                    </rx-modal-action>
+                </li>
+                <span ng-if='canDetach()'>
+                    <li class="actions-item">
+                        <rx-cloud-control-link 
+                            class="btn-link msg-info"
+                            service-type="volumes"
+                            region="{{region}}"
+                            volume-id="{{volumeId}}">
+                            <i class="fa fa-fw fa-external-link fa-lg"></i>
+                            Force Detach Volume
+                        </rx-cloud-control-link>
+                    </li>
+                    <li class="actions-item">
+                        <rx-modal-action
+                            pre-hook="getAttachedServer(attachment.server_id, this)"
+                            post-hook="detachVolume(attachment.server_id, attachment.id)"
+                            template-url="views/cbs/DetachVolume.html"
+                            classes="msg-warn">
+                            <i class="fa fa-fw fa-times fa-lg"></i> Detach Volume
+                        </rx-modal-action>
+                    </li>
+                </span>
+                <li class="actions-item" ng-if="!attachment.server_id">
+                    <rx-modal-action
+                        post-hook="deleteVolume()"
+                        template-url="views/cbs/DeleteVolume.html"
+                        classes="msg-warn">
+                        <i class="fa fa-fw fa-times fa-lg"></i> Delete Volume
+                    </rx-modal-action>
+                </li>
+            </ul>
+        </div>
+
+        <rx-metadata class="metadata volume-details metaData-top">
+            <section>
+                <rx-meta label='Description'>
+                    {{volume.display_description ? volume.display_description : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Attached To'>
+                    <span ng-if="attachment.server_name && attachment.server_id">"{{attachment.server_name}}" - </span>
+                    {{canDetach() && attachment.server_name && attachment.server_id ? attachment.server_id : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Attachment Location'>
+                    {{attachment.device ? attachment.device : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Status'>
+                   {{volume.status ? (volume.status| rxCapitalize) : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Size'>
+                    {{volume.size ? (volume.size | rxDiskSize) : "N/A"}}
+                </rx-meta>
+            </section>
+            <section>
+                <rx-meta label='Type'>
+                    {{volume.volume_type ? volume.volume_type : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Availablity Zone'>
+                    {{volume.availability_zone ? (volume.availability_zone | rxCapitalize): "N/A"}}
+                </rx-meta>
+                <rx-meta label='Created from Snapshot'>
+                    {{volume.snapshot_id ? volume.snapshot_id : "N/A"}}
+                </rx-meta>
+                <rx-meta label='Age'>
+                    {{volume.created_on ? (volume.created_on | rxAge): "N/A"}}
+                </rx-meta>
+                <rx-meta label='Created'>
+                    {{volume.created_on ? (volume.created_on | date:'MMM d, yyyy @ HH:mm (UTCZ)') : "N/A"}}
+                </rx-meta>
+            </section>
+        </rx-metadata>
+
+        <h2 class="title">Snapshots</h2>
+
+        <table class="table-striped snapshots-list">
+            <thead>
+                <tr role="row">
+                    <th class="column-title status" rx-status-header>
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="status"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="display_name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Name/ID
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="display_description"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Description
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="size"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Size
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="created_on"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Created/Age
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="snapshot in filteredSnapshots | orderBy: sort.predicate:sort.reverse">
+                    <td rx-status-column status="{{ snapshot.status }}" api="{{ statusMappingsAPI }}" tooltip-content="{{ snapshot.status | uppercase }}"></td>
+                    <td>
+                      {{snapshot.display_name ? snapshot.display_name : "N/A"}}<br />
+                      <span class="subdued" ng-if="snapshot.id">{{snapshot.id}}</span>
+                    </td>
+
+                    <td>{{snapshot.display_description ? snapshot.display_description : "N/A"}}</td>
+                    <td>{{snapshot.size ? (snapshot.size | rxDiskSize) : "N/A"}}</td>
+                    <td ng-if="!snapshot.created_on">N/A</td>
+                    <td ng-if="snapshot.created_on">
+                        {{snapshot.created_on | date:'MMM d, yyyy @ HH:mm (UTCZ)'}}<br />
+                        <span class="subdued">{{snapshot.created_on | rxAge}}</span>
+                    </td>
+                    <td>
+                        <rx-action-menu>
+                            <ul class="actions-area">
+                                <li>
+                                    <rx-modal-action
+                                        post-hook="createVolume(fields, snapshot.id, region).then(createdVolume)"
+                                        template-url="views/cbs/CreateVolumeFromSnapshot.html"
+                                        classes="msg-action">
+                                        <i class="fa fa-plus fa-lg"></i> Create Volume
+                                    </rx-modal-action>
+                                </li>
+                                <li>
+                                    <rx-modal-action
+                                        post-hook="deleteSnapshot(snapshot.id)"
+                                        template-url="views/cbs/DeleteSnapshot.html"
+                                        classes="msg-warn">
+                                        <i class="fa fa-times fa-lg"></i> Delete snapshot
+                                    </rx-modal-action>
+                                </li>
+                            </ul>
+                        </rx-action-menu>
+                    </td>
+                </tr>
+                <tr ng-if="!filteredSnapshots.length">
+                    <td colspan="6">
+                        No Snapshots found for this Volume.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</rx-page>

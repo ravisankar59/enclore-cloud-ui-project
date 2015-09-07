@@ -1,0 +1,41 @@
+{
+    "instance": {
+        "created_on": "2014-04-22T18:43:05",
+        "volume": {
+            "size": 1
+        },
+        "links": [
+            {
+                "rel": "self",
+                "href": "https://api.staging.ord1.clouddb.rackspace.net/v1.0/323676/instances/554cdd04-9b30-4555-a5e7-07844e9549d9"
+            },
+            {
+                "rel": "bookmark",
+                "href": "https://api.staging.ord1.clouddb.rackspace.net/instances/554cdd04-9b30-4555-a5e7-07844e9549d9"
+            }
+        ],
+        "updated_on": "2014-04-22T18:43:05",
+        "region": "STAGING",
+        "status": "BUILD",
+        "name": "testInstance",
+        "flavor": {
+            "disk_size": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://api.staging.ord1.clouddb.rackspace.net/v1.0/323676/flavors/1"
+                },
+                {
+                    "rel": "bookmark",
+                    "href": "https://api.staging.ord1.clouddb.rackspace.net/flavors/1"
+                }
+            ],
+            "ram": null,
+            "vcpus": null,
+            "id": "1",
+            "name": "512MB Instance"
+        },
+        "hostname": "8b45142e0dd2fba089490a18fb4e908c795e990d.staging.rackspaceclouddb.com",
+        "id": "554cdd04-9b30-4555-a5e7-07844e9549d9"
+    }
+}

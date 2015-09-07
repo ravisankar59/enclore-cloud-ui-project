@@ -1,0 +1,45 @@
+# NextGen Image List
+-   request:
+        url: ^/api/users/hub_cap/glance/ORD$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/images/get/ORD.json
+
+# NextGen Image List
+-   request:
+        url: ^/api/users/hub_cap/glance/DFW$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/images/get/DFW.json
+
+-   request:
+        url: ^/api/users/hub_cap/glance/ORD/547a46bd-d913-4bf7-ac35-2f24f25f1b7a
+        method: DELETE
+    response:
+        status: 200
+        file: test/api-mocks/responses/images/get/DFW.json
+
+# NextGen Image details for Empty Labels
+-   request:
+        url: ^/api/users/hub_cap/glance/ORD/afb5ee19-4e6e-42c3-841c-9663e99b83ba
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/images/get/EmptyDetails.json
+
+# NextGen Image details
+-   request:
+        url: ^/api/users/hub_cap/glance/ORD/547a46bd-d913-4bf7-ac35-2f24f25f1b7a
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/images/get/547a46bd.json
+
+# Delete NextGen Image
+-   request:
+        url: ^/api/users/hub_cap/glance/ORD/32104f95-a005-4165-b147-6ed9a3702642
+        method: DELETE
+    response:
+        status: 200

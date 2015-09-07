@@ -1,0 +1,17 @@
+{
+  "volume": {
+    "snapshot_id": null,
+    "volume_type": "SATA",
+    "availability_zone": "nova",
+    "display_name": "vol-TEST-SnapshotDeleteFails",
+    "attachments": [],
+    "created_on": "2013-11-06T19:05:26.000000",
+    "source_volid": null,
+    "metadata": {},
+    "bootable": "false",
+    "display_description": "",
+    "size": 100,
+    "status": "available",
+    "id": "2ec081c3-7ab3-4b13-894e-fe4cb3110819"
+  }
+}

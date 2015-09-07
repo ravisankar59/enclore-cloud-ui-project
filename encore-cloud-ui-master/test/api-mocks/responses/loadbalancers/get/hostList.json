@@ -1,0 +1,58 @@
+{
+  "hosts": [
+    {
+      "ipv4_public": "",
+      "traffic_manager_name": "ztm-n01.staging1.lbaas.rackspace.net",
+      "status": "FAILOVER",
+      "id": 1,
+      "management_rest_interface": "https://10.12.99.19:9070/api/tm/2.0/config/active/",
+      "soap_endpoint_active": true,
+      "management_ip": "10.12.99.19",
+      "management_soap_interface": "https://10.12.99.19:9090/soap",
+      "ipv4_servicenet": "10.12.99.19",
+      "max_concurrent_connections": 150000,
+      "cluster_id": 1,
+      "name": "ztm-n01.staging1.lbaas.rackspace.net",
+      "zone": "A",
+      "rest_endpoint_active": true,
+      "core_device_id": "952627-302807",
+      "ipv6_public": "FFFF:0000:0000:0000:0000:0000:0000:FFFF"
+    },
+    {
+      "ipv4_public": "",
+      "traffic_manager_name": "ztm-n02.staging1.lbaas.rackspace.net",
+      "status": "ACTIVE_TARGET",
+      "id": 2,
+      "management_rest_interface": "https://10.12.99.20:9070/api/tm/2.0/config/active/",
+      "soap_endpoint_active": true,
+      "management_ip": "10.12.99.20",
+      "management_soap_interface": "https://10.12.99.20:9090/soap",
+      "ipv4_servicenet": "10.12.99.20",
+      "max_concurrent_connections": 150000,
+      "cluster_id": 1,
+      "name": "ztm-n02.staging1.lbaas.rackspace.net",
+      "zone": "A",
+      "rest_endpoint_active": true,
+      "core_device_id": "952627-305425",
+      "ipv6_public": "FFFF:0000:0000:0000:0000:0000:0000:FFFF"
+    },
+    {
+      "ipv4_public": "",
+      "traffic_manager_name": "ztm-n02.staging1.lbaas.rackspace.net",
+      "status": "ACTIVE_TARGET",
+      "id": 3,
+      "management_rest_interface": "https://10.12.99.20:9070/api/tm/2.0/config/active/",
+      "soap_endpoint_active": true,
+      "management_ip": "10.12.99.20",
+      "management_soap_interface": "https://10.12.99.20:9090/soap",
+      "ipv4_servicenet": "10.12.99.20",
+      "max_concurrent_connections": 150000,
+      "cluster_id": 1,
+      "name": "ztm-n02.staging2.lbaas.rackspace.net",
+      "zone": "A",
+      "rest_endpoint_active": true,
+      "core_device_id": "952627-305425",
+      "ipv6_public": "FFFF:0000:0000:0000:0000:0000:0000:FFFF"
+    }
+  ]
+}

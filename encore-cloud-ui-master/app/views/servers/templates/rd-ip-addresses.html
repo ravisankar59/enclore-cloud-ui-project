@@ -1,0 +1,51 @@
+<div class="instance-tables flex-container">
+    <div class="flex-item flex-addresses">
+        <h2 class="pull-left title">IP Addresses</h2>
+        <ul class="actions-area pull-right add-public-ip" ng-if="server.gen == 'Next'">
+            <li class="actions-item">
+                <rx-modal-action
+                    class="msg-action"
+                    controller="rxIpAddressesCtrl"
+                    pre-hook="loadNetworks(this)"
+                    template-url="views/servers/templates/add-address.html">
+                    <i class="addPublicAddressAction fa fa-fw fa-plus fa-lg"></i> Add Public IPv4 Address
+                </rx-modal-action>
+            </li>
+        </ul>
+
+        <table class="table-striped server-ips">
+            <thead>
+                <tr role="row">
+                    <th class="column-title">Type</th>
+                    <th class="column-title">Address</th>
+                    <th class="column-title">Network</th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="address in server.addresses">
+                    <td ng-switch="address.isRackConnect">
+                        <span ng-switch-when="true">{{address.label}}</span>
+                        <span ng-switch-default>IPv{{address.version}}</span>
+                    </td>
+                    <td>{{address.ip_address}}</td>
+                    <td>
+                        {{address.ip_type | rxCapitalize }}
+                    </td>
+                    <td>
+                        <rx-modal-action
+                            controller="rxIpAddressesCtrl"
+                            template-url="views/servers/templates/remove-address.html">
+                            <i class="removeAddressAction fa fa-fw fa-times fa-lg"></i>
+                        </rx-modal-action>
+                    </td>
+                </tr>
+                <tr ng-if="!server.addresses.length">
+                    <td colspan="3">
+                        No IP Addresses found.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

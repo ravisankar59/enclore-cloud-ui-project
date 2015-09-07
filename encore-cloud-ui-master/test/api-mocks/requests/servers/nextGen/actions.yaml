@@ -1,0 +1,127 @@
+# Resize Server
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/resize$
+        method: POST
+        post: '{"flavor":"3"}'
+    response:
+        status: 200
+
+# Rebuild Server
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/rebuild$
+        method: POST
+        post: '{"image":"c6e2fed0-75bf-420d-a744-7cfc75a1889e"}'
+    response:
+        status: 200
+
+# Change Admin Password
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/change_admin_pass$
+        method: POST
+        post: '{"password":"test123"}'
+    response:
+        status: 200
+
+# Create Image
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/create_image$
+        method: POST
+        post: '{"name":"test"}'
+    response:
+        status: 200
+
+# Create Image
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/create_image$
+        method: POST
+        post: '{"name":"bad wolf"}'
+    response:
+        status: 404
+        file: test/api-mocks/responses/servers/nextGenImageFail.json
+
+# Reboot Server
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/reboot$
+        method: POST
+        post: '{"reboot_type":"hard"}|{"reboot_type":"soft"}'
+    response:
+        status: 200
+        latency: 500
+
+# Rescue Server
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/rescue$
+        method: POST
+    response:
+        status: 200
+
+# Fallback 400 error for trying any action w/o proper details
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/.*$
+        method: POST
+    response:
+        status: 400
+
+# Server Console URL
+-   request:
+        url: ^/api/users/hub_cap/servers/ORD/2999ca73-f2d7-4275-ba45-84753332903b/action/console$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servers/firstGen/servers/get/consoleUrl.json
+
+# Migrate Server
+-   request:
+        url: ^/api/users/hub_cap/nova/preprod-ord-rackeradminapi/2999ca73-f2d7-4275-ba45-84753332903b/migrate$
+        method: POST
+        post: '{"id":"2999ca73-f2d7-4275-ba45-84753332903b","user":"hub_cap","region":"preprod-ord-rackeradminapi"}'
+    response:
+        status: 200
+
+# Suspend Server
+-   request:
+        url: ^/api/users/hub_cap/nova/preprod-ord-rackeradminapi/2999ca73-f2d7-4275-ba45-84753332903b/suspend$
+        method: POST
+        post: '{"id":"2999ca73-f2d7-4275-ba45-84753332903b","user":"hub_cap","region":"preprod-ord-rackeradminapi"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/nova/preprod-ord-rackeradminapi/2999ca73-f2d7-4275-ba45-84753332903b/suspend$
+        method: POST
+        post: '{"user":"hub_cap","id":"2999ca73-f2d7-4275-ba45-84753332903b","region":"preprod-ord-rackeradminapi"}'
+    response:
+        status: 200
+
+# Unsuspend Server
+-   request:
+        url: ^/api/users/hub_cap/nova/preprod-ord-rackeradminapi/ee56fac7-636d-43fb-8853-7e1a73112c10/unsuspend$
+        method: POST
+        post: '{"id":"ee56fac7-636d-43fb-8853-7e1a73112c10","user":"hub_cap","region":"preprod-ord-rackeradminapi"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/nova/preprod-ord-rackeradminapi/e2fedc60-5b7f-204d-74a4-c75a17cf889e/unsuspend$
+        method: POST
+        post: '{"user":"hub_cap","id":"e2fedc60-5b7f-204d-74a4-c75a17cf889e","region":"preprod-ord-rackeradminapi"}'
+    response:
+        status: 200
+
+# Add public IP address
+-   request:
+        url: ^/api/users/hub_cap/nova/preprod-ord-rackeradminapi/2999ca73-f2d7-4275-ba45-84753332903b/add-ip$
+        method: POST
+        post: '{"networkId":"00000000-0000-0000-0000-000000000000"}'
+    response:
+        status: 200
+
+# Remove IP address
+-   request:
+        url: ^/api/users/hub_cap/nova/preprod-ord-rackeradminapi/2999ca73-f2d7-4275-ba45-84753332903b/remove-ip$
+        method: POST
+        post: '{"address":"10.23.192.133"}'
+    response:
+        status: 200

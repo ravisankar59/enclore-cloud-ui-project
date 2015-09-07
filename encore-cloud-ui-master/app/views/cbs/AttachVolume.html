@@ -1,0 +1,33 @@
+<rx-modal-form
+    title="Attach Volume to Server">
+    <rx-notification type="error" ng-if="!servers">
+        Retrieval of servers failed.
+    </rx-notification>
+    <div ng-if="servers">
+        <p class="description">You can only attach active servers</p>
+        <rx-form-item label="Server">
+            <span class="field-select">
+                <select id="serverId" ng-model="fields.server" ng-required="true">
+                    <option
+                        ng-repeat="type in servers"
+                        value="{{type.value}}"
+                        ng-disabled="type.disabled"
+                        ng-selected="{{type.value == model}}"
+                        >{{type.label}}</option>
+                </select>
+            </span>
+        </rx-form-item>
+        <rx-form-item label="Device Path">
+            <span class="field-select">
+                <select id="devicePath" ng-model="fields.device">
+                    <option
+                        ng-repeat="type in paths"
+                        value="{{type.value}}"
+                        ng-disabled="type.disabled"
+                        ng-selected="{{type.value == model}}"
+                        >{{type.label}}</option>
+                </select>
+            </span>
+        </rx-form-item>
+    </div>
+</rx-modal-form>

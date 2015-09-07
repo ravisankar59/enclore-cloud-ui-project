@@ -1,0 +1,17 @@
+-   request:
+        url: ^/api/servermill/mc-passwords/2999ca73-f2d7-4275-ba45-84753332903b$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servermill/get/managedPasswords.json
+
+-   request:
+        url: ^/api/servermill/mc-passwords/110148309$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/servermill/get/managedPasswords.json

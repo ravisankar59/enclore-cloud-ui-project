@@ -1,0 +1,43 @@
+# Get All CDN Service resources
+-   request:
+      url: ^/api/users/hub_cap/cdn/323676$
+      method: GET
+    response:
+      status: 200
+      headers:
+        content-type: application/json
+      file: test/api-mocks/responses/cdn/services/get/services.json
+-   request:
+      url: ^/api/users/lost_cap/cdn/323676$
+      method: GET
+    response:
+      status: 404
+      headers:
+        content-type: application/json
+      file: test/api-mocks/responses/cdn/services/get/services_404.json
+-   request:
+      url: ^/api/users/bad_cap/cdn/323676$
+      method: GET
+    response:
+      status: 403
+      headers:
+        content-type: application/json
+      file: test/api-mocks/responses/cdn/services/get/services_403.json
+
+# Get single CDN Service resource
+-   request:
+      url: ^/api/users/hub_cap/cdn/323676/1a8e397f-a4cf-4071-b799-d5cb9301eeb3$
+      method: GET
+    response:
+      status: 200
+      headers:
+        content-type: application/json
+      file: test/api-mocks/responses/cdn/services/get/1a8e397f-a4cf-4071-b799-d5cb9301eeb3.json
+-   request:
+      url: ^/api/users/hub_cap/cdn/323676/85c8fb01-8c64-431a-abec-44cf83c38a66$
+      method: GET
+    response:
+      status: 200
+      headers:
+        content-type: application/json
+      file: test/api-mocks/responses/cdn/services/get/85c8fb01-8c64-431a-abec-44cf83c38a66.json

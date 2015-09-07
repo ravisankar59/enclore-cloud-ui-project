@@ -1,0 +1,25 @@
+{
+  "volume": {
+    "snapshot_id": null,
+    "status": null,
+    "size": null,
+    "attachments": [
+        {
+          "server_id": null,
+          "device": null,
+          "volume_id": null,
+          "id": null,
+          "server_name": null
+        }
+    ],
+    "volume_type": null,
+    "availability_zone": null,
+    "created_on": null,
+    "source_volid": null,
+    "bootable": "false",
+    "id": "10225e08-a4bd-49fb-9237-ffffffffffff",
+    "display_description": null,
+    "display_name": "vol-TEST-UPDATE for null",
+    "metadata": {}
+  }
+}

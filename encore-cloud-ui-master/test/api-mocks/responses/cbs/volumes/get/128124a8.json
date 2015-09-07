@@ -1,0 +1,17 @@
+{
+  "volume": {
+    "snapshot_id": null,
+    "status": "available",
+    "size": 100,
+    "attachments": [],
+    "volume_type": "SATA",
+    "availability_zone": "nova",
+    "created_on": "2013-11-04T19:54:04.000000",
+    "source_volid": null,
+    "bootable": "false",
+    "id": "128124a8-e2e0-4107-b56b-8b7572af2c58",
+    "display_description": "",
+    "display_name": "vol-TEST-UPDATE",
+    "metadata": {}
+  }
+}

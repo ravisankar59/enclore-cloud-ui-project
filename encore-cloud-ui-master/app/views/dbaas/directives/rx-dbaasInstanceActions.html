@@ -1,0 +1,57 @@
+<ul class="actions-area">
+    <li ng-if="displayAction('createDatabase')" class="msg-action">
+        <rx-modal-action
+            pre-hook="createDatabase.preHook(this)"
+            post-hook="createDatabase.postHook(fields)"
+            template-url="views/dbaas/actions/CreateDatabase.html">
+            <i class="createDatabaseAction fa fa-plus fa-lg"></i> Create Database</a>
+        </rx-modal-action>
+    </li>
+    <li ng-if="displayAction('createUser')" class="msg-action">
+        <rx-modal-action
+            pre-hook="createUser.preHook(this)"
+            post-hook="createUser.postHook(fields)"
+            template-url="views/dbaas/actions/CreateUser.html">
+            <i class="createUserAction fa fa-plus fa-lg"></i> Create User</a>
+        </rx-modal-action>
+    </li>
+    <li ng-if="displayAction('goToReach')" class="actions-item">
+        <rx-reach-link
+            class="btn-link msg-info"
+            service-type="rax:database"
+            region="{{instance.region}}"
+            database-id="{{instance.id}}"
+            reach-target="/database">
+            <i class="fa fa-external-link fa-lg"></i> Go to Reach Databases
+        </rx-reach-link>
+    </li>
+    <li ng-if="displayAction('restartInstance')" class="msg-info">
+        <rx-modal-action
+            post-hook="restartInstance.postHook()"
+            template-url="views/dbaas/actions/RestartInstance.html">
+            <i class="restartInstanceAction fa fa-repeat fa-lg"></i> Restart Instance
+        </rx-modal-action>
+    </li>
+    <li ng-if="displayAction('changeFlavor')" class="msg-info">
+        <rx-modal-action
+            pre-hook="resizeFlavor.preHook(this)"
+            post-hook="resizeFlavor.postHook(fields)"
+            template-url="views/dbaas/actions/ResizeFlavor.html">
+            <i class="resizeFlavorAction fa fa-arrows-alt fa-lg"></i> Resize Flavor
+        </rx-modal-action>
+    </li>
+    <li ng-if="displayAction('resizeVolume')" class="msg-info">
+        <rx-modal-action
+            post-hook="resizeVolume.postHook(fields)"
+            template-url="views/dbaas/actions/ResizeVolume.html">
+            <i class="resizeVolumeAction fa fa-arrows-alt fa-lg"></i> Resize Volume</a>
+        </rx-modal-action>
+    </li>
+    <li ng-if="displayAction('deleteInstance')" class="msg-warn">
+        <rx-modal-action
+            post-hook="deleteInstance.postHook()"
+            template-url="views/dbaas/actions/DeleteInstance.html">
+            <i class="deleteInstanceAction fa fa-times fa-lg"></i> Delete Instance</a>
+        </rx-modal-action>
+    </li>
+</ul>

@@ -1,0 +1,111 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{title}}</h3>
+    <h4 class="modal-subtitle" ng-if="subtitle">{{subtitle}}</h4>
+</div>
+
+<form ng-submit="submit()" ng-hide="isLoading" name="modalActionForm" class="modal-form rx-form">
+
+<div class="modal-body suspend-unsuspend-modal">
+    <div ng-show="isLoading" class="loading" rx-spinner="dark" toggle="isLoading"></div>
+        <rx-notification type="warning" ng-show="mode==='confirm'">
+            Are you sure you want to {{ actionVerb }} these servers? FirstGen servers will not be affected.
+        </rx-notification>
+
+        <div ng-switch="mode">
+            <div ng-switch-when="complete">
+                Batch process complete! <span ng-if="errorsPresent">See table below to make note of any failures.</span>
+            </div>
+            <div ng-switch-when="confirm"></div>
+            <div ng-switch-default>
+                Batch request to {{ actionVerb }} servers in progress. Please <a href="{{ serversURL }}" target="_blank">open a new tab to continue work on Cloud Servers.</a>
+            </div>
+        </div>
+
+        <div class="pure-g columns clear status-updates" ng-if="mode!=='confirm'">
+            <div class="pure-u-2-3">
+                <progressbar ng-class="{ 'progress-striped': mode !== 'complete', active: mode !== 'complete'}" value="numCompleted" max="totalServers"></progressbar>
+            </div>
+            <div class="pure-u-1-3 number-processed">
+                {{ numCompleted }} of {{ totalServers }} processed
+            </div>
+        </div>
+
+        <table class="table-striped suspend-servers">
+            <thead>
+                <tr>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="fields.sortCol(property)"
+                            sort-property="name"
+                            predicate="fields.sort.predicate"
+                            reverse="fields.sort.reverse">
+                        Name
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="fields.sortCol(property)"
+                            sort-property="{{ infoHeaderProperty }}"
+                            predicate="fields.sort.predicate"
+                            reverse="fields.sort.reverse">
+                            {{ infoHeader }}
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="server in selectedServers | orderBy: fields.sort.predicate:fields.sort.reverse | Paginate:fields.pager">
+                    <td><a href="{{ server.url }}" target="_blank">{{ server.name }}</a></td>
+                    <td ng-switch="mode">
+                        <span ng-switch-when="confirm">{{ server.id }}</span>
+                        <div ng-switch-default>
+                            <span class="{{ server | SuspendServerClass }}">{{ server | SuspendServerText }}</span><br />
+                            <span ng-show="showLastStatus(server)" class="subdued">{{ server | SuspendServerMsg }}</span>
+                        </div>
+                    </td>
+                    <td ng-switch="mode">
+                        <i ng-switch-when="confirm" ng-if="mode==='confirm' && !submitStatus.loading" ng-click="removeServer(server)" class="delete-x fa fa-times"></i>
+                        <i ng-switch-default class="fa fa-lg {{ server | SuspendServerClass }} {{ server | SuspendServerIcon }}"></i>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-if="showPagination">
+                <tr class="paginate-area">
+                    <td colspan="3" style="text-align:center;">
+                        <rx-paginate page-tracking="fields.pager"></rx-paginate>
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+</div>
+
+<div class="modal-footer admin-authenticate" ng-if="mode==='confirm'">
+    <div class="wrapper">
+        <div class="footer-auth-key">
+            <i class="fa fa-fw fa-lg fa-key"></i>
+        </div>
+        <div class="footer-auth-description">
+            To perform admin operations, admin permissions are required. Enter your SSO password (not RSA Token) to authenticate as an Admin and submit your changes.
+        </div>
+    </div>
+
+    <rx-form-item label="Password">
+        <input name="password" type="password" ng-model="fields.password" required="true" admin-authenticate-validator/>
+        <div ng-show="modalActionForm.password.$error.adminAuthenticateValidator" class="inline-error">You may have entered an incorrect password or have insufficient access.</div>
+    </rx-form-item>
+    <rx-button
+        toggle="submitStatus.loading"
+        toggle-msg="{{ submittingMsg }}"
+        default-msg="{{ defaultSubmitMsg }}"
+        disable="modalActionForm.$invalid || selectedServers.length === 0"
+        classes="button submit"
+        type="submit">
+    </rx-button>
+    <button class="button cancel" ng-disabled="submitStatus.loading" ng-click="cancel()">{{cancelText || "Cancel"}}</button>
+</div>
+<div class="modal-footer" ng-if="mode==='complete'">
+    <button class="button pull-left" id='return-button' ng-click="cancel()">Return to Cloud Servers</button>
+</div>
+</form>

@@ -1,0 +1,394 @@
+<ul class="actions-area">
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'createImage')" ng-switch="server.gen">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-action'"
+            post-hook="serverActions.postHooks.createImage(fields)"
+            template-url="createImage.html">
+            <i class="fa fa-fw fa-plus fa-lg"></i>
+            <span ng-switch-when="Next">Create Image</span>
+            <span ng-switch-when="First">Create NextGen Image</span>
+        </rx-modal-action>
+        <script type="text/ng-template" id="createImage.html">
+            <rx-modal-form
+                title="Create Image"
+                subtitle="&quot;{{server.name}}&quot;">
+                <rx-form-item label="Image Name">
+                    <input type="text" id="server_name" ng-model="fields.name" required>
+                </rx-form-item>
+            </rx-modal-form>
+        </script>
+    </li>
+    <rx-permission role="encore_ticketing_alpha">
+        <li class="actions-item">
+            <a ng-if="accountNumber" class="msg-action" href="/ticketing/account/{{ accountNumber }}/ticket/new" target="_newtab">
+                <i class="fa fa-fw fa-plus fa-lg"></i> Create Ticket for Server
+            </a>
+        </li>
+    </rx-permission>
+    <li class="actions-item">
+        <rx-reach-link
+            class="btn-link msg-info"
+            service-type="compute"
+            region="{{ server.region }}"
+            server-gen="{{ server.gen }}"
+            server-id="{{ server.id }}"
+            reach-target="/servers">
+            <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Server Details
+        </rx-reach-link>
+    </li>
+    <li class="actions-item">
+        <rx-cloud-control-link
+             class="btn-link msg-info"
+             service-type="servers"
+             region="{{ server.region }}"
+             server-gen="{{ server.gen }}"
+             server-id="{{ server.id }}">
+            <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Cloud Control
+        </rx-cloud-control-link>
+    </li>
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'attachVolume')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            pre-hook="serverActions.preHooks.attachVolume(this)"
+            post-hook="serverActions.postHooks.attachVolume(fields)"
+            template-url="attachVolume.html">
+            <i class="fa fa-fw fa-paperclip fa-lg"></i> Attach Volume
+        </rx-modal-action>
+        <script type="text/ng-template" id="attachVolume.html">
+            <rx-modal-form
+                title="Attach Volume to Server">
+                <rx-notification type="error" ng-if="!volumes">
+                    Retrieval of volumes failed.
+                </rx-notification>
+                <div ng-if="volumes">
+                    <p class="description">You can only attach active volumes</p>
+                    <rx-form-item label="Volume">
+                        <span class="field-select">
+                            <select id="volumeId" ng-model="fields.volume_id" ng-required="true">
+                                <option
+                                    ng-repeat="type in volumes"
+                                    value="{{type.value}}"
+                                    ng-disabled="type.disabled"
+                                    ng-selected="{{type.value == model}}"
+                                    >{{type.label}}</option>
+                            </select>
+                        </span>
+                    </rx-form-item>
+                    <rx-form-item label="Device Path">
+                        <span class="field-select">
+                            <select id="devicePath" ng-model="fields.device">
+                                <option
+                                    ng-repeat="type in paths"
+                                    value="{{type.value}}"
+                                    ng-disabled="type.disabled"
+                                    ng-selected="{{type.value == model}}"
+                                    >{{type.label}}</option>
+                            </select>
+                        </span>
+                    </rx-form-item>
+                </div>
+            </rx-modal-form>
+        </script>
+    </li>
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'changePass')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            post-hook="serverActions.postHooks.changePass(fields)"
+            template-url="changePassword.html">
+            <i class="fa fa-fw fa-pencil-square-o fa-lg"></i> Change Password
+        </rx-modal-action>
+        <script type="text/ng-template" id="changePassword.html">
+            <rx-modal-form title="Change Admin Password" default-focus="cancel">
+                <p>Password must be at least 7 characters, and must not be the same as any previous passwords.</p>
+                <rx-form-item label="New Password" ng-switch="server.gen">
+                    <span class="field-input">
+                      <input ng-switch-when="Next"  name="server_password" id="server_password" ng-model="fields.password"   ng-minlength="7" required>
+                      <input ng-switch-when="First" name="server_password" id="server_password" ng-model="fields.admin_pass" ng-minlength="7" required>
+                    </span>
+
+                    <div ng-show="modalActionForm.server_password.$error.minlength" class="inline-error">
+                      Passwords must be at least 7 characters long.
+                    </div>
+
+                    <div class="field-description">
+                      Passwords last for 30 days before a new password must be set.<br />
+                      Accounts will be locked after six invalid login attempts.
+                    </div>
+                </rx-form-item>
+            </rx-modal-form>
+        </script>
+    </li>
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'changeName')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            post-hook="serverActions.postHooks.changeName(fields)"
+            template-url="changeName.html">
+            <i class="fa fa-fw fa-pencil-square-o fa-lg"></i> Change Name
+        </rx-modal-action>
+        <script type="text/ng-template" id="changeName.html">
+            <rx-modal-form title="Change Server Name" default-focus="cancel">
+                <rx-form-item label="New Name">
+                    <input type="text" value="test" id="server_name" ng-model="fields.name" required>
+                </rx-form-item>
+            </rx-modal-form>
+        </script>
+    </li>
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'changeNickname')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            pre-hook="serverActions.preHooks.passEmptyNickname(this)"
+            post-hook="serverActions.postHooks.changeNickname(fields)"
+            template-url="changeNickname.html">
+            <i class="fa fa-fw fa-pencil-square-o fa-lg"></i> Change Nickname
+        </rx-modal-action>
+        <script type="text/ng-template" id="changeNickname.html">
+            <rx-modal-form title="Change Server Nickname" default-focus="cancel">
+                <rx-form-item label="New Nickname">
+                    <input type="text" value="" id="server_nickname" ng-model="fields.nickname" placeholder="{{server.metadata.nickname}}">
+                </rx-form-item>
+            </rx-modal-form>
+        </script>
+    </li>
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'migrateServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            controller="rxMigrateServerCtrl"
+            template-url="views/servers/templates/migrate-modal.html">
+            <i class="fa fa-fw fa-truck fa-lg"></i> Migrate Server
+        </rx-modal-action>
+    </li>
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'rebootServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            pre-hook="serverActions.preHooks.rebootServer(this)"
+            post-hook="serverActions.postHooks.rebootServer(fields)"
+            template-url="rebootServer.html">
+            <i class="fa fa-fw fa-undo fa-lg"></i> Reboot Server
+        </rx-modal-action>
+        <script type="text/ng-template" id="rebootServer.html">
+            <rx-modal-form title="Reboot Server" default-focus="cancel">
+                <rx-notification ng-if="migrating(server)" type="warning">
+                    Note: Soft rebooting will convert this server to a Next Generation server.
+                    <a class="more-info" href="http://www.rackspace.com/knowledge_center/article/next-generation-cloud-servers-migration-considerations-and-options">More info on server conversion and scheduling.</a>
+                </rx-notification>
+                <rx-form-item
+                    label="Soft"
+                    description="Performs a graceful shutdown of your system. Services are halted individually and the system is restarted.">
+                    <input type="radio" name="type" id="server_reboot_soft" value="soft" ng-model="fields.reboot_type" required>
+                </rx-form-item>
+                <rx-form-item
+                    label="Hard"
+                    description="Performs an immediate shutdown of your server. This is the equivalent of unplugging your server.">
+                    <input type="radio" name="type" id="server_reboot_hard" value="hard" ng-model="fields.reboot_type" required>
+                </rx-form-item>
+            </rx-modal-form>
+        </script>
+    </li>
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'rebuildServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            pre-hook="serverActions.preHooks.rebuildServer(this)"
+            post-hook="serverActions.postHooks.rebuildServer(fields)"
+            template-url="rebuildServer.html">
+            <i class="fa fa-fw fa-wrench fa-lg"></i> Rebuild Server
+        </rx-modal-action>
+        <script type="text/ng-template" id="rebuildServer.html">
+            <rx-modal-form title="Rebuild Server" default-focus="cancel">
+                <rx-notification type="error" ng-if="!images">
+                    Retrieval of server images failed.
+                </rx-notification>
+                <rx-notification type="warning">Warning: Rebuilding will destroy all data and install the image you selected.</rx-notification>
+                <div ng-if="images">
+                    <p class="form-description">Select a new image:</p>
+                    <rx-option-table
+                        columns="rebuildColumns"
+                        data="images"
+                        field-id="server_image"
+                        model="fields.image"
+                        type="radio"
+                        selected="{{selected}}"
+                    ></rx-option-table>
+                </div>
+            </rx-modal-form>
+        </script>
+    </li>
+
+    <!-- Resize Server Actions -->
+    <!--
+        Only show if server is not performance
+        While it's not great to have to hard-code 'performance' as part of the search,
+        it's currently the only indication from the API
+        that the server is a 'performance' type
+    -->
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'resizeServer', server.flavor.id.indexOf('performance') === -1)">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            pre-hook="serverActions.preHooks.resizeServer(this)"
+            post-hook="serverActions.postHooks.resizeServer(fields)"
+            template-url="resizeServer.html">
+            <i class="fa fa-fw fa-arrows-alt fa-lg"></i> Resize Server
+        </rx-modal-action>
+        <script type="text/ng-template" id="resizeServer.html">
+            <rx-modal-form title="Resize Server" default-focus="cancel">
+                <rx-notification type="error" ng-if="!flavors">
+                    Retrieval of server sizes failed.
+                </rx-notification>
+                <div ng-if="flavors">
+                    <p class="form-description">Select a new flavor:</p>
+                    <rx-option-table
+                        columns="resizeColumns"
+                        data="flavors"
+                        field-id="server_flavor"
+                        model="fields.flavor"
+                        type="radio"
+                        selected="{{selected}}"
+                    ></rx-option-table>
+                </div>
+            </rx-modal-form>
+        </script>
+    </li>
+    <li class="actions-item" ng-if="displayAction('VERIFY_RESIZE', 'verifyResize')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            post-hook="serverActions.postHooks.verifyResize(fields)"
+            template-url="verifyResize.html">
+            <i class="fa fa-fw fa-arrows-alt fa-lg"></i> Verify Resize
+        </rx-modal-action>
+        <script type="text/ng-template" id="verifyResize.html">
+            <rx-modal-form title="Verify Resize"
+                submit-text="Verify Resize"
+                cancel-text="Cancel"
+                default-focus="cancel">
+                <rx-notification type="warning">
+                    Are you sure you want to verify this resize?
+                </rx-notification>
+            </rx-modal-form>
+        </script>
+    </li>
+    <li class="actions-item" ng-if="displayAction('VERIFY_RESIZE', 'revertResize')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            post-hook="serverActions.postHooks.revertResize(fields)"
+            template-url="revertResize.html">
+            <i class="fa fa-fw fa-mail-reply-all fa-lg"></i> Revert Resize
+        </rx-modal-action>
+        <script type="text/ng-template" id="revertResize.html">
+            <rx-modal-form title="Revert Resize"
+                submit-text="Revert Resize"
+                cancel-text="Cancel"
+                default-focus="cancel">
+                <rx-notification type="warning">
+                    Are you sure you want to revert this resize?
+                </rx-notification>
+            </rx-modal-form>
+        </script>
+    </li>
+
+    <!-- Rescue Server Actions -->
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'rescueServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            post-hook="serverActions.postHooks.rescueServer(fields)"
+            template-url="rescueServer.html">
+            <i class="fa fa-fw fa-medkit fa-lg"></i> Rescue Server
+        </rx-modal-action>
+        <script type="text/ng-template" id="rescueServer.html">
+            <rx-modal-form
+                title="Rescue Server"
+                submit-text="Rescue Server"
+                cancel-text="Cancel"
+                default-focus="cancel">
+                <rx-notification type="warning">
+                    Are you sure you want to rescue this server?
+                </rx-notification>
+            </rx-modal-form>
+        </script>
+    </li>
+
+    <li class="actions-item" ng-if="displayAction('RESCUE', 'unrescueServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            post-hook="serverActions.postHooks.unrescueServer(fields)"
+            template-url="unrescueServer.html">
+            <i class="fa fa-fw fa-medkit fa-lg"></i> Unrescue Server
+        </rx-modal-action>
+        <script type="text/ng-template" id="unrescueServer.html">
+            <rx-modal-form
+                title="Unrescue Server"
+                submit-text="Unrescue Server"
+                cancel-text="Cancel"
+                default-focus="cancel">
+                <rx-notification type="warning">
+                    Are you sure you want to unrescue this server?
+                </rx-notification>
+            </rx-modal-form>
+        </script>
+    </li>
+
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'suspendServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            controller="rxSuspendServerCtrl"
+            template-url="views/servers/templates/suspend-modal.html">
+            <i class="fa fa-fw fa-power-off fa-lg"></i> Suspend Server
+        </rx-modal-action>
+    </li>
+
+    <li class="actions-item" ng-if="displayAction('SUSPENDED', 'unsuspendServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-info'"
+            controller="rxSuspendServerCtrl"
+            template-url="views/servers/templates/unsuspend-modal.html">
+            <i class="fa fa-fw fa-power-off fa-lg"></i> Unsuspend Server
+        </rx-modal-action>
+    </li>
+
+    <li class="actions-item" ng-if="displayAction(null, 'openConsole', server.id)">
+        <a class='console msg-info' ng-click="openConsole()">
+            <i class="fa fa-fw fa-terminal fa-lg"></i> Open Console
+            <div rx-spinner toggle="console.$resolved === false" class="spinner-container"></div>
+        </a>
+    </li>
+
+    <li class="actions-item actions-split msg-warn" ng-if="displayAction(null, 'deleteServer')">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-warn'"
+            post-hook="serverActions.postHooks.deleteServer(fields)"
+            template-url="deleteServer.html">
+            <i class="fa fa-fw fa-times fa-lg"></i> Delete Server
+        </rx-modal-action>
+        <script type="text/ng-template" id="deleteServer.html">
+            <rx-modal-form
+                title="Delete Server"
+                subtitle="{{server.name}}"
+                submit-text="Delete Server"
+                cancel-text="Cancel"
+                default-focus="cancel">
+                <rx-notification type="error">
+                    Are you sure you want to delete this server? This action can not be undone.
+                </rx-notification>
+            </rx-modal-form>
+        </script>
+    </li>
+
+    <li class="actions-item" ng-if="displayAction('ACTIVE', 'addPublicAddress')" switch="server.gen">
+        <rx-modal-action
+            ng-class="disableAction(server.task_state) ? 'link-disabled' : 'msg-action'"
+            post-hook="serverActions.postHooks.addPublicAddress()"
+            template-url="add-address.html">
+            <i class="addPublicAddressAction fa fa-fw fa-plus fa-lg"></i> Add Public IPv4 Address
+        </rx-modal-action>
+        <script type="text/ng-template" id="add-address.html">
+            <rx-modal-form title="Add New IPv4 Address to Public Network"
+                submit-text="Add New IPv4 Address"
+                cancel-text="Cancel">
+
+                <rx-notification type="info">
+                    Additional Public IPv4 addresses are available for SSL
+                    purposes or on the Vyatta appliance for 1:1 NAT.
+                </rx-notification>
+
+            </rx-modal-form>
+        </script>
+    </li>
+</ul>

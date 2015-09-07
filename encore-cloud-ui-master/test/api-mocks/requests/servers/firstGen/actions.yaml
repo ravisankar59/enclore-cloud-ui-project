@@ -1,0 +1,40 @@
+# Resize Server
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/action/resize$
+        method: POST
+        post: '{"flavor":"3"}'
+    response:
+        status: 200
+
+# Rebuild Server
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/action/rebuild$
+        method: POST
+        post: '{"image":"214"}'
+    response:
+        status: 200
+
+# Reboot Server
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/action/reboot$
+        method: POST
+        post: '{"reboot_type":"hard"}|{"reboot_type":"soft"}'
+    response:
+        status: 200
+        latency: 500
+
+# Rescue Server
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/action/rescue$
+        method: POST
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/actions/post/rescue.json
+
+# Unrescue Server
+-   request:
+        url: ^/api/users/hub_cap/firstgen/servers/110148309/action/unrescue$
+        method: POST
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers//firstGen/actions/post/unrescue.json

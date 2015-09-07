@@ -1,0 +1,193 @@
+<rx-page title="'Block Storage Volumes'" subtitle="volumes.length + ' Volumes found for ' + user" status="{{PRODUCT_VERSIONS['Cloud Block Storage']}}" account-info-banner="true" account-number="{{accountNumber}}">
+    <div class="page-actions">
+        <ul class="actions-area">
+            <li class="actions-item">
+                <a href="/cloud/{{accountNumber}}/{{user}}/cbs/volumes/create" class="msg-action create-volume">
+                <i class="fa fa-fw fa-plus fa-lg"></i>
+                Create New Volume
+                </a>
+            </li>
+            <li class="actions-item">
+                <rx-reach-link
+                    class="btn-link msg-info"
+                    service-type="volumes"
+                    reach-target="/servers">
+                    <i class="fa fa-fw fa-external-link fa-lg"></i> Go to Reach Volumes
+                </rx-reach-link>
+            </li>
+        </ul>
+    </div>
+
+    <div class="table-filters">
+        <table rx-floating-header class="table-striped volumes-list">
+            <thead>
+                <tr>
+                    <th colspan="9">
+                        <rx-search-box  rx-placeholder="'Filter by any...'"  ng-model="filter.keyword"></rx-search-box>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="column-title" rx-status-header>
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="status"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Status
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="display_name"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Name/ID
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="attachments.length"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Attached To
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="created_on"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Created/Age
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="snapshot_count"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Snapshots
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="region"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Region
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="volume_type"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Type
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title">
+                        <rx-sortable-column
+                            sort-method="sortCol(property)"
+                            sort-property="size"
+                            predicate="sort.predicate"
+                            reverse="sort.reverse">
+                            Size
+                        </rx-sortable-column>
+                    </th>
+                    <th class="column-title actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="volume in volumes | VolumeAttributes:filter | orderBy: sort.predicate:sort.reverse | Paginate:pager" class="volume-details">
+                    <td rx-status-column status="{{ volume.status | uppercase }}" api="{{ statusMappingsAPI }}" tooltip-content="{{ volume.status | uppercase }}">
+                    </td>
+                    <td>
+                        <div>
+                            <a class="view" href="/cloud/{{accountNumber}}/{{user}}/cbs/volumes/{{volume.region}}/{{volume.id}}">{{volume.display_name ? volume.display_name: "N/A"}}</a><br />
+                            <span class="subdued">{{volume.id}}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="!volume.attachments">N/A</div>
+                        <div ng-if="volume.attachments.length === 0">Not Attached</div>
+                        <ul ng-if="volume.attachments.length > 0">
+                            <li ng-repeat="server in volume.attachments" ng-switch="canDetach(volume.status)">
+                                <div ng-switch-when="true">
+                                    {{server.server_id}}
+                                    <rx-modal-action
+                                        ng-if="canDetach(volume.status)"
+                                        pre-hook="getAttachedServer(server.server_id, volume.region, this)"
+                                        post-hook="detachVolume(server.server_id, server.id, volume.region)"
+                                        template-url="views/cbs/DetachVolume.html"
+                                        classes="msg-warn">
+                                        (Detach)
+                                    </rx-modal-action>
+                                </div>
+                                <div ng-switch-when="false">Detaching from {{server.server_id}} </div>
+                            </li>
+                        </ul>
+                    </td>
+                    <td ng-if="!volume.created_on">N/A</td>
+                    <td ng-if="volume.created_on">
+                        {{volume.created_on| date:'MMM d, yyyy @ HH:mm (UTCZ)'}}<br />
+                        <span class="subdued">{{volume.created_on | rxAge}}</span>
+                    </td>
+                    <td>{{volume.snapshot_count || volume.size == "0" ? volume.snapshot_count : "N/A" }}</td>
+                    <td>{{volume.region ? volume.region : "N/A"}}</td>
+                    <td>{{volume.volume_type ? volume.volume_type : "N/A" }}</td>
+                    <td>{{volume.size || volume.size == "0" ? (volume.size | rxDiskSize) : "N/A"}}</td>
+                    <td>
+                        <rx-action-menu>
+                            <ul class="actions-area">
+                                <li class="msg-action">
+                                    <rx-modal-action
+                                        pre-hook="preCreateSnapshot(this)"
+                                        post-hook="createSnapshot(fields, volume.id, volume.region).then(createdSnapshot)"
+                                        template-url="views/cbs/CreateSnapshot.html"
+                                        classes="msg-action">
+                                        <i class="fa fa-plus fa-lg"></i> Create Snapshot</a>
+                                    </rx-modal-action>
+                                </li>
+                                <li>
+                                    <rx-reach-link
+                                        class="btn-link msg-info"
+                                        service-type="volumes"
+                                        region="{{ volume.region }}"
+                                        storage-id="{{ volume.id }}"
+                                        reach-target="/servers">
+                                        <i class="fa fa-external-link fa-lg"></i> Go to Reach
+                                    </rx-reach-link>
+                                </li>
+                                <li ng-if="volume.attachments.length === 0" class="msg-warn">
+                                    <rx-modal-action
+                                        post-hook="deleteVolume(volume.id, volume.region)"
+                                        template-url="views/cbs/DeleteVolume.html"
+                                        classes="msg-warn">
+                                        <i class="fa fa-times fa-lg"></i> Delete Volume</a>
+                                    </rx-modal-action>
+                                </li>
+                            </ul>
+                        </rx-action-menu>
+                    </td>
+                </tr>
+                <tr ng-if="!volumes.length && loaded">
+                    <td colspan="6">
+                        No Block Storage Volumes have been created.
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-show="volumes.length">
+                <tr class="paginate-area">
+                    <td colspan="12">
+                        <rx-paginate page-tracking="pager"></rx-paginate>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</rx-page>

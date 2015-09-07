@@ -1,0 +1,164 @@
+{
+  "endpoints":[
+    {
+      "region":"SYD",
+      "public_url":"https://storage101.syd2.clouddrive.com/v1/MossoCloudFS_bf571533-d113-4249-962d-178648338863",
+      "type":"object-store",
+      "name":"cloudFiles",
+      "tenant_id":"MossoCloudFS_bf571533-d113-4249-962d-178648338863",
+      "id":150
+    },
+    {
+      "region":"DFW",
+      "public_url":"https://storage.stg.swift.racklabs.com/v1/MossoCloudFS_bf571533-d113-4249-962d-178648338863",
+      "type":"object-store",
+      "name":"cloudFiles",
+      "tenant_id":"MossoCloudFS_bf571533-d113-4249-962d-178648338863",
+      "id":7
+    },
+    {
+      "region":"ORD",
+      "public_url":"https://storage.stg.swift.racklabs.com/v1/MossoCloudFS_bf571533-d113-4249-962d-178648338863",
+      "type":"object-store",
+      "name":"cloudFiles",
+      "tenant_id":"MossoCloudFS_bf571533-d113-4249-962d-178648338863",
+      "id":103
+    },
+    {
+      "region":"STAGING",
+      "public_url":"https://staging.monitoring.api.rackspacecloud.com/v1.0/5911499",
+      "type":"rax:monitor",
+      "name":"cloudMonitoring",
+      "tenant_id":"5911499",
+      "id":135
+    },
+    {
+      "region":"STAGING",
+      "public_url":"https://api.staging.ord1.clouddb.rackspace.net/v1.0/5911499",
+      "type":"rax:database",
+      "name":"cloudDatabases",
+      "tenant_id":"5911499",
+      "id":109
+    },
+    {
+      "region":"DFW",
+      "public_url":"https://api.staging.dfw1.clouddb.rackspace.net/v1.0/5911499",
+      "type":"rax:database",
+      "name":"cloudDatabases",
+      "tenant_id":"5911499",
+      "id":110
+    },
+    {
+      "region":"ORD",
+      "public_url":"https://preprod.ord.blockstorage.api.rackspacecloud.com/v1/5911499",
+      "type":"volume",
+      "name":"cloudBlockStoragePreprod",
+      "tenant_id":"5911499",
+      "id":122
+    },
+    {
+      "region":"DFW",
+      "public_url":"https://preprod.dfw.blockstorage.api.rackspacecloud.com/v1/5911499",
+      "type":"volume",
+      "name":"cloudBlockStoragePreprod",
+      "tenant_id":"5911499",
+      "id":123
+    },
+    {
+      "region":null,
+      "public_url":"https://staging.dnsaas.rackspace.net/v1.0/5911499",
+      "type":"rax:dns",
+      "name":"cloudDNS",
+      "tenant_id":"5911499",
+      "id":17
+    },
+    {
+      "region":"STAGING",
+      "public_url":"https://staging.ord.loadbalancers.api.rackspacecloud.com/v1.0/5911499",
+      "type":"rax:load-balancer",
+      "name":"cloudLoadBalancers",
+      "tenant_id":"5911499",
+      "id":83
+    },
+    {
+      "region":"DFW",
+      "public_url":"https://staging.dfw.loadbalancers.api.rackspacecloud.com/v1.0/5911499",
+      "type":"rax:load-balancer",
+      "name":"cloudLoadBalancers",
+      "tenant_id":"5911499",
+      "id":84
+    },
+    {
+      "region":null,
+      "public_url":"https://servers.api.staging.us.ccp.rackspace.net/v1.0/5911499",
+      "type":"compute",
+      "name":"cloudServers",
+      "tenant_id":"5911499",
+      "id":15
+    },
+    {
+      "region":"ORD",
+      "public_url":"https://preprod.ord.servers.api.rackspacecloud.com/v2/5911499",
+      "type":"compute",
+      "name":"cloudServersPreprod",
+      "tenant_id":"5911499",
+      "id":120
+    },
+    {
+      "region":"DFW",
+      "public_url":"https://preprod.dfw.servers.api.rackspacecloud.com/v2/5911499",
+      "type":"compute",
+      "name":"cloudServersPreprod",
+      "tenant_id":"5911499",
+      "id":121
+    },
+    {
+      "region": "ORD",
+      "public_url": "https://preprod.ord.images.api.rackspacecloud.com/v2/5911499",
+      "type": "image",
+      "name": "cloudImages",
+      "tenant_id": "5911499",
+      "id": 222
+    },
+    {
+      "region": "DFW",
+      "public_url": "https://preprod.dfw.images.api.rackspacecloud.com/v2/5911499",
+      "type": "image",
+      "name": "cloudImages",
+      "tenant_id": "5911499",
+      "id": 223
+    },
+    {
+      "region": "ORD",
+      "public_url": "https://ord.staging.api.public.rackconnect.rackspace.com/v1/5911499",
+      "type": "rax:rackconnect",
+      "name": "rackconnect",
+      "tenant_id": "5911499",
+      "id": 300
+    },
+    {
+      "region":"SYD",
+      "public_url": "https://syd.staging.api.public.rackconnect.rackspace.com/v1/5911499",
+      "type": "rax:rackconnect",
+      "name": "rackconnect",
+      "tenant_id": "5911499",
+      "id": 301
+    },
+    {
+      "region": "ORD",
+      "public_url": "https://ord.staging.api.public.rackconnect.rackspace.com/v1/5911499",
+      "type": "rax:rackconnect",
+      "name": "rackconnect",
+      "tenant_id": "5911499",
+      "id": 103
+    },
+    {
+      "region":"SYD",
+      "public_url": "https://syd.staging.api.public.rackconnect.rackspace.com/v1/5911499",
+      "type": "rax:rackconnect",
+      "name": "rackconnect",
+      "tenant_id": "5911499",
+      "id": 150
+    }
+  ]
+}

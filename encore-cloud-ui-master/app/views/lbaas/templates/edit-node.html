@@ -1,0 +1,44 @@
+<rx-modal-form
+    title="Edit Node Configuration"
+    subtitle="{{node.name}}"
+    submit-text="Save Configuration" cancel-text="Cancel">
+
+    <rx-form-item
+        label="IP Address">
+        {{changedNode.address}}
+    </rx-form-item>
+
+    <rx-form-item
+        label="Port">
+        <span class="field-input">
+            <input id="node-port" type="number" ng-model="changedNode.port" disabled>
+        </span>
+    </rx-form-item>
+
+    <rx-form-item
+        label="Condition">
+        <span class="field-select">
+             <select id="node-condition" ng-model="changedNode.condition" required>
+                <option
+                     ng-repeat="condition in nodeConditions"
+                     value="{{condition}}"
+                     ng-selected="{{condition === changedNode.condition}}"
+                     >{{condition === 'DRAINING' ? 'DRAINING CONNECTIONS' : condition}}</option>
+            </select>
+        </span>
+    </rx-form-item>
+
+    <rx-form-item
+        label="Type">
+        <span class="field-input">
+            <input id="node-type" type="text" ng-model="changedNode.nodeType" disabled>
+        </span>
+    </rx-form-item>
+
+    <rx-form-item
+        label="Weight" description="Min (1) - Max (100)">
+        <span class="field-input">
+            <input id="node-weight" type="number" ng-model="changedNode.weight" ng-disabled="weightStatus" min="1" max="100" required>
+        </span>
+    </rx-form-item>
+</rx-modal-form>

@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {
+      "id": 209563,
+      "port": 80,
+      "type": "PRIMARY",
+      "address": "10.182.86.18",
+      "condition": "ENABLED",
+      "status": "ONLINE",
+      "weight": 1
+    }
+  ]
+}

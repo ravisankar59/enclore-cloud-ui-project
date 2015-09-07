@@ -1,0 +1,25 @@
+{
+    "flavor": {
+        "id": "io1-15",
+        "links": [
+            {
+                "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/io1-15",
+                "rel": "bookmark"
+            }
+        ],
+        "name": "15 GB I/O v1",
+        "vcpus": 4,
+        "ram": 15360,
+        "disk_size": 40,
+        "data_disk": 150,
+        "bandwidth": 1250,
+        "swap": "",
+        "flavor_disabled": false,
+        "extra_specs": {
+            "class": "io1",
+            "disk_io_index": "40",
+            "number_of_data_disks": "1",
+            "policy_class": "io_flavor"
+        }
+    }
+}

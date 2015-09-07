@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{title}}</h3>
+    <h4 class="modal-subtitle" ng-if="subtitle">{{subtitle}}</h4>
+    <button class="modal-close btn-link" ng-click="cancel()"><span class="visually-hidden">Close Window</span></button>
+</div>
+
+<div class="modal-body">
+    <rx-notification type="warning">
+        This will run the server through the process of selecting a random host
+        in the region and migrate the VM to that host. Are you sure you want to
+        migrate this server?
+    </rx-notification>
+</div>
+
+<div class="modal-footer admin-authenticate">
+    <form ng-hide="isLoading" name="modalActionForm" class="modal-form rx-form">
+        <div class="wrapper">
+            <div class="footer-auth-key">
+                <i class="fa fa-fw fa-lg fa-key"></i>
+            </div>
+            <div class="footer-auth-description">
+                To perform admin operations, admin permissions are required. Enter your SSO password (not RSA Token) to
+                authenticate as an Admin and submit your changes.
+            </div>
+        </div>
+        <rx-form-item label="Password">
+            <input name="password" type="password" ng-model="fields.password" required="true"
+                   admin-authenticate-validator/>
+            <div ng-show="modalActionForm.password.$error.adminAuthenticateValidator" class="inline-error">
+                You may have entered an incorrect password or have insufficient access.
+            </div>
+        </rx-form-item>
+        <rx-button
+            toggle="submitStatus.loading"
+            toggle-msg="{{ submittingMsg }}"
+            default-msg="{{ defaultSubmitMsg }}"
+            disable="modalActionForm.$invalid"
+            classes="button submit"
+            ng-click="submit()"
+            type="submit">
+        </rx-button>
+        <button class="button cancel" ng-disabled="submitStatus.loading" ng-click="cancel()">
+            {{cancelText || "Cancel"}}
+        </button>
+    </form>
+</div>

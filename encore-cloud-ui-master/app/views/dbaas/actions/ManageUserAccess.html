@@ -1,0 +1,21 @@
+<rx-modal-form title="Manage Database User Access" subtitle="{{instance.name}}" submit-text="Save Access Settings" cancel-text="Cancel">
+    <rx-form-item
+        label="Username">
+        <input id="dbaas-current-user-name" type="text" disabled value="{{dbuser.name}}">
+    </rx-form-item>
+    <div class="inline-table">
+        <rx-form-fieldset
+                ng-show="instance.dbList.length"
+                legend="Database Access"
+                description="Check/Uncheck which database(s) a user can access">
+            <rx-option-table
+                    type="checkbox"
+                    data="instance.dbList"
+                    columns="instance.userColumns"
+                    model="fields.user.dblist"
+                    field-id="dbaas-user-checkbox">
+            </rx-option-table>
+        </rx-form-fieldset>
+    </div>
+    <span class="msg-warn" ng-show="!instance.dbList.length">No Databases have been created for this Instance.</span>
+</rx-modal-form>

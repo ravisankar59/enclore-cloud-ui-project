@@ -1,0 +1,471 @@
+{
+    "flavors": [{
+        "name": "512MB Standard",
+        "vcpus": 1,
+        "id": "2",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/2"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/2"
+        }],
+        "ram": 512,
+        "disk_size": 20
+    }, {
+        "name": "1GB Standard",
+        "vcpus": 1,
+        "id": "3",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/3"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/3"
+        }],
+        "ram": 1024,
+        "disk_size": 40
+    }, {
+        "name": "2GB Standard",
+        "vcpus": 2,
+        "id": "4",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/4"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/4"
+        }],
+        "ram": 2048,
+        "disk_size": 80
+    }, {
+        "name": "4GB Standard",
+        "vcpus": 2,
+        "id": "5",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/5"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/5"
+        }],
+        "ram": 4096,
+        "disk_size": 160
+    }, {
+        "name": "8GB Standard",
+        "vcpus": 4,
+        "id": "6",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/6"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/6"
+        }],
+        "ram": 8192,
+        "disk_size": 320
+    }, {
+        "name": "15GB Standard",
+        "vcpus": 6,
+        "id": "7",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/7"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/7"
+        }],
+        "ram": 15360,
+        "disk_size": 620
+    }, {
+        "name": "30GB Standard",
+        "vcpus": 8,
+        "id": "8",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/8"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/8"
+        }],
+        "ram": 30720,
+        "disk_size": 1200
+    }, {
+        "name": "15 GB Compute v1",
+        "vcpus": 8,
+        "id": "compute1-15",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/compute1-15"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/compute1-15"
+        }],
+        "ram": 15360,
+        "disk_size": 0
+    }, {
+        "name": "30 GB Compute v1",
+        "vcpus": 16,
+        "id": "compute1-30",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/compute1-30"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/compute1-30"
+        }],
+        "ram": 30720,
+        "disk_size": 0
+    }, {
+        "name": "4 GB Compute v1",
+        "vcpus": 2,
+        "id": "compute1-4",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/compute1-4"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/compute1-4"
+        }],
+        "ram": 3840,
+        "disk_size": 0
+    }, {
+        "name": "60 GB Compute v1",
+        "vcpus": 32,
+        "id": "compute1-60",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/compute1-60"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/compute1-60"
+        }],
+        "ram": 61440,
+        "disk_size": 0
+    }, {
+        "name": "8 GB Compute v1",
+        "vcpus": 4,
+        "id": "compute1-8",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/compute1-8"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/compute1-8"
+        }],
+        "ram": 7680,
+        "disk_size": 0
+    }, {
+        "name": "1 GB General Purpose v1",
+        "vcpus": 1,
+        "id": "general1-1",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/general1-1"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/general1-1"
+        }],
+        "ram": 1024,
+        "disk_size": 20
+    }, {
+        "name": "2 GB General Purpose v1",
+        "vcpus": 2,
+        "id": "general1-2",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/general1-2"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/general1-2"
+        }],
+        "ram": 2048,
+        "disk_size": 40
+    }, {
+        "name": "4 GB General Purpose v1",
+        "vcpus": 4,
+        "id": "general1-4",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/general1-4"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/general1-4"
+        }],
+        "ram": 4096,
+        "disk_size": 80
+    }, {
+        "name": "8 GB General Purpose v1",
+        "vcpus": 8,
+        "id": "general1-8",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/general1-8"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/general1-8"
+        }],
+        "ram": 8192,
+        "disk_size": 160
+    }, {
+        "name": "120 GB I/O v1",
+        "vcpus": 32,
+        "id": "io1-120",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/io1-120"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/io1-120"
+        }],
+        "ram": 122880,
+        "disk_size": 40
+    }, {
+        "name": "15 GB I/O v1",
+        "vcpus": 4,
+        "id": "io1-15",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/io1-15"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/io1-15"
+        }],
+        "ram": 15360,
+        "disk_size": 40
+    }, {
+        "name": "30 GB I/O v1",
+        "vcpus": 8,
+        "id": "io1-30",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/io1-30"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/io1-30"
+        }],
+        "ram": 30720,
+        "disk_size": 40
+    }, {
+        "name": "60 GB I/O v1",
+        "vcpus": 16,
+        "id": "io1-60",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/io1-60"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/io1-60"
+        }],
+        "ram": 61440,
+        "disk_size": 40
+    }, {
+        "name": "90 GB I/O v1",
+        "vcpus": 24,
+        "id": "io1-90",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/io1-90"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/io1-90"
+        }],
+        "ram": 92160,
+        "disk_size": 40
+    }, {
+        "name": "120 GB Memory v1",
+        "vcpus": 16,
+        "id": "memory1-120",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/memory1-120"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/memory1-120"
+        }],
+        "ram": 122880,
+        "disk_size": 0
+    }, {
+        "name": "15 GB Memory v1",
+        "vcpus": 2,
+        "id": "memory1-15",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/memory1-15"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/memory1-15"
+        }],
+        "ram": 15360,
+        "disk_size": 0
+    }, {
+        "name": "240 GB Memory v1",
+        "vcpus": 32,
+        "id": "memory1-240",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/memory1-240"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/memory1-240"
+        }],
+        "ram": 245760,
+        "disk_size": 0
+    }, {
+        "name": "30 GB Memory v1",
+        "vcpus": 4,
+        "id": "memory1-30",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/memory1-30"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/memory1-30"
+        }],
+        "ram": 30720,
+        "disk_size": 0
+    }, {
+        "name": "60 GB Memory v1",
+        "vcpus": 8,
+        "id": "memory1-60",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/memory1-60"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/memory1-60"
+        }],
+        "ram": 61440,
+        "disk_size": 0
+    }, {
+        "name": "1 GB Performance",
+        "vcpus": 1,
+        "id": "performance1-1",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-1"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance1-1"
+        }],
+        "ram": 1024,
+        "disk_size": 20
+    }, {
+        "name": "2 GB Performance",
+        "vcpus": 2,
+        "id": "performance1-2",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-2"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance1-2"
+        }],
+        "ram": 2048,
+        "disk_size": 40
+    }, {
+        "name": "4 GB Performance",
+        "vcpus": 4,
+        "id": "performance1-4",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-4"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance1-4"
+        }],
+        "ram": 4096,
+        "disk_size": 40
+    }, {
+        "name": "8 GB Performance",
+        "vcpus": 8,
+        "id": "performance1-8",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance1-8"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance1-8"
+        }],
+        "ram": 8192,
+        "disk_size": 40
+    }, {
+        "name": "120 GB Performance",
+        "vcpus": 32,
+        "id": "performance2-120",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-120"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance2-120"
+        }],
+        "ram": 122880,
+        "disk_size": 40
+    }, {
+        "name": "15 GB Performance",
+        "vcpus": 4,
+        "id": "performance2-15",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-15"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance2-15"
+        }],
+        "ram": 15360,
+        "disk_size": 40
+    }, {
+        "name": "30 GB Performance",
+        "vcpus": 8,
+        "id": "performance2-30",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-30"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance2-30"
+        }],
+        "ram": 30720,
+        "disk_size": 40
+    }, {
+        "name": "60 GB Performance",
+        "vcpus": 16,
+        "id": "performance2-60",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-60"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance2-60"
+        }],
+        "ram": 61440,
+        "disk_size": 40
+    }, {
+        "name": "90 GB Performance",
+        "vcpus": 24,
+        "id": "performance2-90",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/323676/flavors/performance2-90"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/323676/flavors/performance2-90"
+        }],
+        "ram": 92160,
+        "disk_size": 40
+    }, {
+        "name": "1 GB Classic v1",
+        "vcpus": 4,
+        "id": "classic1-1",
+        "links": [{
+            "rel": "self",
+            "href": "https://ord.servers.api.rackspacecloud.com/v2/5830445/flavors/classic1-1"
+        }, {
+            "rel": "bookmark",
+            "href": "https://ord.servers.api.rackspacecloud.com/5830445/flavors/classic1-1"
+        }],
+        "ram": 1024,
+        "disk_size": 40
+    }]
+}

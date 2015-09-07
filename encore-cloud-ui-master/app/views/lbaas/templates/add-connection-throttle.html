@@ -1,0 +1,17 @@
+<rx-modal-form
+     title="Add Connection Throttle"
+     subtitle="{{ loadBalancer.id }}"
+     submit-text="Submit" cancel-text="Cancel">
+    <rx-form-item label="Min Connections" description="Min (0) - Max (1000)" class="ng-isolate-scope">
+        <input type="number" id="addThrottleMinConnections" min="0" max="1000" ng-model="fields.minConnections" required>
+    </rx-form-item>
+    <rx-form-item label="Max Connections" description="Min (1) - Max (100,000)" class="ng-isolate-scope">
+        <input type="number" id="addThrottleMaxConnections" min="1" max="100000" ng-model="fields.maxConnections" required>
+    </rx-form-item>
+    <rx-form-item label="Max Connection Rate" description="Min (0) - Max (100,000)" class="ng-isolate-scope">
+        <input type="number" id="addThrottleMaxConnectionRate" min="0" max="100000" ng-model="fields.maxConnectionRate" required>
+    </rx-form-item>
+    <rx-form-item label="Rate Interval" description="Min (1) - Max (3,600)" class="ng-isolate-scope">
+        <input type="number" id="addThrottleRateInterval"min="1" max="3600" ng-model="fields.rateInterval" required>
+    </rx-form-item>       
+</rx-modal-form>

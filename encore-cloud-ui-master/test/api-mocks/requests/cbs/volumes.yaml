@@ -1,0 +1,141 @@
+# Get Volumes (ORD)
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/ORD.json
+
+# Get Volumes (DFW)
+-   request:
+        url: ^/api/users/hub_cap/block_storage/DFW/volumes$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/DFW.json
+
+# Get Volumes (ORD)
+-   request:
+        url: ^/api/users/big_data/block_storage/ORD/volumes$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/ORD_big_data.json
+
+# Get Volumes (DFW)
+-   request:
+        url: ^/api/users/big_data/block_storage/DFW/volumes$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/DFW.json
+
+# Create Volume
+-   request:
+        url: ^/api/users/hub_cap/block_storage/DFW/volumes$
+        method: POST
+        post: '{"display_name":"Volume-30","volume_type":"SATA","size":111}'
+    response:
+        status: 200
+
+# Create Volumes with a snapshot
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes$
+        method: POST
+        post: '{"display_name":"test","size":100,"volume_type":"SATA","snapshot_id":"a82760a0-aa03-40a1-ad7e-63decfc95a5e"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes$
+        method: POST
+        post: '{"display_name":"test","size":100,"volume_type":"SATA","snapshot_id":"22f1ad21-9986-4cbb-bdb2-52ef73bf2024"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes$
+        method: POST
+        post: '{"display_name":"test","volume_type":"SATA","size":100,"snapshot_id":"22f1ad21-9986-4cbb-bdb2-52ef73bf2024"}'
+    response:
+        status: 200
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes$
+        method: POST
+        post: '{"display_name":"test","size":100,"volume_type":"SATA","snapshot_id":"1a50a111-b5f5-4ac3-b5c3-f99b63f3c77d"}'
+    response:
+        status: 200
+
+# Delete Volume
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/128124a8-e2e0-4107-b56b-8b7572af2c58$
+        method: DELETE
+    response:
+        status: 200
+
+# Volume Details
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/10225e08-a4bd-49fb-9237-ce1b7eaaddb2$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/10225e08.json
+
+        # Volume Details
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/d989194e-940b-447e-ac12-ffffffffffff$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/notavailable.json
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/d989194e-940b-447e-ac12-ffffffffffff$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/not_available.json
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/128124a8-e2e0-4107-b56b-8b7572af2c58$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/128124a8.json
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/88e4605a-80ae-409a-92f0-2a5b8c04a5de$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/88e4605a.json
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/777e54d3-4fe5-4c9d-9b92-31a96f6aefa4$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/777e54d3.json
+
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/21d811b5-ff93-4d38-b19c-4b913af5fbca$
+        method: GET
+    response:
+        status: 404
+        file: test/api-mocks/responses/cbs/volumes/get/detailFail.json
+
+# Volume with snapshots that can not be deleted (for testing purposes)
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/2ec081c3-7ab3-4b13-894e-fe4cb3110819$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/cbs/volumes/get/2ec081c3.json
+
+## Unstubbed volume, so they all fail (for testing purposes)
+-   request:
+        url: ^/api/users/hub_cap/block_storage/ORD/volumes/21d811b5-ff93-4d38-b19c-4b913af5fbca$
+        method: GET
+    response:
+        status: 404

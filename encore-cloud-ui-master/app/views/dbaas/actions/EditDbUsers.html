@@ -1,0 +1,9 @@
+<rx-modal-form title="Edit Users on Database" subtitle="{{database.name}}" submit-text="Save User Changes" cancel-text="Cancel">
+        <rx-option-table
+            type="checkbox"
+            data="instance.userList"
+            columns="instance.databaseColumns"
+            model="fields.database.userlist"
+            field-id="dbaas-users-checkbox">
+        </rx-option-table>
+</rx-modal-form>

@@ -1,0 +1,13 @@
+<form method="post"
+      target="_blank"
+      id="login_to_reach">
+    <input type="hidden" id="reach-link-username" name="username" value="{{user}}" />
+    <input type="hidden" id="reach-link-password" name="password" value="{{token}}" />
+    <input type="hidden" id="reach-link-next" name="next" value="{{reachTarget}}"/>
+    <input type="hidden" id="reach-link-type" name="type" value="token" />
+    <a ng-click="goToReach()"
+       class="rx-reach-link-action {{ class }}"
+       ng-transclude>
+    </a>
+    <div rx-spinner toggle="loading" class="spinner-container"></div>
+</form>

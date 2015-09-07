@@ -1,0 +1,42 @@
+-   request:
+        url: ^/api/users/(hub_cap|non_managed_test_user)/service_catalog$
+        method: GET
+    response:
+        status: 200
+        latency: 200
+        file: test/api-mocks/responses/serviceCatalog/get/serviceCatalog.json
+
+# Get catalog for UK william
+-   request:
+        url: ^/api/users/uk_william/service_catalog$
+        method: GET
+    response:
+        status: 200
+        latency: 200
+        file: test/api-mocks/responses/serviceCatalog/get/uk_william_serviceCatalog.json
+
+# Get catalog for rackconnect version 2 user
+-   request:
+        url: ^/api/users/rcstable02/service_catalog$
+        method: GET
+    response:
+        status: 200
+        latency: 200
+        file: test/api-mocks/responses/serviceCatalog/get/rcv2_serviceCatalog.json
+
+# Get catalog for rackconnect version 3 user
+-   request:
+        url: ^/api/users/rcstable01/service_catalog$
+        method: GET
+    response:
+        status: 200
+        latency: 200
+        file: test/api-mocks/responses/serviceCatalog/get/rcv3_serviceCatalog.json
+
+# Get Snapshots fail user service catalog - the error occurs here.
+-   request:
+        url: ^/api/users/bad_wolf/service_catalog$
+        method: GET
+    response:
+        status: 404
+        file: test/api-mocks/responses/serviceCatalog/get/userFail.json

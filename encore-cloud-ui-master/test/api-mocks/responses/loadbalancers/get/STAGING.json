@@ -1,0 +1,647 @@
+{
+    "loadBalancers": [
+        {
+            "name": "test_load_balancer",
+            "id": 57361,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "test_external_nodes",
+            "id": 57362,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2015-07-26T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },        
+        {
+            "name": "test_enabled_lb",
+            "id": 57363,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "test_disabled_lb",
+            "id": 57364,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "test_bad_del_balancer",
+            "id": 9009,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "test_ftp_protocol",
+            "id": 9001,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "test_create_lb",
+            "id": 59247,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "BUILD",
+            "timeout": 30,
+            "created": {
+                "time": "2013-11-05T17:11:55Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.36",
+                    "id": 22,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0002",
+                    "id": 9006447,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-05T17:11:55Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "zzz_bad_load_balancer",
+            "id": 12345,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.23",
+                    "id": 50,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "1234:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 12345678,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "LB disabled health monitor",
+            "id": 57001,
+            "protocol": "HTTP",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ACTIVE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        },
+        {
+            "name": "test_suspended_lb_stat",
+            "id": 57021,
+            "protocol": "HTTP",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "SUSPENDED",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005903,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "region": "STAGING"
+        },
+        {
+            "name": "test_deleted_lb_stat",
+            "id": 57031,
+            "protocol": "HTTP",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "DELETED",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005913,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "region": "STAGING"
+        },
+        {
+            "name": "test_error_lb_stat",
+            "id": 57022,
+            "protocol": "HTTP",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "ERROR",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005904,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "region": "STAGING"
+        },
+        {
+            "name": "test_pend_del_lb_stat",
+            "id": 57023,
+            "protocol": "HTTP",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "PENDING_DELETE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "region": "STAGING"
+        },
+        {
+            "name": "test_pend_update_lb_stat",
+            "id": 57024,
+            "protocol": "HTTP",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "PENDING_UPDATE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005906,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "region": "STAGING"
+        },
+        {
+            "name": "test_ratelimit_edit_lb_stat",
+            "id": 57000,
+            "protocol": "HTTP",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "PENDING_UPDATE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005906,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "region": "STAGING"
+        },
+        {
+            "name": "test_create_lb_stat",
+            "id": 57025,
+            "protocol": "HTTPS",
+            "validMonitors": [
+                "CONNECT",
+                "HTTP"
+            ],
+            "port": 443,
+            "algorithm": "RANDOM",
+            "status": "PENDING_UPDATE",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "151.106.24.22",
+                    "id": 15,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0151",
+                    "id": 9005151,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "region": "STAGING"
+        },
+        {
+            "name": "suspended_load_balancer",
+            "id": 57366,
+            "protocol": "HTTP",
+            "validMonitors": [
+              "CONNECT",
+              "HTTP"
+            ],
+            "port": 80,
+            "algorithm": "RANDOM",
+            "status": "SUSPENDED",
+            "timeout": 30,
+            "created": {
+                "time": "2013-10-18T16:10:11Z"
+            },
+            "virtualIps": [
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "184.106.24.22",
+                    "id": 8,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV4"
+                },
+                {
+                    "ip_address": "2001:4801:79f1:0000:07b4:0a0b:0000:0001",
+                    "id": 9005905,
+                    "ip_type": "PUBLIC",
+                    "version": "IPV6"
+                }
+            ],
+            "updated": {
+                "time": "2013-11-01T22:41:19Z"
+            },
+            "nodeCount": 2,
+            "cluster": {
+                "name": "Stage"
+            },
+            "region": "STAGING"
+        }        
+    ]
+}

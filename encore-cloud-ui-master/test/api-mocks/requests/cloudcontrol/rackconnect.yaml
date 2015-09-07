@@ -1,0 +1,26 @@
+-   request:
+        url: ^/api/cloudcontrol/ORD/323676/servers/2999ca73-f2d7-4275-ba45-84753332903b/rackconnect$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/cloudcontrol/rackconnect_ips.json
+
+-   request:
+        url: ^/api/cloudcontrol/ORD/5911499/servers/2999ca73-f2d7-4275-ba45-84753332903b/rackconnect$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/cloudcontrol/rackconnect_v3.json
+
+-   request:
+        url: ^/api/cloudcontrol/ORD/5911500/servers/2999ca73-f2d7-4275-ba45-84753332903b/rackconnect$
+        method: GET
+    response:
+        status: 200
+        headers:
+            content-type: application/json
+        file: test/api-mocks/responses/cloudcontrol/rackconnect_v2.json

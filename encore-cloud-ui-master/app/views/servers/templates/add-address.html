@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add New IPv4 Address to Public Network</h3>
+    <button class="modal-close btn-link" ng-click="cancel()"><span class="visually-hidden">Close Window</span></button>
+</div>
+
+<form ng-hide="submitStatus.isLoading" name="modalActionForm" class="modal-form rx-form">
+
+    <div class="modal-body">
+        <rx-notification type="info">
+            Additional Public IPv4 addresses are available for SSL
+            purposes or on the Vyatta applicance for 1:1 NAT. 
+        </rx-notification>
+    </div>
+
+    <div class="modal-footer admin-authenticate">
+        <div class="wrapper">
+            <div class="footer-auth-key">
+                <i class="fa fa-fw fa-lg fa-key"></i>
+            </div>
+            <div class="footer-auth-description">
+                To perform admin operations, admin permissions are required. Enter your SSO password (not RSA Token) to authenticate as an Admin and submit your changes.
+            </div>
+        </div>
+
+        <rx-form-item label="Password">
+            <input name="password" type="password" ng-model="fields.password" required="true" admin-authenticate-validator/>
+            <div ng-show="modalActionForm.password.$error.adminAuthenticateValidator" class="inline-error">
+                You may have entered an incorrect password or have insufficient access.
+            </div>
+        </rx-form-item>
+        <rx-button 
+            toggle="submitStatus.loading"
+            toggle-msg="Authenticating & Adding New IPv4 Address" 
+            default-msg="Authenticate & Add New IPv4 Address" 
+            disable="modalActionForm.$invalid" 
+            classes="button submit" 
+            ng-click="submitAddIp()" 
+            type="submit">
+        </rx-button>
+        <button class="button cancel" ng-disabled="submitStatus.loading" ng-click="cancel()">
+            {{cancelText || "Cancel"}}
+        </button>
+    </div>
+</form

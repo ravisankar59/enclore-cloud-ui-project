@@ -1,0 +1,336 @@
+{
+  "servers": [
+    {
+      "name": "nova_crud_testing",
+      "id": "7da8260a-1961-4141-bd57-5c4195df95d0",
+      "metadata": {},
+      "progress": 100,
+      "flavor": {
+        "name": "",
+        "id": "2",
+        "extra_specs": {},
+        "bandwidth": 0,
+        "vcpus": null,
+        "ram": null,
+        "disk_size": null,
+        "data_disk": 0,
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2"
+          }
+        ]
+      },
+      "task_state": null,
+      "power_state": 1,
+      "region": "ORD",
+      "vm_state": "active",
+      "ohthree": "https://alerts.ohthree.com/nova/ord/instance/7da8260a-1961-4141-bd57-5c4195df95d0",
+      "tenant_id": "323676",
+      "image": {
+        "id": "c52a0ca6-c1f2-4cd1-b7d6-afbcd1ebda22",
+        "metadata": {},
+        "min_disk": null,
+        "progress": "",
+        "min_ram": null,
+        "disk_config": "",
+        "name": "",
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c52a0ca6-c1f2-4cd1-b7d6-afbcd1ebda22"
+          }
+        ],
+        "created": "",
+        "status": "",
+        "updated": ""
+      },
+      "disk_config": "AUTO",
+      "user_id": "295",
+      "addresses": [
+        {
+          "ip_address": "10.23.195.10",
+          "id": null,
+          "ip_type": "public",
+          "version": 4
+        },
+        {
+          "ip_address": "2001:4801:7808:0052:07b4:0a0b:ff00:286c",
+          "id": null,
+          "ip_type": "public",
+          "version": 6
+        },
+        {
+          "ip_address": "10.182.70.4",
+          "id": null,
+          "ip_type": "private",
+          "version": 4
+        }
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/7da8260a-1961-4141-bd57-5c4195df95d0"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/7da8260a-1961-4141-bd57-5c4195df95d0"
+        }
+      ],
+      "created": "2013-10-09T22:00:20Z",
+      "status": "ACTIVE",
+      "admin_pass": "",
+      "updated": "2013-10-09T22:04:08Z",
+      "host_id": "c705c9cc630e29698ed349e7b2614f50831ec940784edf255cb30a11"
+    },
+    {
+      "name": "nova_crud_testing_rebuild",
+      "id": "b9e21a7c-e231-468a-a7b8-83fc189346e1",
+      "metadata": {},
+      "progress": 100,
+      "flavor": {
+        "name": "",
+        "id": "2",
+        "extra_specs": {},
+        "bandwidth": 0,
+        "vcpus": null,
+        "ram": null,
+        "disk_size": null,
+        "data_disk": 0,
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2"
+          }
+        ]
+      },
+      "task_state": null,
+      "power_state": 1,
+      "region": "ORD",
+      "vm_state": "active",
+      "ohthree": "https://alerts.ohthree.com/nova/ord/instance/b9e21a7c-e231-468a-a7b8-83fc189346e1",
+      "tenant_id": "323676",
+      "image": {
+        "id": "c52a0ca6-c1f2-4cd1-b7d6-afbcd1ebda22",
+        "metadata": {},
+        "min_disk": null,
+        "progress": "",
+        "min_ram": null,
+        "disk_config": "",
+        "name": "",
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c52a0ca6-c1f2-4cd1-b7d6-afbcd1ebda22"
+          }
+        ],
+        "created": "",
+        "status": "",
+        "updated": ""
+      },
+      "disk_config": "AUTO",
+      "user_id": "295",
+      "addresses": [
+        {
+          "ip_address": "10.23.196.115",
+          "id": null,
+          "ip_type": "public",
+          "version": 4
+        },
+        {
+          "ip_address": "2001:4801:7808:0052:07b4:0a0b:ff00:1ea4",
+          "id": null,
+          "ip_type": "public",
+          "version": 6
+        },
+        {
+          "ip_address": "10.182.75.36",
+          "id": null,
+          "ip_type": "private",
+          "version": 4
+        }
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/b9e21a7c-e231-468a-a7b8-83fc189346e1"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/b9e21a7c-e231-468a-a7b8-83fc189346e1"
+        }
+      ],
+      "created": "2013-10-08T19:48:44Z",
+      "status": "ACTIVE",
+      "admin_pass": "",
+      "updated": "2013-10-08T20:06:44Z",
+      "host_id": "004a975f6dc20cf3ee81db28fc4e9a620e4fddbf3fbe3c4bd5499948"
+    },
+    {
+      "name": "nova_crud_testing",
+      "id": "925f5cc4-2d12-4f54-905f-f5e4299ab1e1",
+      "metadata": {},
+      "progress": 100,
+      "flavor": {
+        "name": "",
+        "id": "2",
+        "extra_specs": {},
+        "bandwidth": 0,
+        "vcpus": null,
+        "ram": null,
+        "disk_size": null,
+        "data_disk": 0,
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2"
+          }
+        ]
+      },
+      "task_state": null,
+      "power_state": 1,
+      "region": "ORD",
+      "vm_state": "active",
+      "ohthree": "https://alerts.ohthree.com/nova/ord/instance/925f5cc4-2d12-4f54-905f-f5e4299ab1e1",
+      "tenant_id": "323676",
+      "image": {
+        "id": "c52a0ca6-c1f2-4cd1-b7d6-afbcd1ebda22",
+        "metadata": {},
+        "min_disk": null,
+        "progress": "",
+        "min_ram": null,
+        "disk_config": "",
+        "name": "",
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/c52a0ca6-c1f2-4cd1-b7d6-afbcd1ebda22"
+          }
+        ],
+        "created": "",
+        "status": "",
+        "updated": ""
+      },
+      "disk_config": "AUTO",
+      "user_id": "295",
+      "addresses": [
+        {
+          "ip_address": "10.23.196.145",
+          "id": null,
+          "ip_type": "public",
+          "version": 4
+        },
+        {
+          "ip_address": "2001:4801:7808:0052:07b4:0a0b:ff00:2e27",
+          "id": null,
+          "ip_type": "public",
+          "version": 6
+        },
+        {
+          "ip_address": "10.182.79.221",
+          "id": null,
+          "ip_type": "private",
+          "version": 4
+        }
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/925f5cc4-2d12-4f54-905f-f5e4299ab1e1"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/925f5cc4-2d12-4f54-905f-f5e4299ab1e1"
+        }
+      ],
+      "created": "2013-10-08T18:07:22Z",
+      "status": "ACTIVE",
+      "admin_pass": "",
+      "updated": "2013-10-08T18:10:43Z",
+      "host_id": "c6ad7df195037e8d0f71654a0def2354c2f1e2312324f890ee955021"
+    },
+    {
+      "name": "testing_rebuild_adapter",
+      "id": "d3629b24-0ade-45c3-ba18-97d89a5fe479",
+      "metadata": {},
+      "progress": 100,
+      "flavor": {
+        "name": "",
+        "id": "2",
+        "extra_specs": {},
+        "bandwidth": 0,
+        "vcpus": null,
+        "ram": null,
+        "disk_size": null,
+        "data_disk": 0,
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/2"
+          }
+        ]
+      },
+      "task_state": null,
+      "power_state": 1,
+      "region": "ORD",
+      "vm_state": "active",
+      "ohthree": "https://alerts.ohthree.com/nova/ord/instance/d3629b24-0ade-45c3-ba18-97d89a5fe479",
+      "tenant_id": "323676",
+      "image": {
+        "id": "25a5f2e8-f522-4fe0-b0e0-dbaa62405c25",
+        "metadata": {},
+        "min_disk": null,
+        "progress": "",
+        "min_ram": null,
+        "disk_config": "",
+        "name": "",
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/images/25a5f2e8-f522-4fe0-b0e0-dbaa62405c25"
+          }
+        ],
+        "created": "",
+        "status": "",
+        "updated": ""
+      },
+      "disk_config": "AUTO",
+      "user_id": "295",
+      "addresses": [
+        {
+          "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:302b",
+          "id": null,
+          "ip_type": "public",
+          "version": 6
+        },
+        {
+          "ip_address": "10.23.203.120",
+          "id": null,
+          "ip_type": "public",
+          "version": 4
+        },
+        {
+          "ip_address": "10.182.95.103",
+          "id": null,
+          "ip_type": "private",
+          "version": 4
+        }
+      ],
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/d3629b24-0ade-45c3-ba18-97d89a5fe479"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/d3629b24-0ade-45c3-ba18-97d89a5fe479"
+        }
+      ],
+      "created": "2013-10-04T00:13:46Z",
+      "status": "ACTIVE",
+      "admin_pass": "",
+      "updated": "2013-10-07T22:29:42Z",
+      "host_id": "145aeae9687cbb626d59c8a50897e93badfadd96475d9a99db9b5ba0"
+    }
+  ]
+}

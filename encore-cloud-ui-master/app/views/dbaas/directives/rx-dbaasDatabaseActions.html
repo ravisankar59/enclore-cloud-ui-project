@@ -1,0 +1,17 @@
+<ul class="actions-area">
+    <li class="msg-info-blue">
+        <rx-modal-action
+                pre-hook="editUsers.preHook(this)"
+                post-hook="editUsers.postHook(fields)"
+                template-url="views/dbaas/actions/EditDbUsers.html">
+            <i class="editUsersAction fa fa-user fa-lg"></i> Edit Users</a>
+        </rx-modal-action>
+    </li>
+    <li class="msg-warn">
+        <rx-modal-action
+            post-hook="deleteDatabase.postHook()"
+            template-url="views/dbaas/actions/DeleteDatabase.html">
+            <i class="deleteDatabaseAction fa fa-times fa-lg"></i> Delete Database</a>
+        </rx-modal-action>
+    </li>
+</ul>

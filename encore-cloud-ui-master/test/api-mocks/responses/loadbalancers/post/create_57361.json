@@ -1,0 +1,67 @@
+{
+    "loadBalancer": {
+        "name": "test_create_lb",
+        "id": 57361,
+        "protocol": "HTTP",
+        "port": 80,
+        "algorithm": "RANDOM",
+        "status": "BUILD",
+        "cluster": {
+            "name": "ztm-n02.staging1.lbaas.rackspace.net"
+        },
+        "nodes": [
+            {
+                "address": "10.182.65.187",
+                "id": 88661,
+                "type": "PRIMARY",
+                "port": 80,
+                "status": "ONLINE",
+                "condition": "ENABLED",
+                "weight": 1
+            },
+            {
+                "address": "10.182.78.55",
+                "id": 88659,
+                "type": "PRIMARY",
+                "port": 80,
+                "status": "ONLINE",
+                "condition": "ENABLED",
+                "weight": 1
+            }
+        ],
+        "timeout": 30,
+        "created": {
+            "time": "2013-11-05T17:11:55Z"
+        },
+        "virtualIps": [
+            {
+                "address": "184.106.24.36",
+                "id": 22,
+                "type": "PUBLIC",
+                "ipVersion": "IPV4"
+            },
+            {
+                "address": "2001:4801:79f1:0000:07b4:0a0b:0000:0002",
+                "id": 9006447,
+                "type": "PUBLIC",
+                "ipVersion": "IPV6"
+            }
+        ],
+        "sourceAddresses": {
+            "ipv6Public": "FFFF:0000:0000:0000:0000:0000:0000:FFFF",
+            "ipv4Servicenet": "10.0.0.0",
+            "ipv4Public": "1.2.3.4"
+        },
+        "httpsRedirect": false,
+        "updated": {
+            "time": "2013-11-05T17:11:55Z"
+        },
+        "halfClosed": false,
+        "connectionLogging": {
+            "enabled": false
+        },
+        "contentCaching": {
+            "enabled": false
+        }
+    }
+}

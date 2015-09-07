@@ -1,0 +1,166 @@
+{
+    "servers": [
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "Red Hat Enterprise Linux 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/images/c6e2fed0-75bf-420d-a744-7cfc75a1889e",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "c6e2fed0-75bf-420d-a744-7cfc75a1889e"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.86.18"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:052b:07b4:0a0b:ff00:28a0"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "10.23.202.10"
+                }
+            ],
+            "flavor": {
+                "vcpus": null,
+                "id": "2",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/2",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "512 MB Standard",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/servers/df69997d-37fe-446b-be19-6fc525740e25",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/servers/df69997d-37fe-446b-be19-6fc525740e25",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-21T16:44:05Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "DFW",
+            "status": "ACTIVE",
+            "name": "DFWTestServer",
+            "power_state": 1,
+            "updated": "2013-11-21T16:48:18Z",
+            "tenant_id": "323676",
+            "metadata": {},
+            "host_id": "d67f8ee68c5afab4655e3965f3093fb420e90312a3ae327480d802f3",
+            "id": "df69997d-37fe-446b-be19-6fc525740e25"
+        },
+        {
+            "disk_config": "AUTO",
+            "image": {
+                "disk_config": "",
+                "progress": "",
+                "status": "",
+                "name": "CentOS 6.4",
+                "min_ram": null,
+                "updated": "",
+                "metadata": {
+                    "os_type": "linux"
+                },
+                "min_disk": null,
+                "created": "",
+                "links": [
+                    {
+                        "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/images/f70ed7c7-b42e-4d77-83d8-40fa29825b85",
+                        "rel": "bookmark"
+                    }
+                ],
+                "id": "f70ed7c7-b42e-4d77-83d8-40fa29825b85"
+            },
+            "progress": 100,
+            "addresses": [
+                {
+                    "version": 4,
+                    "ip_type": "private",
+                    "id": null,
+                    "ip_address": "10.182.78.189"
+                },
+                {
+                    "version": 4,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "10.23.193.102"
+                },
+                {
+                    "version": 6,
+                    "ip_type": "public",
+                    "id": null,
+                    "ip_address": "2001:4801:7808:0052:07b4:0a0b:ff00:2557"
+                }
+            ],
+            "flavor": {
+                "vcpus": null,
+                "id": "2",
+                "ram": null,
+                "links": [
+                    {
+                        "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/flavors/2",
+                        "rel": "bookmark"
+                    }
+                ],
+                "name": "512 MB Standard",
+                "disk_size": null
+            },
+            "links": [
+                {
+                    "href": "https://preprod.dfw.servers.api.rackspacecloud.com/v2/323676/servers/947b9f7a-184e-4b19-a901-4f3a0cad4aee",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://preprod.dfw.servers.api.rackspacecloud.com/323676/servers/947b9f7a-184e-4b19-a901-4f3a0cad4aee",
+                    "rel": "bookmark"
+                }
+            ],
+            "created": "2013-11-13T22:22:25Z",
+            "vm_state": "active",
+            "user_id": "295",
+            "task_state": null,
+            "region": "DFW",
+            "status": "ACTIVE",
+            "name": "test perf",
+            "power_state": 1,
+            "updated": "2013-11-13T22:24:39Z",
+            "tenant_id": "323676",
+            "metadata": {
+                "rax_service_level_automation": "Complete"
+            },
+            "host_id": "a1be8e1b6e41799e3a1ef857c8875d4f04e59648d70d462ee85f700f",
+            "id": "947b9f7a-184e-4b19-a901-4f3a0cad4aee"
+        }
+    ]
+}

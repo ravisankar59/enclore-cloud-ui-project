@@ -1,0 +1,99 @@
+{
+    "name": "Mosso",
+    "tags": [],
+    "type": "CLOUD",
+    "number": "5911499",
+    "id": 5911499,
+    "instructions": null,
+    "serviceLevel": "managed",
+    "serviceType": "sysops",
+    "supportRegion": "US",
+    "accountPlanRequest": {
+        "status": "pending",
+        "id": "6400",
+        "serviceType": "sysops",
+        "serviceLevel": "managed",
+        "links": {
+            "self": {
+                "href": "https://staging.dfw.support.encore.rackspace.com/api/support-accounts/5911499/plan-request/6308",
+                "id": "6400"
+            }
+        }
+    },
+    "linkedAccountNumber": null,
+    "rcn": "RCN-000-065-068",
+    "status": "Active",
+    "users": [
+        {
+            "id": "10090500",
+            "username": "testuserforthisaccount",
+            "email": "testuser@rackspacetest.com"
+        },
+        {
+            "id": "300",
+            "username": "rcstable02",
+            "email": "knightrider@classic.com"
+        }
+    ],
+    "badges": [
+        {
+            "id": "305",
+            "name": "Managed Infrastructure",
+            "description": "Managed Infrastructure",
+            "url": "https://8423524f2686ac4f958c-3926186336a34cf9a63ab95d7fefb059.ssl.cf1.rackcdn.com/ManagedInfra.png"
+        },
+        {
+            "id": "296",
+            "name": "Linked",
+            "description": "This customer is linked",
+            "url": "https://8423524f2686ac4f958c-3926186336a34cf9a63ab95d7fefb059.ssl.cf1.rackcdn.com/linked_account.png"
+        },
+        {
+            "id": "522",
+            "name": "Rackconnect version 3 badge",
+            "description": "Rackconnect version 3 badge",
+            "url": "https://8423524f2686ac4f958c-3926186336a34cf9a63ab95d7fefb059.ssl.cf1.rackcdn.com/fd2e7d2a-26ea-4667-8275-d9327fee73fa.png"
+        }
+    ],
+    "teams": [
+        {
+            "description": "Managed Colocation",
+            "tags": [
+                "cloud_us",
+                "Managed_Colocation"
+            ],
+            "number": "34",
+            "subregion": "null",
+            "segment": "Managed Colo",
+            "id": "34",
+            "name": "Managed Colocation",
+            "region": "Americas",
+            "flags": null,
+            "subsegment": null,
+            "type": "revenue",
+            "internalEmails": [],
+            "internalPhoneNumbers": [],
+            "businessUnit": "Enterprise"
+        },
+        {
+            "description": "Team D3-4",
+            "tags": [
+                "support-drawer",
+                "team_d3-4"
+            ],
+            "number": "1502",
+            "subregion": "US",
+            "segment": "Pure Managed",
+            "id": "1502",
+            "name": "Team D3-4",
+            "region": "US",
+            "flags": ["primary"],
+            "subsegment": null,
+            "type": "support",
+            "internalEmails": [],
+            "internalPhoneNumbers": [],
+            "businessUnit": "SMB"
+        }
+    ],
+    "roles": []
+}

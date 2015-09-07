@@ -1,0 +1,7 @@
+# Get Server Flavors
+-   request:
+        url: ^/api/users/hub_cap/firstgen/flavors$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/servers/firstGen/flavors/get/flavors.json

@@ -1,0 +1,25 @@
+{
+  "volume": {
+    "snapshot_id": null,
+    "status": "available",
+    "size": 100,
+    "attachments": [
+        {
+          "server_id": "2999ca73-f2d7-4275-ba45-84753332903b",
+          "device": "/dev/xvdb",
+          "volume_id": "10225e08-a4bd-49fb-9237-ce1b7eaaddb2",
+          "id": "10225e08-a4bd-49fb-9237-ce1b7eaaddb2",
+          "server_name": "Server123"
+        }
+    ],
+    "volume_type": "SATA",
+    "availability_zone": "nova",
+    "created_on": "2013-11-01T22:32:43.000000",
+    "source_volid": null,
+    "bootable": "false",
+    "id": "10225e08-a4bd-49fb-9237-ce1b7eaaddb2",
+    "display_description": "this is a test volume",
+    "display_name": "vol-TEST-UPDATE",
+    "metadata": {}
+  }
+}

@@ -1,0 +1,194 @@
+{
+    "servers": [
+        {
+        "status": "ACTIVE",
+        "addresses": [
+          {
+            "version": 4,
+            "ip_type": "private",
+            "ip_address": "10.182.76.126"
+          },
+          {
+            "version": 4,
+            "ip_type": "public",
+            "ip_address": "10.23.192.133"
+          },
+          {
+            "version": 6,
+            "ip_type": "public",
+            "ip_address": "2001:4801:7808:0052:07b4:0a0b:ff00:2917"
+          }
+        ],
+        "name": "UK Server",
+        "region": "LON",
+        "progress": 100,
+        "metadata": {
+          "rax_service_level_automation": "Complete"
+        },
+        "image": {
+          "name": "image007",
+          "id": "1095301f-9836-49c6-9709-878515bee7fd",
+          "links": []
+        },
+        "updated": "2013-07-24T03:37:19Z",
+        "vm_state": "active",
+        "created": "2013-07-24T03:31:06Z",
+        "power_state": 1,
+        "task_state": null,
+        "user_id": "295",
+        "disk_config": "AUTO",
+        "tenant_id": "323676",
+        "flavor": {
+          "name": "15 GB I/O v1",
+          "id": "io1-15",
+          "links": [
+            {
+              "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/flavors/io1-15",
+              "rel": "bookmark"
+            }
+          ]
+        },
+        "host_id": "c9ad727ea68dbfa26c75414168ded823e3cbc53756b0fb884c0dec2d",
+        "id": "5ae2222c-b39d-4eeb-b4f8-eb9b97a89d1f",
+        "links": [
+          {
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/v2/323676/servers/2999ca73-f2d7-4275-ba45-84753332903b",
+            "rel": "self"
+          },
+          {
+            "href": "https://preprod.ord.servers.api.rackspacecloud.com/323676/servers/2999ca73-f2d7-4275-ba45-84753332903b",
+            "rel": "bookmark"
+          }
+        ]
+      },
+      {
+         "updated":"",
+         "task_state":"",
+         "image":{
+            "updated":"",
+            "links":[
+
+            ],
+            "metadata":{
+
+            },
+            "min_ram":null,
+            "progress":0,
+            "min_disk":null,
+            "created":"",
+            "status":"",
+            "id":110,
+            "name":null,
+            "disk_config":""
+         },
+         "admin_pass":"",
+         "links":[
+
+         ],
+         "id":110148309,
+         "flavor":{
+            "ram":null,
+            "disk_size":null,
+            "links":[
+
+            ],
+            "id":2,
+            "vcpus":null,
+            "name":"512 server"
+         },
+         "tenant_id":"",
+         "vm_state":"",
+         "user_id":"",
+         "disk_config":"",
+         "metadata": {
+            "FG2NG_self_migration_available_from": "2014-12-25 00:00:00",
+            "FG2NG_self_migration_available_till": "2015-01-20 00:00:00"
+         },
+         "progress":100,
+         "region":"LON",
+         "created":"",
+         "status":"ACTIVE",
+         "addresses":[
+            {
+               "id":null,
+               "ip_type":"private",
+               "ip_address":"10.179.215.33",
+               "version":""
+            },
+            {
+               "id":null,
+               "ip_type":"public",
+               "ip_address":"184.106.255.21",
+               "version":""
+            }
+         ],
+         "power_state":null,
+         "name":"kacieissoawesome",
+         "host_id":"e78880b6fa7eead9c771d40f344285df"
+      },
+      {
+         "updated":"",
+         "task_state":"",
+         "image":{
+            "updated":"",
+            "links":[
+
+            ],
+            "metadata":{
+
+            },
+            "min_ram":null,
+            "progress":0,
+            "min_disk":null,
+            "created":"",
+            "status":"",
+            "id":110,
+            "name":null,
+            "disk_config":""
+         },
+         "admin_pass":"",
+         "links":[
+
+         ],
+         "id":110148310,
+         "flavor":{
+            "ram":null,
+            "disk_size":null,
+            "links":[
+
+            ],
+            "id":2,
+            "vcpus":null,
+            "name":"512 server"
+         },
+         "tenant_id":"",
+         "vm_state":"",
+         "user_id":"",
+         "disk_config":"",
+         "metadata":{
+
+         },
+         "progress":100,
+         "region":"LON",
+         "created":"",
+         "status":"ACTIVE",
+         "addresses":[
+            {
+               "id":null,
+               "ip_type":"private",
+               "ip_address":"10.179.215.34",
+               "version":""
+            },
+            {
+               "id":null,
+               "ip_type":"public",
+               "ip_address":"184.106.255.22",
+               "version":""
+            }
+         ],
+         "power_state":null,
+         "name":"slice110148310",
+         "host_id":"e78880b6fa7eead9c771d40f344285df"
+      }
+    ]
+}

@@ -1,0 +1,55 @@
+# GET Networks
+-   request:
+        url: ^/api/users/(hub_cap|non_managed_test_user|rcstable0[1,2])/networks/ORD$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/networks/get/networksORD.json
+
+-   request:
+        url: ^/api/users/(hub_cap|non_managed_test_user|rcstable0[1,2])/networks/DFW$
+        method: GET
+    response:
+        status: 200
+        file: test/api-mocks/responses/networks/get/networksDFW.json
+
+# Networks POST Create Network on ORD
+-   request:
+        url: ^/api/users/hub_cap/networks/ORD$
+        method: POST
+        post: '{"cidr":"192.168.4.0/24","label":"test-network"}'
+    response:
+        status: 200
+        file: test/api-mocks/responses/networks/create/networksCreateORD.json
+
+# Networks POST Create Network on ORD - failure
+-   request:
+        url: ^/api/users/hub_cap/networks/ORD$
+        method: POST
+        post: '{"cidr":"192.168.4.0/24","label":"fail-network"}'
+    response:
+        status: 400
+
+# Networks POST Create Network on DFW
+-   request:
+        url: ^/api/users/hub_cap/networks/DFW$
+        method: POST
+        post: '{"cidr":"192.168.4.0/24","label":"test-network"}'
+    response:
+        status: 200
+        file: test/api-mocks/responses/networks/create/networksCreateDFW.json
+
+# Networks POST Create Network on DFW - failure
+-   request:
+        url: ^/api/users/hub_cap/networks/DFW$
+        method: POST
+        post: '{"cidr":"192.168.4.0/24","label":"fail-network"}'
+    response:
+        status: 400
+
+# Networks DELETE network
+-   request:
+        url: ^/api/users/hub_cap/networks/ORD/c6e72aa4-d09f-421e-862f-1c8461739614
+        method: DELETE
+    response:
+        status: 200
